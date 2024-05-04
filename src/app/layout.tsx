@@ -2,15 +2,13 @@ import "src/styles/globals.css";
 
 import type { Metadata } from "next";
 
-type Props = Readonly<{
-  children: React.ReactNode;
-}>;
+type Props = Readonly<{ children: React.ReactNode }>;
 
 const Body = "w-screen h-screen overflow-hidden";
 
 export default function RootLayout({ children }: Props) {
   return (
-    <html lang="en">
+    <html>
       <body className={Body}>{children}</body>
     </html>
   );
