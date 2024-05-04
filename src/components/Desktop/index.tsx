@@ -1,20 +1,23 @@
 "use client";
 import Shortcuts from "./Shortcuts";
 import BaseApplication from "../Applications/Base";
+import Menu from "./Menu";
 
 import { useApps } from "src/context/AppsContext";
 
-//60px Height from Dock
-const Main = "p-4 w-full h-[calc(100%-60px)] bg-[#131313]";
+import type { DesktopProps } from "./types";
 
-const Desktop = () => {
-  return (
-    <main className={Main}>
-      <Shortcuts />
-      <RunningApps />
-    </main>
-  );
-};
+//DOCK_HEIGHT = 76;
+const Main =
+  "relative p-4 w-full h-[calc(100%-60px)] bg-[#131313] [&>*:not(:last-child)]:data-[menu=true]:blur-sm";
+
+const Desktop = ({ closeMenu, menuOpen }: DesktopProps) => (
+  <main data-menu={menuOpen} className={Main}>
+    <Shortcuts />
+    <RunningApps />
+    {menuOpen && <Menu closeMenu={closeMenu} />}
+  </main>
+);
 
 const RunningApps = () => {
   const apps = useApps();

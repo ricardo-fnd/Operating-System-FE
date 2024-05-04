@@ -1,13 +1,5 @@
-import Desktop from "src/components/Desktop";
-import Dock from "src/components/Dock";
-
-import { AppsProvider } from "src/context/AppsContext";
+import OperatingSystem from "src/components/OperatingSystem";
 
 export default function Home() {
-  return (
-    <AppsProvider>
-      <Desktop />
-      <Dock />
-    </AppsProvider>
-  );
+  return <OperatingSystem />;
 }
