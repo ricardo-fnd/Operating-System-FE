@@ -1,7 +1,11 @@
 import type { Application } from "src/applications";
 
+type MenuProps = {
+  closeMenu: () => void;
+};
+
 type AppShortcutProps = {
   app: Application;
 };
 
-export type { AppShortcutProps };
+export type { MenuProps, AppShortcutProps };

@@ -1,9 +1,9 @@
 import { useAppsUpdate } from "src/context/AppsContext";
 
-import type { AppShortcutProps } from "../types";
+import type { AppShortcutProps } from "./types";
 
 const StyledShortcut =
-  "flex flex-col items-center w-fit p-2 pt-1 text-white text-xs rounded-md cursor-pointer hover:bg-white/25";
+  "flex flex-col items-center justify-center w-32 h-32 bg-[#ffffff5b] cursor-pointer hover:bg-[#ffffff80]";
 
 const AppShortcut = ({ app }: AppShortcutProps) => {
   const updateApps = useAppsUpdate();
@@ -22,10 +22,10 @@ const AppShortcut = ({ app }: AppShortcutProps) => {
   };
 
   return (
-    <div className={StyledShortcut} onClick={openApp}>
-      <Icon size="50" />
+    <li className={StyledShortcut} onClick={openApp}>
+      <Icon size="75" />
       <p>{name}</p>
-    </div>
+    </li>
   );
 };
 

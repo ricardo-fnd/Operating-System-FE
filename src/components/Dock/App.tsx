@@ -1,6 +1,6 @@
 import { useAppsUpdate } from "src/context/AppsContext";
 
-import type { AppProps } from "./type";
+import type { AppProps } from "./types";
 
 const StyledApp =
   "flex items-center h-full px-2 data-[minimized=true]:cursor-pointer data-[minimized=false]:bg-white/25 hover:bg-white/25";
