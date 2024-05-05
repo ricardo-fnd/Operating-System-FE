@@ -7,7 +7,7 @@ import { useApps } from "src/context/AppsContext";
 
 import type { DesktopProps } from "./types";
 
-//DOCK_HEIGHT = 76;
+//DOCK_HEIGHT = 60;
 const Main =
   "relative p-4 w-full h-[calc(100%-60px)] bg-[#131313] [&>*:not(:last-child)]:data-[menu=true]:blur-sm";
 

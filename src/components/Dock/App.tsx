@@ -3,7 +3,7 @@ import { useAppsUpdate } from "src/context/AppsContext";
 import type { AppProps } from "./types";
 
 const StyledApp =
-  "flex items-center h-full px-2 cursor-pointer data-[minimized=false]:bg-white/25 hover:bg-white/25";
+  "flex items-center h-full px-3 cursor-pointer bg-white/50 data-[minimized=true]:bg-white/25 hover:data-[minimized=true]:bg-white/50";
 
 const App = ({ app }: AppProps) => {
   const updateApps = useAppsUpdate();

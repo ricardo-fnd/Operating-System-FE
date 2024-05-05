@@ -1,3 +1,3 @@
-import Resume from "./Resume";
+import About from "./About";
 
-export { Resume };
+export { About };
