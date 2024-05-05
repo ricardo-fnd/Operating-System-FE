@@ -1,6 +1,6 @@
-import { Resume } from "src/components/Applications";
+import { About } from "src/components/Applications";
 
-import { FcLinux } from "react-icons/fc";
+import { FcButtingIn } from "react-icons/fc";
 
 import type { ReactNode } from "react";
 import type { IconType } from "react-icons";
@@ -18,9 +18,9 @@ type Application = {
 const APPLICATIONS: Application[] = [
   {
     id: 1,
-    Icon: FcLinux,
+    Icon: FcButtingIn,
     name: "About me",
-    component: Resume,
+    component: About,
     opened: false,
     minimized: true,
     maximized: false,
