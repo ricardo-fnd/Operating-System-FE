@@ -12,6 +12,7 @@ type Application = {
   component: () => ReactNode;
   opened: boolean;
   minimized: boolean;
+  maximized: boolean;
 };
 
 const APPLICATIONS: Application[] = [
@@ -22,6 +23,7 @@ const APPLICATIONS: Application[] = [
     component: Resume,
     opened: false,
     minimized: true,
+    maximized: false,
   },
 ];
 

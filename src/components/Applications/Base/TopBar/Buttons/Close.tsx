@@ -15,6 +15,7 @@ const Close = ({ appId }: CloseButton) => {
         if (app.id === appId) {
           app.opened = false;
           app.minimized = true;
+          app.maximized = false;
         }
         return app;
       })
