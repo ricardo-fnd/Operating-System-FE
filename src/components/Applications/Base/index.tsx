@@ -3,11 +3,15 @@ import TopBar from "./TopBar";
 import type { BaseApplicationProps } from "./types";
 
 const StyledApplication =
-  "fixed top-0 bottom-0 min-w-56 h-fit rounded-md overflow-hidden data-[minimized=true]:hidden";
-const StyledContent = "bg-white";
+  "absolute top-0 left-0 min-w-56 h-fit overflow-hidden data-[maximized=false]:rounded-md data-[minimized=true]:hidden data-[maximized=true]:w-full data-[maximized=true]:h-full";
+const StyledContent = "bg-white h-full";
 
 const BaseApplication = ({ children, app }: BaseApplicationProps) => (
-  <section data-minimized={app.minimized} className={StyledApplication}>
+  <section
+    data-maximized={app.maximized}
+    data-minimized={app.minimized}
+    className={StyledApplication}
+  >
     <TopBar app={app} />
     <div className={StyledContent}>{children}</div>
   </section>
