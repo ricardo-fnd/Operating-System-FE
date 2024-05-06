@@ -1,16 +1,19 @@
 import Buttons from "./Buttons";
 
+import { useLabels } from "src/services";
+
 import type { TopBarProps } from "../types";
 
 const StyledHeader =
   "flex justify-between py-1 px-4 bg-white border-b-[1px] border-black";
 
 const TopBar = ({ app }: TopBarProps) => {
+  const getLabel = useLabels();
   const { id, name } = app;
 
   return (
     <header className={StyledHeader}>
-      <h3>{name}</h3>
+      <h3>{getLabel(name)}</h3>
       <Buttons appId={id} />
     </header>
   );

@@ -19,7 +19,7 @@ const APPLICATIONS: Application[] = [
   {
     id: 1,
     Icon: FcButtingIn,
-    name: "About me",
+    name: "apps.about.app-name",
     component: About,
     opened: false,
     minimized: true,
