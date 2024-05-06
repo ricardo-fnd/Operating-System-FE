@@ -7,7 +7,7 @@ const LookingFor = () => (
     <h2 className={StyledTitle}>WHAT AM I LOOKING FOR</h2>
     <p>
       Above all, awesome co-workers and freedom. Freedom because I believe that
-      I don't need to wake up every day at 8am to be productive. Actually, my
+      I dont need to wake up every day at 8am to be productive. Actually, my
       programming skills increase 20% when the sun goes down. Awesome co-workers
       because we spend a lot of time talking and discussing bussiness/technical
       ideias. With all that, comes personal growth and technical skill
