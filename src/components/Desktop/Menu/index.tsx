@@ -1,6 +1,6 @@
 import AppShortcut from "./AppShortcut";
 
-import { useApps } from "src/context/AppsContext";
+import { useApps } from "src/context";
 
 import type { MenuProps } from "./types";
 

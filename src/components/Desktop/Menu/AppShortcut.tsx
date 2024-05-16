@@ -1,5 +1,5 @@
 import { useLabels } from "src/services";
-import { useAppsUpdate } from "src/context/AppsContext";
+import { useAppsUpdate } from "src/context";
 
 import type { AppShortcutProps } from "./types";
 

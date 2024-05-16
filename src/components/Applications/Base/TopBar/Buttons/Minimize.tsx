@@ -1,6 +1,6 @@
 import { FaRegWindowMinimize } from "react-icons/fa";
 
-import { useAppsUpdate } from "src/context/AppsContext";
+import { useAppsUpdate } from "src/context";
 
 import type { MinimizeButton } from "../../types";
 

@@ -2,4 +2,10 @@ type LocalizeProps = {
   key: string;
 };
 
-export type { LocalizeProps };
+type SetCookiesProps = {
+  value: string;
+  name: string;
+  expires?: number;
+};
+
+export type { LocalizeProps, SetCookiesProps };

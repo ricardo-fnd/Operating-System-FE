@@ -1,6 +1,6 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 
-import { useAppsUpdate } from "src/context/AppsContext";
+import { useAppsUpdate } from "src/context";
 
 import type { CloseButton } from "../../types";
 
