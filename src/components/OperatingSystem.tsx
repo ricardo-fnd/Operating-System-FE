@@ -4,9 +4,14 @@ import { useState } from "react";
 import Desktop from "./Desktop";
 import Dock from "./Dock";
 
-import { AppsProvider } from "src/context/AppsContext";
+import { SUPPORTED_LANGUAGES } from "src/enums";
+import { AppsProvider } from "src/context";
 
-const OperatingSystem = () => {
+type Props = {
+  language: SUPPORTED_LANGUAGES;
+};
+
+const OperatingSystem = ({ language }: Props) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = () => setMenuOpen(false);
@@ -15,7 +20,7 @@ const OperatingSystem = () => {
   return (
     <AppsProvider>
       <Desktop closeMenu={closeMenu} menuOpen={menuOpen} />
-      <Dock toggleMenu={toggleMenu} menuOpen={menuOpen} />
+      <Dock language={language} toggleMenu={toggleMenu} menuOpen={menuOpen} />
     </AppsProvider>
   );
 };

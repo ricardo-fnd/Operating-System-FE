@@ -1,6 +1,6 @@
 import AppShortcut from "./AppShortcut";
 
-import { useApps } from "src/context/AppsContext";
+import { useApps } from "src/context";
 
 const StyledShortcuts = "flex flex-col flex-wrap content-start w-full h-full";
 

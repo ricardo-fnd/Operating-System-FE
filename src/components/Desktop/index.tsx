@@ -3,7 +3,7 @@ import Shortcuts from "./Shortcuts";
 import BaseApplication from "../Applications/Base";
 import Menu from "./Menu";
 
-import { useApps } from "src/context/AppsContext";
+import { useApps } from "src/context";
 
 import type { DesktopProps } from "./types";
 

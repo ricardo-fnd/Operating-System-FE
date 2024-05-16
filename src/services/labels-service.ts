@@ -1,4 +1,4 @@
-import { useTranslations } from "src/context/TranslationsContext";
+import { useTranslations } from "src/context";
 
 import type { LocalizeProps } from "./types";
 

@@ -1,6 +1,6 @@
 import { FiMaximize2 } from "react-icons/fi";
 
-import { useAppsUpdate } from "src/context/AppsContext";
+import { useAppsUpdate } from "src/context";
 
 import type { MinimizeButton } from "../../types";
 
