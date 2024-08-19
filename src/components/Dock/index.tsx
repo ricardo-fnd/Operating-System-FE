@@ -7,15 +7,15 @@ import { useApps } from "src/context";
 
 import type { DockProps } from "./types";
 
-const Footer =
-  "flex items-center gap-2 h-[60px] min-h-[60px] pr-3 text-white bg-[#212121]";
+const StyledFooter =
+  "absolute bottom-0 left-0 flex items-center gap-2 w-full h-[60px] min-h-[60px] pr-3 text-white bg-[#212121]/75 z-50 backdrop-blur-[2px]";
 const StyledApps = "flex gap-2 w-full h-full";
 
 const Dock = ({ language, toggleMenu, menuOpen }: DockProps) => {
   const apps = useApps();
 
   return (
-    <footer className={Footer}>
+    <footer className={StyledFooter}>
       <Menu menuOpen={menuOpen} toggleMenu={toggleMenu} />
       <div className={StyledApps}>
         {apps.map((app) =>

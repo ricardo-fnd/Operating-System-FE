@@ -1,3 +1,5 @@
+import Draggable from "react-draggable";
+
 import TopBar from "./TopBar";
 
 import type { BaseApplicationProps } from "./types";
@@ -10,14 +12,16 @@ const StyledContent =
   "h-[calc(100%-33px)] py-6 px-4 bg-white md:show-y-scrollbar";
 
 const BaseApplication = ({ children, app }: BaseApplicationProps) => (
-  <section
-    data-maximized={app.maximized}
-    data-minimized={app.minimized}
-    className={StyledApplication}
-  >
-    <TopBar app={app} />
-    <div className={StyledContent}>{children}</div>
-  </section>
+  <Draggable handle=".handle">
+    <section
+      className={StyledApplication}
+      data-maximized={app.maximized}
+      data-minimized={app.minimized}
+    >
+      <TopBar app={app} />
+      <div className={StyledContent}>{children}</div>
+    </section>
+  </Draggable>
 );
 
 export default BaseApplication;
