@@ -1,9 +1,7 @@
 import { onRequest } from "./request-config";
 import { onSuccess, onError } from "./response-config";
 
-import type { Options } from "./types";
-
-const customFetch = async (URL: string, options: Options = {}) => {
+const customFetch = async (URL: string, options: RequestInit = {}) => {
   const config = await onRequest(options);
   let response = await fetch(URL, config);
 

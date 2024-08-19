@@ -1,6 +1,4 @@
-import type { Options } from "./types";
-
-const onRequest = async (options: Options = {}) => {
+const onRequest = async (options: RequestInit = {}) => {
   const { headers = {} } = options;
 
   const fetchHeaders: RequestInit["headers"] = {

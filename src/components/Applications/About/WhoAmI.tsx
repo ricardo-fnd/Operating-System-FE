@@ -1,4 +1,4 @@
-import { useLabels } from "src/services";
+import { useLabels } from "src/services/client";
 
 const StyledContainer = "flex flex-col gap-2 w-full";
 const StyledTitle =

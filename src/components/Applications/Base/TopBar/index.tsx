@@ -1,6 +1,6 @@
 import Buttons from "./Buttons";
 
-import { useLabels } from "src/services";
+import { useLabels } from "src/services/client";
 
 import type { TopBarProps } from "../types";
 

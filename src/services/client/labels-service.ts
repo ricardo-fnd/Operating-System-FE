@@ -1,6 +1,6 @@
 import { useTranslations } from "src/context";
 
-import type { LocalizeProps } from "./types";
+import type { LocalizeProps } from "../types";
 
 const useLabels = () => {
   const translations = useTranslations();
