@@ -8,11 +8,11 @@ import { useApps } from "src/context";
 import type { DesktopProps } from "./types";
 
 //DOCK_HEIGHT = 60;
-const Main =
-  "relative p-4 w-full h-[calc(100%-60px)] bg-[#131313] [&>*:not(:last-child)]:data-[menu=true]:blur-sm";
+const StyledMain =
+  "relative w-full h-full bg-[#131313] [&>*:not(:last-child)]:data-[menu=true]:blur-sm";
 
 const Desktop = ({ closeMenu, menuOpen }: DesktopProps) => (
-  <main data-menu={menuOpen} className={Main}>
+  <main data-menu={menuOpen} className={StyledMain}>
     <Shortcuts />
     <RunningApps />
     {menuOpen && <Menu closeMenu={closeMenu} />}

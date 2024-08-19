@@ -5,7 +5,7 @@ import { useLabels } from "src/services/client";
 import type { TopBarProps } from "../types";
 
 const StyledHeader =
-  "flex justify-between py-1 px-4 bg-white border-b-[1px] border-black";
+  "handle flex justify-between py-1 px-4 bg-white border-b-[1px] border-black cursor-grab";
 
 const TopBar = ({ app }: TopBarProps) => {
   const getLabel = useLabels();
