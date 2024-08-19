@@ -9,7 +9,7 @@ const getLanguage = () => {
   }
 
   const firstBrowserLang = headers().get("accept-language")?.split(",")[0];
-  const locale = firstBrowserLang?.split("-")[0] || SUPPORTED_LANGUAGES.pt;
+  const locale = firstBrowserLang?.split("-")[0] ?? SUPPORTED_LANGUAGES.en;
 
   return SUPPORTED_LANGUAGES[locale as keyof typeof SUPPORTED_LANGUAGES];
 };
