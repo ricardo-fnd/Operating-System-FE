@@ -1,7 +1,9 @@
 import Draggable from "react-draggable";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import TopBar from "./TopBar";
+
+import { useApps } from "src/context";
 
 import type { BaseApplicationProps } from "./types";
 import type { DraggableData, DraggableEvent } from "react-draggable";
@@ -33,7 +35,16 @@ const BaseApplication = ({ children, app }: BaseApplicationProps) => {
 };
 
 const useController = ({ app }: { app: Omit<Application, "component"> }) => {
-  const [position, setPosition] = useState<Application["position"]>();
+  const apps = useApps();
+
+  const randomizePosition = useCallback(() => {
+    const appsOpened = apps.filter(({ id, opened }) => id !== app.id && opened);
+    const random = Math.random() * 150 * appsOpened.length;
+    return { x: random, y: random };
+  }, [apps]);
+
+  const [position, setPosition] =
+    useState<Application["position"]>(randomizePosition);
   const [lastPosition, setLastPosition] = useState<Application["position"]>();
 
   useEffect(() => {
