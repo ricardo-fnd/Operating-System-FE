@@ -13,6 +13,7 @@ type Application = {
   opened: boolean;
   minimized: boolean;
   maximized: boolean;
+  position?: { x: number; y: number };
 };
 
 const APPLICATIONS: Application[] = [
