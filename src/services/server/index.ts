@@ -1,3 +1,4 @@
 import getLanguage from "./getLanguage";
+import { getCookies } from "./cookies-utils";
 
-export { getLanguage };
+export { getLanguage, getCookies };
