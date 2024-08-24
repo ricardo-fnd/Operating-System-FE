@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 import APPLICATIONS from "src/applications";
 
 import type { Dispatch, SetStateAction } from "react";
-import type { Application } from "src/applications";
+import type { Application, AppsPosition } from "src/applications";
 
 const AppsContext = createContext(APPLICATIONS);
 const AppsUpdateContext = createContext<
@@ -14,10 +14,20 @@ const AppsUpdateContext = createContext<
 const useApps = () => useContext(AppsContext);
 const useAppsUpdate = () => useContext(AppsUpdateContext);
 
-type Props = Readonly<{ children: React.ReactNode }>;
+type Props = Readonly<{
+  children: React.ReactNode;
+  appsPosition: AppsPosition | null;
+}>;
 
-const AppsProvider = ({ children }: Props) => {
-  const [apps, setApps] = useState<Application[]>(APPLICATIONS);
+const AppsProvider = ({ children, appsPosition }: Props) => {
+  const [apps, setApps] = useState<Application[]>(() =>
+    APPLICATIONS.map((app) => {
+      const appPosition = appsPosition?.find(({ appId }) => app.id === appId);
+
+      if (!appPosition) return app;
+      return { ...app, position: { x: appPosition.x, y: appPosition.y } };
+    })
+  );
 
   return (
     <AppsContext.Provider value={apps}>

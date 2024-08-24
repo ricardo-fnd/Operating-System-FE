@@ -5,6 +5,12 @@ import { FcButtingIn } from "react-icons/fc";
 import type { ReactNode } from "react";
 import type { IconType } from "react-icons";
 
+type AppsPosition = {
+  appId: Application["id"];
+  x: number;
+  y: number;
+}[];
+
 type Application = {
   id: number;
   Icon: IconType;
@@ -28,5 +34,5 @@ const APPLICATIONS: Application[] = [
   },
 ];
 
-export type { Application };
+export type { Application, AppsPosition };
 export default APPLICATIONS;

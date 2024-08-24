@@ -1,9 +1,10 @@
 import "server-only";
+
 import OperatingSystem from "src/components/OperatingSystem";
 
-import { getLanguage } from "src/services/server";
+import { getCookies, getLanguage } from "src/services/server";
 import { TranslationsService } from "src/services";
-import { TranslationsProvider } from "src/context";
+import { AppsProvider, TranslationsProvider } from "src/context";
 
 export default async function Home() {
   const language = getLanguage();
@@ -11,9 +12,13 @@ export default async function Home() {
     language,
   });
 
+  const appsPosition = getCookies({ name: "apps-position" });
+
   return (
     <TranslationsProvider initialData={translations}>
-      <OperatingSystem language={language} />
+      <AppsProvider appsPosition={appsPosition}>
+        <OperatingSystem language={language} />
+      </AppsProvider>
     </TranslationsProvider>
   );
 }
