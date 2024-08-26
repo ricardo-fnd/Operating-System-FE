@@ -7,7 +7,6 @@ import { useApps } from "src/context";
 
 import type { DesktopProps } from "./types";
 
-//DOCK_HEIGHT = 60;
 const StyledMain =
   "relative w-full h-full bg-[#131313] [&>*:not(:last-child)]:data-[menu=true]:blur-sm";
 
@@ -23,11 +22,15 @@ const RunningApps = () => {
   const apps = useApps();
   const openedApps = apps.filter((app) => app.opened);
 
-  return openedApps.map(({ component: Application, ...app }) => (
-    <BaseApplication key={app.id} app={app}>
-      <Application />
-    </BaseApplication>
-  ));
+  return openedApps.map((app) => {
+    const Application = app.component;
+
+    return (
+      <BaseApplication key={app.id} app={app}>
+        <Application />
+      </BaseApplication>
+    );
+  });
 };
 
 export default Desktop;
