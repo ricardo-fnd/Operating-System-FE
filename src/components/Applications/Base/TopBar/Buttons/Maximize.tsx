@@ -9,20 +9,17 @@ const StyledMaximized = "cursor-pointer";
 const Maximize = ({ appId }: MinimizeButton) => {
   const updateApps = useAppsUpdate();
 
-  const MaximizeApp = () => {
-    updateApps((apps) => {
-      const index = apps.findIndex(({ id }) => id === appId);
-      const appsCopy = [...apps];
-
-      const app = { ...apps[index] };
-      appsCopy[index] = { ...app, maximized: !app.maximized };
-
-      return [...appsCopy];
-    });
+  const maximizeApp = () => {
+    updateApps((apps) =>
+      apps.map((application) => {
+        if (application.id !== appId) return application;
+        return { ...application, maximized: !application.maximized };
+      })
+    );
   };
 
   return (
-    <FiMaximize2 size="16" onClick={MaximizeApp} className={StyledMaximized} />
+    <FiMaximize2 size="16" onClick={maximizeApp} className={StyledMaximized} />
   );
 };
 
