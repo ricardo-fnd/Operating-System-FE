@@ -3,26 +3,28 @@ import { useCallback, useEffect, useState } from "react";
 
 import TopBar from "./TopBar";
 
-import { useApps } from "src/context";
+import { useApps, useAppsUpdate } from "src/context";
 
 import type { BaseApplicationProps } from "./types";
 import type { DraggableData, DraggableEvent } from "react-draggable";
 import type { Application } from "src/applications";
 
-//DOCK_HEIGHT = 60;
+//DOCK_HEIGHT = 60px;
 const StyledApplication = `absolute top-0 left-0 min-w-56 w-full max-w-[66%] h-full max-h-[66%] rounded-md overflow-hidden transition-all duration-300 
   data-[minimized=true]:hidden
   data-[maximized=true]:max-w-full data-[maximized=true]:max-h-[calc(100%-60px)]`;
-//TOPBAR_HEIGHT = 33;
+//TOPBAR_HEIGHT = 33px;
 const StyledContent =
   "h-[calc(100%-33px)] py-6 px-4 bg-white md:show-y-scrollbar";
 
 const BaseApplication = ({ children, app }: BaseApplicationProps) => {
-  const { position, onAppDrag } = useController({ app });
+  const { position, onAppDrag, pushToFront } = useController({ app });
 
   return (
     <Draggable handle=".handle" position={position} onDrag={onAppDrag}>
       <section
+        onClick={pushToFront}
+        style={{ zIndex: app.priority }}
         className={StyledApplication}
         data-maximized={app.maximized}
         data-minimized={app.minimized}
@@ -34,8 +36,9 @@ const BaseApplication = ({ children, app }: BaseApplicationProps) => {
   );
 };
 
-const useController = ({ app }: { app: Omit<Application, "component"> }) => {
+const useController = ({ app }: { app: Application }) => {
   const apps = useApps();
+  const updateApps = useAppsUpdate();
 
   const randomizePosition = useCallback(() => {
     const appsOpened = apps.filter(({ id, opened }) => id !== app.id && opened);
@@ -60,7 +63,22 @@ const useController = ({ app }: { app: Omit<Application, "component"> }) => {
     setPosition({ x, y });
   };
 
-  return { position, onAppDrag };
+  const pushToFront = () => {
+    updateApps((apps) => {
+      const appWithMostPriority = apps.reduce((prev, current) =>
+        prev && prev.priority > current.priority ? prev : current
+      );
+
+      if (appWithMostPriority.id === app.id) return apps;
+
+      return apps.map((application) => {
+        if (application.id !== app.id) return application;
+        return { ...app, priority: appWithMostPriority.priority + 1 };
+      });
+    });
+  };
+
+  return { position, onAppDrag, pushToFront };
 };
 
 export default BaseApplication;

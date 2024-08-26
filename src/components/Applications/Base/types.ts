@@ -2,11 +2,11 @@ import type { Application } from "src/applications";
 
 type BaseApplicationProps = {
   children: React.ReactNode;
-  app: Omit<Application, "component">;
+  app: Application;
 };
 
 type TopBarProps = {
-  app: Omit<Application, "component">;
+  app: Application;
 };
 
 type ButtonsProps = {

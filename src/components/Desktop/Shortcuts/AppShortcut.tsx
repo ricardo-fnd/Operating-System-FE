@@ -21,15 +21,22 @@ const AppShortcut = ({ app }: AppShortcutProps) => {
   const { id, Icon, name } = app;
 
   const openApp = () => {
-    updateApps((apps) =>
-      apps.map((app) => {
-        if (app.id === id) {
-          app.opened = true;
-          app.minimized = false;
-        }
-        return app;
-      })
-    );
+    updateApps((apps) => {
+      const appWithMostPriority = apps.reduce((prev, current) =>
+        prev && prev.priority > current.priority ? prev : current
+      );
+      if (appWithMostPriority.id === app.id) return apps;
+
+      return apps.map((application) => {
+        if (application.id !== app.id) return application;
+        return {
+          ...app,
+          opened: true,
+          minimized: false,
+          priority: appWithMostPriority.priority + 1,
+        };
+      });
+    });
   };
 
   const updateAppPosition = ({ x, y }: { x: number; y: number }) => {

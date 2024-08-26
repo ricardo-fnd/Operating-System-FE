@@ -19,6 +19,7 @@ type Application = {
   opened: boolean;
   minimized: boolean;
   maximized: boolean;
+  priority: number;
   position?: { x: number; y: number };
 };
 
@@ -31,6 +32,7 @@ const APPLICATIONS: Application[] = [
     opened: false,
     minimized: true,
     maximized: false,
+    priority: 0,
   },
 ];
 
