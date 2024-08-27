@@ -16,7 +16,6 @@ const StyledLanguage =
 const LanguageModal = ({
   close,
   language,
-  languages,
   setLanguage,
 }: LanguagesModalProps) => {
   const ref = useRef(null);
@@ -33,14 +32,14 @@ const LanguageModal = ({
     });
 
     updateTranslations(translations);
-    setLanguage(newLang || languages[0]);
+    setLanguage(newLang as (typeof LANGUAGES)[0]);
     setCookies({ name: "NEXT_LOCALE", value });
     close();
   };
 
   return (
     <div ref={ref} className={StyledModal}>
-      {languages.map(({ label, value }) => (
+      {LANGUAGES.map(({ label, value }) => (
         <Language
           key={value}
           label={label}

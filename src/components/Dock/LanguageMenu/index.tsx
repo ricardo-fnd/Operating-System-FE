@@ -28,7 +28,6 @@ const LanguageMenu = ({ language }: LanguageMenuProps) => {
         <LanguageModal
           close={closeModal}
           language={currentLang}
-          languages={LANGUAGES}
           setLanguage={setCurrentLang}
         />
       )}

@@ -6,7 +6,6 @@ type LanguageMenuProps = {
 
 type LanguagesModalProps = {
   close: () => void;
-  languages: typeof LANGUAGES;
   language: (typeof LANGUAGES)[0];
   setLanguage: (lang: (typeof LANGUAGES)[0]) => void;
 };
