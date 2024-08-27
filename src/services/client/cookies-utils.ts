@@ -18,8 +18,9 @@ const setCookies = ({ value, name, expires = 365 }: SetCookiesProps) => {
     const prev = getCookies({ name });
     newValue = callback(prev);
   }
+  newValue = typeof newValue !== "string" ? JSON.stringify(newValue) : newValue;
 
-  JSCookies.set(name, JSON.stringify(newValue), {
+  JSCookies.set(name, newValue, {
     expires,
     domain: COOKIES_DOMAIN,
   });
