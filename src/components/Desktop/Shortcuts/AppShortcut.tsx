@@ -25,7 +25,6 @@ const AppShortcut = ({ app }: AppShortcutProps) => {
       const appWithMostPriority = apps.reduce((prev, current) =>
         prev && prev.priority > current.priority ? prev : current
       );
-      if (appWithMostPriority.id === app.id) return apps;
 
       return apps.map((application) => {
         if (application.id !== app.id) return application;
