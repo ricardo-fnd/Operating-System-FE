@@ -4,10 +4,11 @@ import { useApps } from "src/context";
 
 import type { MenuProps } from "./types";
 
-const StyledContainer = "absolute top-0 left-0 flex items-center w-full h-full";
+const StyledContainer =
+  "absolute top-0 left-0 flex items-center w-screen h-screen z-50 bg-black/75 z-50 backdrop-blur-[2px]";
 const StyledMenu = "flex flex-wrap justify-center w-full p-4";
 
-const Menu = ({ closeMenu }: MenuProps) => {
+const AppsMenu = ({ closeMenu }: MenuProps) => {
   const apps = useApps();
 
   return (
@@ -21,4 +22,4 @@ const Menu = ({ closeMenu }: MenuProps) => {
   );
 };
 
-export default Menu;
+export default AppsMenu;
