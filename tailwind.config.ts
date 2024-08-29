@@ -6,8 +6,9 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{jsx,tsx}",
+    "./src/app/**/*.{jsx,tsx}",
+    "./src/shared/components/**/*.{jsx,tsx}",
   ],
   plugins: [
     plugin(function ({ addUtilities }) {

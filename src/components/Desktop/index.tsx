@@ -1,20 +1,15 @@
 "use client";
 import Shortcuts from "./Shortcuts";
 import BaseApplication from "../Applications/Base";
-import Menu from "./Menu";
 
 import { useApps } from "src/context";
 
-import type { DesktopProps } from "./types";
+const StyledMain = "relative w-full h-full bg-[#131313]";
 
-const StyledMain =
-  "relative w-full h-full bg-[#131313] [&>*:not(:last-child)]:data-[menu=true]:blur-sm";
-
-const Desktop = ({ closeMenu, menuOpen }: DesktopProps) => (
-  <main data-menu={menuOpen} className={StyledMain}>
+const Desktop = () => (
+  <main className={StyledMain}>
     <Shortcuts />
     <RunningApps />
-    {menuOpen && <Menu closeMenu={closeMenu} />}
   </main>
 );
 

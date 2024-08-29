@@ -4,13 +4,13 @@ import type { Application } from "src/applications";
 
 type DockProps = {
   toggleMenu: () => void;
-  menuOpen: boolean;
+  isMenuOpen: boolean;
   language: SUPPORTED_LANGUAGES;
 };
 
 type MenuProps = {
   toggleMenu: () => void;
-  menuOpen: boolean;
+  isMenuOpen: boolean;
 };
 
 type AppProps = {
