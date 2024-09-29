@@ -1,5 +1,6 @@
 import { useLabels } from "src/services/client";
-import { useAppsUpdate } from "src/context";
+
+import { AppsService } from "src/services";
 
 import type { AppShortcutProps } from "./types";
 
@@ -8,23 +9,11 @@ const StyledShortcut =
 
 const AppShortcut = ({ app }: AppShortcutProps) => {
   const getLabel = useLabels();
-  const updateApps = useAppsUpdate();
-  const { id, Icon, name } = app;
-
-  const openApp = () => {
-    updateApps((apps) =>
-      apps.map((app) => {
-        if (app.id === id) {
-          app.opened = true;
-          app.minimized = false;
-        }
-        return app;
-      })
-    );
-  };
+  const open = AppsService.useOpen();
+  const { Icon, name } = app;
 
   return (
-    <li className={StyledShortcut} onClick={openApp}>
+    <li className={StyledShortcut} onClick={() => open(app)}>
       <Icon size="75" />
       <p>{getLabel(name)}</p>
     </li>

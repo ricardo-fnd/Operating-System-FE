@@ -1,7 +1,7 @@
 import { Tooltip } from "react-tooltip";
 
 import { useLabels } from "src/services/client";
-import { useAppsUpdate } from "src/context";
+import { AppsService } from "src/services";
 
 import type { AppProps } from "./types";
 
@@ -11,20 +11,8 @@ const StyledTooltip = "!bg-[#212121]";
 
 const App = ({ app }: AppProps) => {
   const getLabel = useLabels();
-  const updateApps = useAppsUpdate();
-  const { id, Icon } = app;
-
-  const maximizeApp = () => {
-    updateApps((apps) => {
-      const index = apps.findIndex((app) => app.id === id);
-      const appsCopy = [...apps];
-
-      const app = { ...apps[index] };
-      appsCopy[index] = { ...app, minimized: !app.minimized };
-
-      return [...appsCopy];
-    });
-  };
+  const bringToFront = AppsService.useMinimize();
+  const { Icon } = app;
 
   const tooltipId = `app-${app.id}-dock-shortcut`;
 
@@ -33,8 +21,8 @@ const App = ({ app }: AppProps) => {
       <div
         id={tooltipId}
         className={StyledApp}
-        onClick={maximizeApp}
         data-minimized={app.minimized}
+        onClick={() => bringToFront(app)}
       >
         <Icon size="36" />
       </div>

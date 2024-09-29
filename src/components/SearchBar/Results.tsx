@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useLabels } from "src/services/client";
-import { useAppsUpdate } from "src/context";
+import { AppsService } from "src/services";
 
 import type { Application } from "src/applications";
 import type { SearchBarResultsProps } from "./types";
@@ -37,23 +37,11 @@ const Results = ({ closeSearch, results }: SearchBarResultsProps) => {
 };
 
 const useController = ({ closeSearch, results }: SearchBarResultsProps) => {
-  const updateApps = useAppsUpdate();
   const [selected, setSelected] = useState(0);
-
-  const openApp = ({ appId }: { appId: Application["id"] }) => {
-    updateApps((apps) =>
-      apps.map((app) => {
-        if (app.id === appId) {
-          app.opened = true;
-          app.minimized = false;
-        }
-        return app;
-      })
-    );
-  };
+  const open = AppsService.useOpen();
 
   const onResultClick = ({ app }: { app: Application }) => {
-    openApp({ appId: app.id });
+    open(app);
     closeSearch();
   };
 

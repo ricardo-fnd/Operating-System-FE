@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 import APPLICATIONS from "src/applications";
 
 import type { Dispatch, SetStateAction } from "react";
-import type { Application, AppsPosition } from "src/applications";
+import type { Application, ShortcutsPositions } from "src/applications";
 
 const AppsContext = createContext(APPLICATIONS);
 const AppsUpdateContext = createContext<
@@ -16,18 +16,22 @@ const useAppsUpdate = () => useContext(AppsUpdateContext);
 
 type Props = Readonly<{
   children: React.ReactNode;
-  appsPosition: AppsPosition | null;
+  shortcutsPositions: ShortcutsPositions | null;
 }>;
 
-const AppsProvider = ({ children, appsPosition }: Props) => {
-  const [apps, setApps] = useState<Application[]>(() =>
+const AppsProvider = ({ children, shortcutsPositions }: Props) => {
+  const setShortcutsPositions = () =>
     APPLICATIONS.map((app) => {
-      const appPosition = appsPosition?.find(({ appId }) => app.id === appId);
+      const position = shortcutsPositions?.find(
+        ({ appId }) => app.id === appId
+      );
+      if (!position) return app;
 
-      if (!appPosition) return app;
-      return { ...app, position: { x: appPosition.x, y: appPosition.y } };
-    })
-  );
+      const { x, y } = position;
+      return { ...app, shortcutPosition: { x, y } };
+    });
+
+  const [apps, setApps] = useState<Application[]>(setShortcutsPositions());
 
   return (
     <AppsContext.Provider value={apps}>

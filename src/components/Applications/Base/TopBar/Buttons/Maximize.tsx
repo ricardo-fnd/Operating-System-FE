@@ -1,25 +1,20 @@
 import { FiMaximize2 } from "react-icons/fi";
 
-import { useAppsUpdate } from "src/context";
+import { AppsService } from "src/services";
 
 import type { MinimizeButton } from "../../types";
 
 const StyledMaximized = "cursor-pointer";
 
-const Maximize = ({ appId }: MinimizeButton) => {
-  const updateApps = useAppsUpdate();
-
-  const maximizeApp = () => {
-    updateApps((apps) =>
-      apps.map((application) => {
-        if (application.id !== appId) return application;
-        return { ...application, maximized: !application.maximized };
-      })
-    );
-  };
+const Maximize = ({ app }: MinimizeButton) => {
+  const maximize = AppsService.useMaximize();
 
   return (
-    <FiMaximize2 size="16" onClick={maximizeApp} className={StyledMaximized} />
+    <FiMaximize2
+      size="16"
+      className={StyledMaximized}
+      onClick={() => maximize(app)}
+    />
   );
 };
 
