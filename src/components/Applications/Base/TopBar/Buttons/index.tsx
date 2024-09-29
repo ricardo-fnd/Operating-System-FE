@@ -6,11 +6,11 @@ import type { ButtonsProps } from "../../types";
 
 const StyledButtons = "flex items-center gap-2 cursor-default";
 
-const Buttons = ({ appId }: ButtonsProps) => (
+const Buttons = ({ app }: ButtonsProps) => (
   <div className={StyledButtons}>
-    <Minimize appId={appId} />
-    <Maximize appId={appId} />
-    <Close appId={appId} />
+    <Minimize app={app} />
+    <Maximize app={app} />
+    <Close app={app} />
   </div>
 );
 

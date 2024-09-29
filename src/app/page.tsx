@@ -12,11 +12,13 @@ export default async function Home() {
     language,
   });
 
-  const appsPosition = getCookies({ name: "apps-position" });
+  const shortcutsPositions = getCookies({
+    name: "shortcuts-positions",
+  });
 
   return (
     <TranslationsProvider initialData={translations}>
-      <AppsProvider appsPosition={appsPosition}>
+      <AppsProvider shortcutsPositions={shortcutsPositions}>
         <OperatingSystem language={language} />
       </AppsProvider>
     </TranslationsProvider>

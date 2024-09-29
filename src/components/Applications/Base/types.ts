@@ -5,21 +5,13 @@ type BaseApplicationProps = {
   app: Application;
 };
 
-type TopBarProps = {
-  app: Application;
-};
+type TopBarProps = { app: Application };
 
-type ButtonsProps = {
-  appId: Application["id"];
-};
+type ButtonsProps = { app: Application };
 
-type CloseButton = {
-  appId: Application["id"];
-};
+type CloseButton = { app: Application };
 
-type MinimizeButton = {
-  appId: Application["id"];
-};
+type MinimizeButton = { app: Application };
 
 export type {
   BaseApplicationProps,

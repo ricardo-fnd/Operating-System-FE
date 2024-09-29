@@ -1,9 +1,9 @@
 import Draggable from "react-draggable";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import TopBar from "./TopBar";
 
-import { useApps, useAppsUpdate } from "src/context";
+import { AppsService } from "src/services";
 
 import type { BaseApplicationProps } from "./types";
 import type { DraggableData, DraggableEvent } from "react-draggable";
@@ -23,11 +23,11 @@ const BaseApplication = ({ children, app }: BaseApplicationProps) => {
   return (
     <Draggable handle=".handle" position={position} onDrag={onAppDrag}>
       <section
-        onClick={pushToFront}
-        style={{ zIndex: app.priority }}
         className={StyledApplication}
         data-maximized={app.maximized}
         data-minimized={app.minimized}
+        style={{ zIndex: app.priority }}
+        onClick={() => pushToFront(app)}
       >
         <TopBar app={app} />
         <div className={StyledContent}>{children}</div>
@@ -37,18 +37,10 @@ const BaseApplication = ({ children, app }: BaseApplicationProps) => {
 };
 
 const useController = ({ app }: { app: Application }) => {
-  const apps = useApps();
-  const updateApps = useAppsUpdate();
-
-  const randomizePosition = useCallback(() => {
-    const appsOpened = apps.filter(({ id, opened }) => id !== app.id && opened);
-    const random = Math.random() * 150 * appsOpened.length;
-    return { x: random, y: random };
-  }, [apps]);
-
-  const [position, setPosition] =
-    useState<Application["position"]>(randomizePosition);
-  const [lastPosition, setLastPosition] = useState<Application["position"]>();
+  const pushToFront = AppsService.usePushToFront();
+  const [position, setPosition] = useState(app.initialPosition);
+  const [lastPosition, setLastPosition] =
+    useState<Application["initialPosition"]>();
 
   useEffect(() => {
     if (app.maximized) {
@@ -61,21 +53,6 @@ const useController = ({ app }: { app: Application }) => {
 
   const onAppDrag = (e: DraggableEvent, { x, y }: DraggableData) => {
     setPosition({ x, y });
-  };
-
-  const pushToFront = () => {
-    updateApps((apps) => {
-      const appWithMostPriority = apps.reduce((prev, current) =>
-        prev && prev.priority > current.priority ? prev : current
-      );
-
-      if (appWithMostPriority.id === app.id) return apps;
-
-      return apps.map((application) => {
-        if (application.id !== app.id) return application;
-        return { ...app, priority: appWithMostPriority.priority + 1 };
-      });
-    });
   };
 
   return { position, onAppDrag, pushToFront };

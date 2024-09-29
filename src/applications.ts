@@ -5,7 +5,7 @@ import { FcButtingIn } from "react-icons/fc";
 import type { ReactNode } from "react";
 import type { IconType } from "react-icons";
 
-type AppsPosition = {
+type ShortcutsPositions = {
   appId: Application["id"];
   x: number;
   y: number;
@@ -20,7 +20,8 @@ type Application = {
   minimized: boolean;
   maximized: boolean;
   priority: number;
-  position?: { x: number; y: number };
+  initialPosition?: { x: number; y: number };
+  shortcutPosition?: { x: number; y: number };
 };
 
 const APPLICATIONS: Application[] = [
@@ -36,5 +37,5 @@ const APPLICATIONS: Application[] = [
   },
 ];
 
-export type { Application, AppsPosition };
+export type { Application, ShortcutsPositions };
 export default APPLICATIONS;

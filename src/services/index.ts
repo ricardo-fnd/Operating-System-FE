@@ -1,3 +1,4 @@
 import TranslationsService from "./api/translations-service";
+import AppsService from "./apps-service";
 
-export { TranslationsService };
+export { TranslationsService, AppsService };

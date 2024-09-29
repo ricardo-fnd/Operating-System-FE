@@ -1,33 +1,20 @@
 import { AiFillCloseCircle } from "react-icons/ai";
 
-import { useAppsUpdate } from "src/context";
+import { AppsService } from "src/services";
 
 import type { CloseButton } from "../../types";
 
 const StyledClose = "cursor-pointer";
 
-const Close = ({ appId }: CloseButton) => {
-  const updateApps = useAppsUpdate();
-
-  const closeApp = () => {
-    updateApps((apps) =>
-      apps.map((app) => {
-        if (app.id === appId) {
-          app.opened = false;
-          app.minimized = true;
-          app.maximized = false;
-        }
-        return app;
-      })
-    );
-  };
+const Close = ({ app }: CloseButton) => {
+  const close = AppsService.useClose();
 
   return (
     <AiFillCloseCircle
       size="20"
       color="tomato"
-      onClick={closeApp}
       className={StyledClose}
+      onClick={() => close(app)}
     />
   );
 };
