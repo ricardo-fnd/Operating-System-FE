@@ -5,7 +5,7 @@ import History from "./History";
 import LookingFor from "./LookingFor";
 import Future from "./Future";
 
-const StyledApp = "relative flex flex-col gap-10";
+const StyledApp = "relative flex flex-col gap-10 py-6 px-4";
 const StyledContent = "flex flex-col gap-6";
 
 const About = () => (

@@ -1,5 +1,6 @@
-import { About } from "src/components/Applications";
+import { About, Browser } from "src/components/Applications";
 
+import { TbWorldWww } from "react-icons/tb";
 import { FcButtingIn } from "react-icons/fc";
 
 import type { ReactNode } from "react";
@@ -30,6 +31,16 @@ const APPLICATIONS: Application[] = [
     Icon: FcButtingIn,
     name: "apps.about.app-name",
     component: About,
+    opened: false,
+    minimized: true,
+    maximized: false,
+    priority: 0,
+  },
+  {
+    id: 2,
+    Icon: TbWorldWww,
+    name: "apps.browser.app-name",
+    component: Browser,
     opened: false,
     minimized: true,
     maximized: false,

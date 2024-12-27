@@ -1,3 +1,5 @@
+import TLDS from "./TLDS";
+
 enum SUPPORTED_LANGUAGES {
   pt = "pt",
   en = "en",
@@ -8,4 +10,4 @@ const LANGUAGES = [
   { abbv: "EN", label: "English", value: SUPPORTED_LANGUAGES.en },
 ];
 
-export { SUPPORTED_LANGUAGES, LANGUAGES };
+export { SUPPORTED_LANGUAGES, LANGUAGES, TLDS };

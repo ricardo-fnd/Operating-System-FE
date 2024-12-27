@@ -4,7 +4,11 @@ import OperatingSystem from "src/components/OperatingSystem";
 
 import { getCookies, getLanguage } from "src/services/server";
 import { TranslationsService } from "src/services";
-import { AppsProvider, TranslationsProvider } from "src/context";
+import {
+  AppsProvider,
+  ReactQueryProvider,
+  TranslationsProvider,
+} from "src/context";
 
 export default async function Home() {
   const language = getLanguage();
@@ -19,7 +23,9 @@ export default async function Home() {
   return (
     <TranslationsProvider initialData={translations}>
       <AppsProvider shortcutsPositions={shortcutsPositions}>
-        <OperatingSystem language={language} />
+        <ReactQueryProvider>
+          <OperatingSystem language={language} />
+        </ReactQueryProvider>
       </AppsProvider>
     </TranslationsProvider>
   );
