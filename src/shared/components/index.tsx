@@ -1,3 +1,4 @@
 import Input from "./Input";
+import Loading from "./Loading";
 
-export { Input };
+export { Input, Loading };

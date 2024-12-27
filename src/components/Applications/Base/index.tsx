@@ -14,8 +14,7 @@ const StyledApplication = `absolute top-0 left-0 min-w-56 w-full max-w-[66%] h-f
   data-[minimized=true]:hidden
   data-[maximized=true]:max-w-full data-[maximized=true]:max-h-[calc(100%-60px)]`;
 //TOPBAR_HEIGHT = 33px;
-const StyledContent =
-  "h-[calc(100%-33px)] py-6 px-4 bg-white md:show-y-scrollbar";
+const StyledContent = "h-[calc(100%-33px)] bg-white md:show-y-scrollbar";
 
 const BaseApplication = ({ children, app }: BaseApplicationProps) => {
   const { position, onAppDrag, pushToFront } = useController({ app });
