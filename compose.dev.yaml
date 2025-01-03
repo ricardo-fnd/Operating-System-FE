@@ -1,0 +1,16 @@
+services:
+  os:
+    container_name: os
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+    env_file: # Set environment variables based on the .env file
+      - .env.local
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    restart: always
+    ports:
+      - 8080:8080
+
+  # Add more containers below (nginx, postgres, etc.)
