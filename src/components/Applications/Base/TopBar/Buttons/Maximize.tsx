@@ -2,11 +2,11 @@ import { FiMaximize2 } from "react-icons/fi";
 
 import { AppsService } from "src/services";
 
-import type { MinimizeButton } from "../../types";
+import type { Application } from "src/types";
 
 const StyledMaximized = "cursor-pointer";
 
-const Maximize = ({ app }: MinimizeButton) => {
+const Maximize = ({ app }: { app: Application }) => {
   const maximize = AppsService.useMaximize();
 
   return (

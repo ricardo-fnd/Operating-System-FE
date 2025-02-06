@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 
-type Props = { setLoading: (boolean: boolean) => void };
+import type { Content } from "../../types";
 
 // TOPBAR_HEIGHT = 64px
 const StyledLandingPage =
   "flex items-center justify-center w-full h-[calc(100%-64px)] text-4xl bg-[#444444] text-white";
 
-const LandingPage = ({ setLoading }: Props) => {
+const LandingPage = ({ setLoading }: Content) => {
   useEffect(() => setLoading(false), []);
 
   return (

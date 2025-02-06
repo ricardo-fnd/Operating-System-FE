@@ -1,6 +1,6 @@
 import { useState } from "react";
-
 import { IoMdSettings } from "react-icons/io";
+
 import SettingsMenu from "./Menu";
 
 const StyledSettings = "relative";

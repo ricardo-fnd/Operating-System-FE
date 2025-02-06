@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useLabels } from "src/services/client";
 import { AppsService } from "src/services";
 
-import type { Application } from "src/applications";
-import type { SearchBarResultsProps } from "./types";
+import type { Application } from "src/types";
+import type { SearchBarResults } from "./types";
 
 // SEARCH_BAR_INPUT_HEIGHT = 64px
 const StyledResultsContainer =
@@ -12,7 +12,7 @@ const StyledResultsContainer =
 const StyledResult =
   "w-full py-2 px-3 cursor-pointer text-white text-sm rounded-lg data-[selected=true]:bg-neutral-700";
 
-const Results = ({ closeSearch, results }: SearchBarResultsProps) => {
+const Results = ({ closeSearch, results }: SearchBarResults) => {
   const getLabel = useLabels();
   const { selected, onResultClick, setSelected } = useController({
     closeSearch,
@@ -36,7 +36,7 @@ const Results = ({ closeSearch, results }: SearchBarResultsProps) => {
   );
 };
 
-const useController = ({ closeSearch, results }: SearchBarResultsProps) => {
+const useController = ({ closeSearch, results }: SearchBarResults) => {
   const [selected, setSelected] = useState(0);
   const open = AppsService.useOpen();
 

@@ -1,7 +1,15 @@
-const onSuccess = async (response: Response) => {
-  if (response.status === 204) return undefined;
+import { parseResponse } from "./parsers";
+
+import type { Options } from ".";
+
+const onSuccess = async <T>(
+  response: Response,
+  options: Options = {}
+): Promise<T | null> => {
+  if (response.status === 204) return null;
 
   const responseJSON = await response.json();
+  if (options.parseResponse) return parseResponse<T>(responseJSON);
   return responseJSON;
 };
 

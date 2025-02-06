@@ -4,6 +4,7 @@ const DOMAIN_URL = process.env.NEXT_PUBLIC_DOMAIN_URL;
 const COOKIES_DOMAIN = process.env.NEXT_PUBLIC_COOKIES_DOMAIN;
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const GOOGLE_ENGINE_CX = process.env.NEXT_PUBLIC_GOOGLE_ENGINE_CX;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export {
   LABELS_URL,
@@ -12,4 +13,5 @@ export {
   COOKIES_DOMAIN,
   GOOGLE_API_KEY,
   GOOGLE_ENGINE_CX,
+  API_URL,
 };

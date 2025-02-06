@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-type Props = { setLoading: (loading: boolean) => void; url: string };
+import type { Website } from "../../types";
 
 // TOPBAR_HEIGHT = 64px
 const StyledPage = "flex flex-col gap-10 w-full h-[calc(100%-64px)]";
 
-const Website = ({ setLoading, url }: Props) => {
+const Website = ({ setLoading, url }: Website) => {
   const [src, setSrc] = useState<string | null>(null);
 
   const completeUrl = () => {

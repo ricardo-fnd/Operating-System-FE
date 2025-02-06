@@ -9,10 +9,11 @@ export async function GET(request: Request) {
   ) as keyof typeof SUPPORTED_LANGUAGES;
 
   const language = SUPPORTED_LANGUAGES[queryLanguage] ?? SUPPORTED_LANGUAGES.en;
-
   const locoURL = `${LABELS_URL}/${language}.json?format=script`;
+
   const data = await fetch(locoURL, {
     headers: { Authorization: `Loco ${LOCALISE_KEY}` },
+    parseResponse: false,
   });
 
   return Response.json(data);

@@ -6,13 +6,11 @@ import Enter from "./Enter";
 import { useHistory, useUpdateHistory } from "src/context";
 import { useLabels } from "src/services/client";
 
-type Props = { loading: boolean };
-
 const StyledUrlBar =
-  "flex items-center w-1/2 h-10 pl-2 border-[1px] border-grey-600 rounded-xl";
-const StyledInput = "bg-grey-600";
+  "flex items-center w-1/2 h-10 bg-gray-50 border border-gray-300 rounded-xl overflow-hidden";
+const StyledInput = "border-0";
 
-const UrlBar = ({ loading }: Props) => {
+const UrlBar = ({ loading }: { loading: boolean }) => {
   const history = useHistory();
   const getLabel = useLabels();
   const updateHistory = useUpdateHistory();
@@ -40,7 +38,7 @@ const UrlBar = ({ loading }: Props) => {
         disabled={loading}
         name="browser-url"
         onChange={setValue}
-        className={StyledInput}
+        inputClassName={StyledInput}
         onEnterKey={search}
         placeholder={getLabel("apps.browser.top-bar.type-url")}
       />

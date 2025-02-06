@@ -5,9 +5,9 @@ import Website from "./Website";
 import { useHistory } from "src/context";
 import { TLDS } from "src/enums";
 
-type Props = { setLoading: (loading: boolean) => void };
+import type { Content } from "../types";
 
-const Content = ({ setLoading }: Props) => {
+const Content = ({ setLoading }: Content) => {
   const history = useHistory();
   const currentSearch = history.find(({ active }) => active)?.search;
 

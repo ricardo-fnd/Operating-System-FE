@@ -5,9 +5,8 @@ import TopBar from "./TopBar";
 
 import { AppsService } from "src/services";
 
-import type { BaseApplicationProps } from "./types";
-import type { DraggableData, DraggableEvent } from "react-draggable";
-import type { Application } from "src/applications";
+import type { BaseApplication, DraggableEvent, DraggableData } from "./types";
+import type { Application } from "src/types";
 
 //DOCK_HEIGHT = 60px;
 const StyledApplication = `absolute top-0 left-0 min-w-56 w-full max-w-[66%] h-full max-h-[66%] rounded-md overflow-hidden transition-all duration-300 
@@ -16,7 +15,7 @@ const StyledApplication = `absolute top-0 left-0 min-w-56 w-full max-w-[66%] h-f
 //TOPBAR_HEIGHT = 33px;
 const StyledContent = "h-[calc(100%-33px)] bg-white md:show-y-scrollbar";
 
-const BaseApplication = ({ children, app }: BaseApplicationProps) => {
+const BaseApplication = ({ children, app }: BaseApplication) => {
   const { position, onAppDrag, pushToFront } = useController({ app });
 
   return (

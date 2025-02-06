@@ -1,18 +1,12 @@
 import { setCookies } from "src/services/client";
 
-import type { RefObject } from "react";
-import type { Application, ShortcutsPositions } from "src/applications";
+import type { ResizeShortcut, SaveShortcut } from "../types";
+import type { ShortcutsPositions } from "src/types";
 
 export const PADDING = 16;
 export const DOCK_HEIGHT = 60;
 
-type Props = {
-  ref: RefObject<HTMLDivElement>;
-  app: Application;
-  callback: (args: { app: Application; x: number; y: number }) => void;
-};
-
-const handleResize = ({ ref, app, callback }: Props) => {
+const handleResize = ({ ref, app, callback }: ResizeShortcut) => {
   if (!ref.current || !app.shortcutPosition) return false;
 
   const hasReachedMaxX = checkXBoundaries({ app, ref });
@@ -29,27 +23,21 @@ const handleResize = ({ ref, app, callback }: Props) => {
   callback({ app, ...newPosition });
 };
 
-const checkXBoundaries = ({ app, ref }: Omit<Props, "callback">) => {
+const checkXBoundaries = ({ app, ref }: Omit<ResizeShortcut, "callback">) => {
   if (!ref.current || !app.shortcutPosition) return false;
 
   const appLastX = app.shortcutPosition.x + ref.current.clientWidth + PADDING;
   return appLastX > window.innerWidth - PADDING;
 };
 
-const checkYBoundaries = ({ app, ref }: Omit<Props, "callback">) => {
+const checkYBoundaries = ({ app, ref }: Omit<ResizeShortcut, "callback">) => {
   if (!ref.current || !app.shortcutPosition) return false;
 
   const appLastY = app.shortcutPosition.y + ref.current.clientHeight + PADDING;
   return appLastY > window.innerHeight - DOCK_HEIGHT - PADDING;
 };
 
-type SaveProps = {
-  app: Application;
-  x: number;
-  y: number;
-};
-
-const saveAppShortcutPosition = ({ app, x, y }: SaveProps) => {
+const saveAppShortcutPosition = ({ app, x, y }: SaveShortcut) => {
   setCookies({
     name: "shortcuts-positions",
     value: (prev: ShortcutsPositions) => {

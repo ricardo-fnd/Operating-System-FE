@@ -2,12 +2,12 @@ import { useLabels } from "src/services/client";
 
 import { AppsService } from "src/services";
 
-import type { AppShortcutProps } from "./types";
+import type { Application } from "src/types";
 
 const StyledShortcut =
   "flex flex-col items-center justify-center w-32 h-32 bg-[#ffffff5b] cursor-pointer hover:bg-[#ffffff80]";
 
-const AppShortcut = ({ app }: AppShortcutProps) => {
+const AppShortcut = ({ app }: { app: Application }) => {
   const getLabel = useLabels();
   const open = AppsService.useOpen();
   const { Icon, name } = app;

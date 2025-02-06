@@ -1,14 +1,11 @@
 import "server-only";
+import { ToastContainer } from "react-toastify";
 
 import OperatingSystem from "src/components/OperatingSystem";
 
-import { getCookies, getLanguage } from "src/services/server";
+import { getCookies, getLanguage, UsersService } from "src/services/server";
 import { TranslationsService } from "src/services";
-import {
-  AppsProvider,
-  ReactQueryProvider,
-  TranslationsProvider,
-} from "src/context";
+import BaseProviders from "src/context";
 
 export default async function Home() {
   const language = getLanguage();
@@ -20,13 +17,15 @@ export default async function Home() {
     name: "shortcuts-positions",
   });
 
+  const user = await UsersService.prefetchUser();
+
   return (
-    <TranslationsProvider initialData={translations}>
-      <AppsProvider shortcutsPositions={shortcutsPositions}>
-        <ReactQueryProvider>
-          <OperatingSystem language={language} />
-        </ReactQueryProvider>
-      </AppsProvider>
-    </TranslationsProvider>
+    <BaseProviders
+      translations={translations}
+      shortcutsPositions={shortcutsPositions}
+    >
+      <OperatingSystem user={user} language={language} />
+      <ToastContainer />
+    </BaseProviders>
   );
 }

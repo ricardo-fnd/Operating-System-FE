@@ -3,12 +3,10 @@ import { useRef } from "react";
 import { useOnClickOutside } from "src/hooks";
 import { useLabels } from "src/services/client";
 
-type Props = { close: () => void };
-
 const StyledMenu =
   "absolute top-8 right-0 flex items-center justify-center min-h-44 min-w-44 rounded-md bg-[#212121] text-white";
 
-const SettingsMenu = ({ close }: Props) => {
+const SettingsMenu = ({ close }: { close: () => void }) => {
   const ref = useRef<HTMLDivElement>(null);
   const getLabel = useLabels();
 

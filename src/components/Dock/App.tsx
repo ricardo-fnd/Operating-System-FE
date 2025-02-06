@@ -3,13 +3,13 @@ import { Tooltip } from "react-tooltip";
 import { useLabels } from "src/services/client";
 import { AppsService } from "src/services";
 
-import type { AppProps } from "./types";
+import type { Application } from "src/types";
 
 const StyledApp =
   "flex items-center h-full px-3 cursor-pointer bg-white/50 data-[minimized=true]:bg-white/25 hover:data-[minimized=true]:bg-white/50";
 const StyledTooltip = "!bg-[#212121]";
 
-const App = ({ app }: AppProps) => {
+const App = ({ app }: { app: Application }) => {
   const getLabel = useLabels();
   const bringToFront = AppsService.useMinimize();
   const { Icon } = app;

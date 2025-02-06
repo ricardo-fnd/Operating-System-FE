@@ -1,20 +1,14 @@
-import { SUPPORTED_LANGUAGES } from "src/enums";
+import type { SUPPORTED_LANGUAGES } from "src/enums";
 
-import type { Application } from "src/applications";
-
-type DockProps = {
+type Dock = {
   toggleMenu: () => void;
   isMenuOpen: boolean;
   language: SUPPORTED_LANGUAGES;
 };
 
-type MenuProps = {
+type Menu = {
   toggleMenu: () => void;
   isMenuOpen: boolean;
 };
 
-type AppProps = {
-  app: Application;
-};
-
-export type { DockProps, MenuProps, AppProps };
+export type { Dock, Menu };

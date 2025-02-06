@@ -1,22 +1,17 @@
 "use client";
 import { createContext, useContext, useState } from "react";
 
-import type { Dispatch, SetStateAction, ReactNode } from "react";
+import type { BrowserHistory } from "src/types";
+import type { SetState, Provider } from "./types";
 
-export type History = { active: boolean; search: string }[];
-
-const HistoryContext = createContext<History>([]);
-const UpdateHistoryContext = createContext<Dispatch<SetStateAction<History>>>(
-  () => {}
-);
+const HistoryContext = createContext<BrowserHistory>([]);
+const UpdateHistoryContext = createContext<SetState<BrowserHistory>>(() => {});
 
 const useHistory = () => useContext(HistoryContext);
 const useUpdateHistory = () => useContext(UpdateHistoryContext);
 
-type Props = { children: ReactNode };
-
-const HistoryProvider = ({ children }: Props) => {
-  const [history, setHistory] = useState<History>([
+const HistoryProvider = ({ children }: Provider) => {
+  const [history, setHistory] = useState<BrowserHistory>([
     { active: true, search: "browser-app-landing-page" },
   ]);
 

@@ -1,14 +1,13 @@
-import type { Application } from "src/applications";
-import type { KeyboardEvent } from "react";
+import type { Application } from "src/types";
 
-type SearchBarInputProps = {
+type SearchBarInput = {
   onChange: (query: string) => void;
   hasResults: boolean;
 };
 
-type SearchBarResultsProps = {
+type SearchBarResults = {
   results: Application[];
   closeSearch: () => void;
 };
 
-export type { SearchBarInputProps, SearchBarResultsProps };
+export type { SearchBarInput, SearchBarResults };

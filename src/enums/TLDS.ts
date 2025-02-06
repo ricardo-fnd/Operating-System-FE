@@ -1,4 +1,4 @@
-const TLDS = [
+export const TLDS = [
   ".aaa",
   ".aarp",
   ".abb",
@@ -1445,5 +1445,3 @@ const TLDS = [
   ".삼성",
   ".한국",
 ];
-
-export default TLDS;

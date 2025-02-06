@@ -2,9 +2,13 @@ import JSCookies from "js-cookie";
 
 import { COOKIES_DOMAIN } from "src/env-variables";
 
-import type { GetCookiesProps, SetCookiesProps } from "../types";
+export type SetCookiesProps = {
+  value: string | object | ((prev: object | []) => object | []);
+  name: string;
+  expires?: number;
+};
 
-const getCookies = ({ name }: GetCookiesProps) => {
+const getCookies = ({ name }: { name: string }) => {
   const value = JSCookies.get(name);
   return value ? JSON.parse(value) : null;
 };

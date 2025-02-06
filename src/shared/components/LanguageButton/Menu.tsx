@@ -6,25 +6,21 @@ import { LANGUAGES } from "src/enums";
 import { TranslationsService } from "src/services";
 import { setCookies } from "src/services/client";
 
-import type { LanguageProps, LanguagesModalProps } from "./types";
+import type { Language, LanguageMenuProps } from "./types";
 
 const StyledModal =
   "absolute bottom-14 right-0 p-2 bg-white/25 border-[1px] rounded-sm";
 const StyledLanguage =
   "py-1 px-2 cursor-pointer data-[active=true]:bg-white/50 hover:bg-white/25 hover:rounded-sm";
 
-const LanguageModal = ({
-  close,
-  language,
-  setLanguage,
-}: LanguagesModalProps) => {
+const LanguageMenu = ({ close, language, setLanguage }: LanguageMenuProps) => {
   const ref = useRef(null);
   const updateTranslations = useUpdateTranslations();
 
   useOnClickOutside({ ref, handler: close });
 
   const changeLanguage = async (
-    value: LanguagesModalProps["language"]["value"]
+    value: LanguageMenuProps["language"]["value"]
   ) => {
     const newLang = LANGUAGES.find((lang) => lang.value === value);
     const translations = await TranslationsService.getTranslations({
@@ -51,10 +47,10 @@ const LanguageModal = ({
   );
 };
 
-const Language = ({ label, active, onClick }: LanguageProps) => (
+const Language = ({ label, active, onClick }: Language) => (
   <p onClick={onClick} className={StyledLanguage} data-active={active}>
     {label}
   </p>
 );
 
-export default LanguageModal;
+export default LanguageMenu;

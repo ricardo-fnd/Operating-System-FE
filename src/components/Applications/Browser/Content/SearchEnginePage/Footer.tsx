@@ -1,14 +1,12 @@
 import { useLabels } from "src/services/client";
 
-import { SearchResultsProps } from "src/services/api/response-types";
-
-type Props = { metadata: SearchResultsProps["metadata"] };
+import type { SearchEngineFooter } from "../../types";
 
 const StyledFooter = "flex flex-col gap-1";
 const StyledMetadata = "flex gap-2";
 const StyledGoogle = "text-sm font-medium";
 
-const Footer = ({ metadata }: Props) => {
+const Footer = ({ metadata }: SearchEngineFooter) => {
   const getLabel = useLabels();
 
   const { total, searchTime } = metadata;

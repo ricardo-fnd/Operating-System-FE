@@ -1,13 +1,14 @@
 import { DOMAIN_URL } from "src/env-variables";
 import fetch from "./fetch";
 
-import type { GetLocaleProps } from "./types";
+import type { GetLocaleParams } from "./request-types";
+import type { Translations } from "src/types";
 
-const getTranslations = async ({ language }: GetLocaleProps) => {
+const getTranslations = async ({ language }: GetLocaleParams) => {
   const URL = `${DOMAIN_URL}/api/translations?language=${language}`;
-  const data = await fetch(URL);
+  const data = await fetch<Translations>(URL, { cache: "no-store" });
 
-  return data;
+  return data as Translations;
 };
 
 const TranslationsService = {
