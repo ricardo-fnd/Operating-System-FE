@@ -1,22 +1,9 @@
-import type { Application } from "src/applications";
+import type { DraggableData, DraggableEvent } from "react-draggable";
+import type { Application } from "src/types";
 
-type BaseApplicationProps = {
+type BaseApplication = {
   children: React.ReactNode;
   app: Application;
 };
 
-type TopBarProps = { app: Application };
-
-type ButtonsProps = { app: Application };
-
-type CloseButton = { app: Application };
-
-type MinimizeButton = { app: Application };
-
-export type {
-  BaseApplicationProps,
-  TopBarProps,
-  ButtonsProps,
-  CloseButton,
-  MinimizeButton,
-};
+export type { BaseApplication, DraggableData, DraggableEvent };

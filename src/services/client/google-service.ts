@@ -1,13 +1,13 @@
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 import { search } from "../api/google-service";
-import { QUERYS_KEY } from "../api/enum";
+import { QUERIES_KEYS } from "src/enums";
 
-import type { SearchGoogleProps } from "../api/types";
+import type { SearchGoogleParams } from "../api/request-types";
 
-const useSearch = ({ query, page }: SearchGoogleProps) => {
+const useSearch = ({ query, page }: SearchGoogleParams) => {
   return useQuery({
-    queryKey: [QUERYS_KEY.googleSearch, query, page],
+    queryKey: [QUERIES_KEYS.googleSearch, query, page],
     queryFn: () => search({ query, page }),
     placeholderData: keepPreviousData,
     staleTime: 5000,

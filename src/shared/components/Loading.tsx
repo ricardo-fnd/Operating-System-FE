@@ -1,6 +1,4 @@
-type Props = { className: string };
-
-const Loading = ({ className }: Props) => (
+const Loading = ({ className }: { className: string }) => (
   <div className={className} role="status">
     <svg
       fill="none"

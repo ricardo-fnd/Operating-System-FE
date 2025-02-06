@@ -1,20 +1,19 @@
 "use client";
 import { createContext, useContext, useState } from "react";
 
-import type { Dispatch, SetStateAction, ReactNode } from "react";
+import type { Translations } from "src/types";
+import type { Provider, SetState } from "./types";
 
 const TranslationsContext = createContext({});
-const UpdateTranslationsContext = createContext<
-  Dispatch<SetStateAction<{ [key: string]: string }>>
->(() => {});
+const UpdateTranslationsContext = createContext<SetState<Translations>>(
+  () => {}
+);
 
 const useTranslations = () => useContext(TranslationsContext);
 const useUpdateTranslations = () => useContext(UpdateTranslationsContext);
 
-type Props = { children: ReactNode; initialData: { [key: string]: string } };
-
-const TranslationsProvider = ({ children, initialData }: Props) => {
-  const [translations, setTranslations] = useState(initialData);
+const TranslationsProvider = ({ children, data }: Provider<Translations>) => {
+  const [translations, setTranslations] = useState(data as Translations);
 
   return (
     <TranslationsContext.Provider value={translations}>

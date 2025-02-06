@@ -1,12 +1,20 @@
 import { onRequest } from "./request-config";
 import { onSuccess, onError } from "./response-config";
 
-const customFetch = async (URL: string, options: RequestInit = {}) => {
+export type Options = RequestInit & {
+  formData?: FormData;
+  parseResponse?: boolean;
+};
+
+const customFetch = async <T,>(
+  URL: string,
+  options: Options = {}
+): Promise<T | null> => {
   const config = await onRequest(options);
   let response = await fetch(URL, config);
 
   if (!response?.ok) return onError(response);
-  return onSuccess(response);
+  return onSuccess<T>(response, options);
 };
 
 export default customFetch;

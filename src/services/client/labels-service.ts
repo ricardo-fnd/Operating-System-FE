@@ -1,10 +1,8 @@
 import { useTranslations } from "src/context";
 
-import type { LocalizeProps } from "../types";
-
 type ParseKeyProps = {
-  translations: { [key: string]: string };
   key: string;
+  translations: { [key: string]: string };
   interpolate?: { [key: string]: string | number };
 };
 
@@ -12,14 +10,14 @@ const useLabels = () => {
   const translations = useTranslations();
 
   return (
-    key: LocalizeProps["key"],
+    key: ParseKeyProps["key"],
     interpolate?: ParseKeyProps["interpolate"]
   ) => parseKey({ translations, key, interpolate });
 };
 
 const parseKey = ({
-  translations,
   key,
+  translations,
   interpolate,
 }: ParseKeyProps): string => {
   const label = translations[key];

@@ -7,14 +7,14 @@ import Footer from "./Footer";
 
 import { GoogleService } from "src/services/client";
 
-type Props = { setLoading: (boolean: boolean) => void; query: string };
+import type { SearchEngine } from "../../types";
 
 // TOPBAR_HEIGHT = 64px
 const StyledPage =
   "flex flex-col gap-10 w-full h-[calc(100%-64px)] p-4 pt-6 show-y-scrollbar";
 const StyledResults = "flex flex-col gap-5";
 
-const SearchEnginePage = ({ setLoading, query }: Props) => {
+const SearchEnginePage = ({ setLoading, query }: SearchEngine) => {
   const ref = useRef<HTMLDivElement>(null);
   const [page, setPage] = useState(1);
 

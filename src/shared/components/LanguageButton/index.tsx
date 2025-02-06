@@ -1,31 +1,34 @@
 "use client";
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
-import LanguageModal from "./Modal";
+import LanguageMenu from "./Menu";
 
 import { LANGUAGES } from "src/enums";
 
-import type { LanguageMenuProps } from "./types";
+import type { LanguageButtonProps } from "./types";
 
 const StyledContainer = "relative";
 const StyledLanguage = "p-1 text-xs border-[1px] cursor-pointer";
 
-const LanguageMenu = ({ language }: LanguageMenuProps) => {
-  const [showModal, setShowModal] = useState(false);
+const LanguageButton = ({ className, language }: LanguageButtonProps) => {
+  const [showMenu, setShowMenu] = useState(false);
   const [currentLang, setCurrentLang] = useState(
     LANGUAGES.find(({ value }) => value === language) ?? LANGUAGES[0]
   );
 
-  const closeModal = () => setShowModal(false);
-  const toggleModal = () => setShowModal(!showModal);
+  const closeModal = () => setShowMenu(false);
+  const toggleModal = () => setShowMenu(!showMenu);
+
+  const style = twMerge(StyledContainer, className);
 
   return (
-    <div className={StyledContainer}>
+    <div className={style}>
       <div className={StyledLanguage} onClick={toggleModal}>
         {currentLang.abbv}
       </div>
-      {showModal && (
-        <LanguageModal
+      {showMenu && (
+        <LanguageMenu
           close={closeModal}
           language={currentLang}
           setLanguage={setCurrentLang}
@@ -35,4 +38,4 @@ const LanguageMenu = ({ language }: LanguageMenuProps) => {
   );
 };
 
-export default LanguageMenu;
+export default LanguageButton;

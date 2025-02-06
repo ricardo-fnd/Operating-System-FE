@@ -1,19 +1,24 @@
 "use client";
 import { useState } from "react";
 
-import AppsMenu from "./AppsMenu";
+import WelcomeScreen from "./WelcomeScreen";
 import SearchBar from "./SearchBar";
+import AppsMenu from "./AppsMenu";
 import Desktop from "./Desktop";
 import Dock from "./Dock";
 
-import { SUPPORTED_LANGUAGES } from "src/enums";
+import { UsersService } from "src/services/client";
 
-type Props = {
-  language: SUPPORTED_LANGUAGES;
-};
+import type { SUPPORTED_LANGUAGES } from "src/enums";
+import type { User } from "src/types";
 
-const OperatingSystem = ({ language }: Props) => {
+type Props = { user: User | null; language: SUPPORTED_LANGUAGES };
+
+const OperatingSystem = ({ user: initialData, language }: Props) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const { data: user } = UsersService.useMe({ initialData });
+  if (!user) return <WelcomeScreen language={language} />;
 
   const closeMenu = () => setMenuOpen(false);
   const toggleMenu = () => setMenuOpen(!isMenuOpen);

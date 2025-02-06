@@ -6,7 +6,7 @@ import Results from "./Results";
 import { useApps } from "src/context";
 import { useLabels } from "src/services/client";
 
-import type { Application } from "src/applications";
+import type { Application } from "src/types";
 
 const StyledOverlay =
   "absolute top-0 left-0 flex items-center justify-center w-screen h-screen bg-black/75 z-50";

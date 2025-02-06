@@ -2,11 +2,11 @@ import { AiFillCloseCircle } from "react-icons/ai";
 
 import { AppsService } from "src/services";
 
-import type { CloseButton } from "../../types";
+import type { Application } from "src/types";
 
 const StyledClose = "cursor-pointer";
 
-const Close = ({ app }: CloseButton) => {
+const Close = ({ app }: { app: Application }) => {
   const close = AppsService.useClose();
 
   return (

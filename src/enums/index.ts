@@ -1,4 +1,5 @@
-import TLDS from "./TLDS";
+import { TLDS } from "./TLDS";
+import { QUERIES_KEYS } from "./QueriesKeys";
 
 enum SUPPORTED_LANGUAGES {
   pt = "pt",
@@ -10,4 +11,4 @@ const LANGUAGES = [
   { abbv: "EN", label: "English", value: SUPPORTED_LANGUAGES.en },
 ];
 
-export { SUPPORTED_LANGUAGES, LANGUAGES, TLDS };
+export { SUPPORTED_LANGUAGES, LANGUAGES, TLDS, QUERIES_KEYS };

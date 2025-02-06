@@ -1,6 +1,6 @@
 import { useAppsUpdate } from "src/context/AppsContext";
 
-import type { Application } from "src/applications";
+import type { Application } from "src/types";
 
 const useOpen = () => {
   const updateApps = useAppsUpdate();

@@ -1,3 +1,7 @@
+export type ApiError = {
+  detail: string;
+};
+
 type GoogleResultsQueryPage = {
   title: string;
   totalResults: string;
@@ -59,20 +63,5 @@ export type GoogleResults = {
     previousPage: GoogleResultsQueryPage[];
     request: GoogleResultsQueryPage[];
     nextPage: GoogleResultsQueryPage[];
-  };
-};
-
-export type SearchResultsProps = {
-  data: {
-    title: string;
-    link: string;
-    domain: string;
-    description: string;
-  }[];
-  metadata: {
-    total: string;
-    searchTime: number;
-    maxPages: number;
-    page: number;
   };
 };

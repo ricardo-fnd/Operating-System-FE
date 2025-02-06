@@ -16,7 +16,9 @@
     "react-dom": "^18",
     "react-draggable": "^4.4.6",
     "react-icons": "^5.2.0",
-    "react-tooltip": "^5.28.0"
+    "react-toastify": "^11.0.3",
+    "react-tooltip": "^5.28.0",
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.62.1",

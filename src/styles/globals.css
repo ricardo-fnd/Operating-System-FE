@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.react-tooltip {
+  width: max-content;
+  padding: 14px 16px;
+
+  border-radius: 4px;
+  font-size: 90%;
+  color: white;
+  background-color: rgb(32, 32, 32);
+}
+
+.react-tooltip-arrow {
+  position: absolute;
+  left: 124px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+
+  transform: rotate(225deg);
+}
+
 input {
   outline: none;
 }

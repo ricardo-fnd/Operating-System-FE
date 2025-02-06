@@ -2,19 +2,17 @@ import { FcNext, FcPrevious } from "react-icons/fc";
 
 import { useLabels } from "src/services/client";
 
-import type { SearchResultsProps } from "src/services/api/response-types";
-
-type Props = {
-  setPage: (page: number) => void;
-  metadata: SearchResultsProps["metadata"];
-  isFetching: boolean;
-};
+import type { SearchEnginePagination } from "../../types";
 
 const StyledPagination = "flex gap-6 items-center self-center";
 const StyledButton =
   "flex gap-1 items-center font-medium cursor-pointer disabled:cursor-default disabled:opacity-50";
 
-const Pagination = ({ setPage, metadata, isFetching }: Props) => {
+const Pagination = ({
+  setPage,
+  metadata,
+  isFetching,
+}: SearchEnginePagination) => {
   const getLabel = useLabels();
   const { page, maxPages } = metadata;
 
