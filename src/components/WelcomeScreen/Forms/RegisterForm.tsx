@@ -8,6 +8,7 @@ import Validations from "./Validations";
 import SubmitButton from "./Submit";
 
 import { useLabels, UsersService } from "src/services/client";
+import { useSearchParams } from "src/hooks";
 
 import type { Form } from "../types";
 
@@ -17,12 +18,16 @@ const StyledInputs = "flex flex-col gap-3 w-full [&>:last-child]:ml-0.5";
 
 const LoginForm = ({ setUser, back }: Form) => {
   const getLabel = useLabels();
+  const { setSearchParam } = useSearchParams();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const { mutate, isPending } = UsersService.useCreate({
-    onSuccess: setUser,
+    onSuccess: (user) => {
+      setSearchParam({ name: "welcome", value: "true" });
+      setUser(user);
+    },
   });
 
   const create = () => mutate({ username, password });
