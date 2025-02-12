@@ -20,4 +20,9 @@ const auth = async (body: AuthBody) => {
   return data as User;
 };
 
-export { auth };
+const logout = async () => {
+  const URL = `${API_URL}/auth/logout`;
+  await fetch(URL, { method: "POST", credentials: "include" });
+};
+
+export { auth, logout };

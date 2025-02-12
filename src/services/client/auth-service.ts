@@ -1,6 +1,6 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
-import { auth } from "../api/auth-service";
+import { auth, logout } from "../api/auth-service";
 import NotificationsService from "../notifications-service";
 
 import type { User } from "src/types";
@@ -15,6 +15,13 @@ const useAuth = (props: UseMutationOptions<User, ApiError, AuthBody>) => {
   });
 };
 
-const AuthService = { useAuth };
+const useLogout = (props?: UseMutationOptions<void, ApiError>) => {
+  return useMutation({
+    mutationFn: logout,
+    ...props,
+  });
+};
+
+const AuthService = { useAuth, useLogout };
 
 export default AuthService;

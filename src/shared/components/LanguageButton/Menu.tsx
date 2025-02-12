@@ -8,7 +8,7 @@ import { setCookies } from "src/services/client";
 
 import type { Language, LanguageMenuProps } from "./types";
 
-const StyledModal =
+const StyledMenu =
   "absolute bottom-14 right-0 p-2 bg-white/25 border-[1px] rounded-sm";
 const StyledLanguage =
   "py-1 px-2 cursor-pointer data-[active=true]:bg-white/50 hover:bg-white/25 hover:rounded-sm";
@@ -34,7 +34,7 @@ const LanguageMenu = ({ close, language, setLanguage }: LanguageMenuProps) => {
   };
 
   return (
-    <div ref={ref} className={StyledModal}>
+    <menu ref={ref} className={StyledMenu}>
       {LANGUAGES.map(({ label, value }) => (
         <Language
           key={value}
@@ -43,7 +43,7 @@ const LanguageMenu = ({ close, language, setLanguage }: LanguageMenuProps) => {
           onClick={() => changeLanguage(value)}
         />
       ))}
-    </div>
+    </menu>
   );
 };
 
