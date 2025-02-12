@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 import AppsMenu from "./AppsMenu";
 import Desktop from "./Desktop";
 import Dock from "./Dock";
+import WelcomeBanner from "./WelcomeBanner";
 
 import { UsersService } from "src/services/client";
 
@@ -33,6 +34,7 @@ const OperatingSystem = ({ user: initialData, language }: Props) => {
         toggleMenu={toggleMenu}
         isMenuOpen={isMenuOpen}
       />
+      <WelcomeBanner />
     </>
   );
 };

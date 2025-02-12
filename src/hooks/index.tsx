@@ -1,3 +1,4 @@
 import useOnClickOutside from "./useOnClickOutside";
+import useSearchParams from "./useSearchParams";
 
-export { useOnClickOutside };
+export { useOnClickOutside, useSearchParams };
