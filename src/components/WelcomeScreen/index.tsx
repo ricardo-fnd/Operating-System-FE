@@ -13,7 +13,7 @@ import type { WelcomeScreen, SetUser } from "./types";
 
 const StyledContainer =
   "flex flex-col items-center justify-center gap-44 w-full h-full bg-gradient-to-r from-blue-200 to-cyan-200";
-const StyledLanguageButton = "fixed right-4 bottom-4";
+const StyledLanguageButton = "fixed right-4 bottom-4 border border-blue-400";
 
 const WelcomeScreen = ({ language }: WelcomeScreen) => {
   const queryClient = useQueryClient();

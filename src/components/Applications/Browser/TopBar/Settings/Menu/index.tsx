@@ -14,9 +14,9 @@ const SettingsMenu = ({ close }: { close: () => void }) => {
   useOnClickOutside({ ref, handler: close, options: clickOutsideOptions });
 
   return (
-    <div ref={ref} className={StyledMenu}>
+    <menu ref={ref} className={StyledMenu}>
       <p>{getLabel("apps.browser.settings.backlog")}</p>
-    </div>
+    </menu>
   );
 };
 

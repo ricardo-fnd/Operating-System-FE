@@ -9,7 +9,7 @@ import { LANGUAGES } from "src/enums";
 import type { LanguageButtonProps } from "./types";
 
 const StyledContainer = "relative";
-const StyledLanguage = "p-1 text-xs border-[1px] cursor-pointer";
+const StyledLanguage = "p-1 text-xs cursor-pointer rounded-sm shadow-md";
 
 const LanguageButton = ({ className, language }: LanguageButtonProps) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -17,19 +17,19 @@ const LanguageButton = ({ className, language }: LanguageButtonProps) => {
     LANGUAGES.find(({ value }) => value === language) ?? LANGUAGES[0]
   );
 
-  const closeModal = () => setShowMenu(false);
-  const toggleModal = () => setShowMenu(!showMenu);
+  const closeMenu = () => setShowMenu(false);
+  const toggleMenu = () => setShowMenu(!showMenu);
 
   const style = twMerge(StyledContainer, className);
 
   return (
     <div className={style}>
-      <div className={StyledLanguage} onClick={toggleModal}>
+      <div className={StyledLanguage} onClick={toggleMenu}>
         {currentLang.abbv}
       </div>
       {showMenu && (
         <LanguageMenu
-          close={closeModal}
+          close={closeMenu}
           language={currentLang}
           setLanguage={setCurrentLang}
         />
