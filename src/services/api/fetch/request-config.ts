@@ -1,3 +1,5 @@
+import { parseBody } from "./parsers";
+
 import type { Options } from ".";
 
 const onRequest = async (options: Options = {}) => {
@@ -10,10 +12,17 @@ const onRequest = async (options: Options = {}) => {
     ...options,
     headers: fetchHeaders,
     method: options?.method || "GET",
-    body: formData ?? body,
+    body: formData ?? prepareBody(options, body),
   };
 
   return fetchOptions;
+};
+
+const prepareBody = (options: Options, body: Options["body"]) => {
+  if (!body || options?.method === "GET" || options?.method === "DELETE") {
+    return null;
+  }
+  return JSON.stringify(parseBody(body));
 };
 
 export { onRequest };

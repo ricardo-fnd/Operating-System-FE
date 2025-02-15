@@ -10,9 +10,9 @@ const Shortcuts = () => {
 
   return (
     <div className={StyledShortcuts}>
-      {apps.map((app) => (
-        <AppShortcut key={app.id} app={app} />
-      ))}
+      {apps.map(
+        (app) => app.showIcon && <AppShortcut key={app.id} app={app} />
+      )}
     </div>
   );
 };

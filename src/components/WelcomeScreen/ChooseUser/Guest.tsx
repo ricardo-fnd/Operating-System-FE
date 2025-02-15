@@ -2,14 +2,13 @@ import Image from "next/image";
 
 import guestSvg from "public/user-login/guest.svg";
 import { Tooltip } from "src/shared/components";
+import { Button } from "src/shared/components/Buttons";
 
 import { useLabels } from "src/services/client";
 
 const StyledGuest =
   "relative flex flex-col items-center gap-4 text-lg p-2 font-medium cursor-pointer transition-scale duration-300 hover:scale-105";
-const StyledTooltip = "flex flex-col gap-2 items-center max-w-72 text-center";
-const StyledButton =
-  "flex justify-center w-fit my-1 py-1 px-4 bg-white text-black rounded-full cursor-pointer";
+const StyledTooltip = "flex flex-col gap-3 items-center max-w-72 text-center";
 
 const Guest = ({ onClick }: { onClick: () => void }) => {
   const getLabel = useLabels();
@@ -29,14 +28,13 @@ const Guest = ({ onClick }: { onClick: () => void }) => {
       <Tooltip
         clickable
         openOnClick
-        place="bottom"
         className={StyledTooltip}
         anchorSelect={`#${tooltipId}`}
       >
         <p>{getLabel("user-login.guest.warning")}</p>
-        <button onClick={onClick} className={StyledButton}>
+        <Button onClick={onClick}>
           <p>{getLabel("user-login.guest.enter")}</p>
-        </button>
+        </Button>
       </Tooltip>
     </>
   );

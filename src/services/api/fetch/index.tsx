@@ -1,7 +1,8 @@
 import { onRequest } from "./request-config";
 import { onSuccess, onError } from "./response-config";
 
-export type Options = RequestInit & {
+export type Options = Omit<RequestInit, "body"> & {
+  body?: { [key: string]: unknown } | { [key: string]: unknown }[];
   formData?: FormData;
   parseResponse?: boolean;
 };

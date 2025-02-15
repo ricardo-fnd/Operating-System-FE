@@ -9,7 +9,7 @@ const onSuccess = async <T>(
   if (response.status === 204) return null;
 
   const responseJSON = await response.json();
-  if (options.parseResponse) return parseResponse<T>(responseJSON);
+  if (options.parseResponse !== false) return parseResponse<T>(responseJSON);
   return responseJSON;
 };
 

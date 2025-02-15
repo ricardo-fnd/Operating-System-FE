@@ -63,8 +63,8 @@ const LoginForm = ({ setUser, back }: Form) => {
       <SubmitButton
         onClick={login}
         label="commons.enter"
-        disabled={!username || !password}
         loading={isPending}
+        disabled={!username || !password}
       />
     </div>
   );

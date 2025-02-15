@@ -13,6 +13,8 @@ export type User = {
   avatar?: string;
   guest: boolean;
   createdAt: string;
+  companyName?: string;
+  job?: string;
 };
 
 export type Guest = {
@@ -37,6 +39,7 @@ export type Application = {
   minimized: boolean;
   maximized: boolean;
   priority: number;
+  showIcon: boolean;
   initialPosition?: { x: number; y: number };
   shortcutPosition?: { x: number; y: number };
 };
