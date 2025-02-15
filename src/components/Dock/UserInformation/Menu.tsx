@@ -1,23 +1,17 @@
-import { useRef } from "react";
-
+import Menu from "src/shared/components/Menu";
+import Profile from "./Profile";
 import Logout from "./Logout";
-
-import { useOnClickOutside } from "src/hooks";
 
 type Menu = { close: () => void };
 
-const StyledMenu =
-  "absolute bottom-8 right-0 overflow-hidden text-sm bg-zinc-800 text-gray-200 rounded-md";
-
 const UserMenu = ({ close }: Menu) => {
-  const ref = useRef(null);
-
-  useOnClickOutside({ ref, handler: close });
+  const options = { ignore: ["user-menu-pill"] };
 
   return (
-    <menu ref={ref} className={StyledMenu}>
+    <Menu close={close} options={options}>
+      <Profile close={close} />
       <Logout />
-    </menu>
+    </Menu>
   );
 };
 

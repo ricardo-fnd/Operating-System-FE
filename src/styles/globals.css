@@ -4,12 +4,12 @@
 
 .react-tooltip {
   width: max-content;
-  padding: 14px 16px;
+  padding: 6px 8px;
 
   border-radius: 4px;
-  font-size: 90%;
+  font-size: 14px;
   color: white;
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(42, 42, 42);
 }
 
 .react-tooltip-arrow {

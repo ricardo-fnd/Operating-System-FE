@@ -1,4 +1,5 @@
 import type { ChangeEvent, InputHTMLAttributes, KeyboardEvent } from "react";
+import type { ITooltip } from "react-tooltip";
 
 type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> & {
   onChange: (e: string) => void;
@@ -16,4 +17,6 @@ type BaseCheckbox = Omit<InputProps, "onChange"> & {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export type { InputProps, BaseInput, BaseCheckbox };
+type PasswordTooltipProps = { className?: string; place?: ITooltip["place"] };
+
+export type { InputProps, BaseInput, BaseCheckbox, PasswordTooltipProps };

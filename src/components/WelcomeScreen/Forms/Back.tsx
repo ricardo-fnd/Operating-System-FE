@@ -1,12 +1,13 @@
 import { IoMdArrowRoundBack } from "react-icons/io";
 
-const StyledBack =
-  "absolute left-0 top-0 flex justify-center items-center p-2 cursor-pointer rounded-full bg-white";
+import { Button } from "src/shared/components/Buttons";
+
+const StyledBack = "absolute left-0 top-0 p-2";
 
 const BackButton = ({ onClick }: { onClick: () => void }) => (
-  <button onClick={onClick} className={StyledBack}>
+  <Button onClick={onClick} className={StyledBack}>
     <IoMdArrowRoundBack />
-  </button>
+  </Button>
 );
 
 export default BackButton;

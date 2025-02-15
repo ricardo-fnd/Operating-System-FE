@@ -8,6 +8,16 @@ const CustomNotification = ({ data }: ToastContentProps<Data>) => (
   <p>{data.label}</p>
 );
 
+const info = (label: string) => {
+  toast(CustomNotification, {
+    data: { label },
+    type: "info",
+    autoClose: 3000,
+    position: "top-center",
+    hideProgressBar: true,
+  });
+};
+
 const error = (label: string) => {
   toast(CustomNotification, {
     data: { label },
@@ -18,6 +28,6 @@ const error = (label: string) => {
   });
 };
 
-const NotificationsService = { error };
+const NotificationsService = { info, error };
 
 export default NotificationsService;

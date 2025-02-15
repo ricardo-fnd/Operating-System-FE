@@ -12,9 +12,9 @@ const AppsMenu = ({ closeMenu }: { closeMenu: () => void }) => {
   return (
     <div className={StyledContainer} onClick={closeMenu}>
       <menu className={StyledMenu}>
-        {apps.map((app) => (
-          <AppShortcut key={app.id} app={app} />
-        ))}
+        {apps.map(
+          (app) => app.showIcon && <AppShortcut key={app.id} app={app} />
+        )}
       </menu>
     </div>
   );

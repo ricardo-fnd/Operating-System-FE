@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { useQueryClient } from "@tanstack/react-query";
 
+import { MenuOption } from "src/shared/components/Menu";
 import logout from "public/user-menu/logout.svg";
 
 import { AuthService, useLabels } from "src/services/client";
 import { QUERIES_KEYS } from "src/enums";
 
-const StyledLogout =
-  "flex gap-1 py-1.5 px-3 items-center cursor-pointer [&_img]:max-w-[none] hover:bg-zinc-700";
+const StyledImage = "max-w-none";
 
 const Logout = () => {
   const queryClient = useQueryClient();
@@ -18,10 +18,16 @@ const Logout = () => {
   });
 
   return (
-    <div className={StyledLogout}>
-      <Image src={logout} width={24} height={24} alt="logout" />
-      <p onClick={() => mutate()}>{getLabel("user-menu.logout")}</p>
-    </div>
+    <MenuOption onClick={() => mutate()}>
+      <Image
+        className={StyledImage}
+        src={logout}
+        width={20}
+        height={20}
+        alt="logout"
+      />
+      <p>{getLabel("user-menu.logout")}</p>
+    </MenuOption>
   );
 };
 

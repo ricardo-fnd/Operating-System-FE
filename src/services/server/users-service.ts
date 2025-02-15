@@ -14,6 +14,7 @@ const prefetchUser = async (): Promise<User | null> => {
   const user = await queryClient.fetchQuery({
     queryKey: [QUERIES_KEYS.user],
     queryFn: () => me({ headers }),
+    staleTime: 0,
   });
 
   return user;

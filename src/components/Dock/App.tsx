@@ -28,6 +28,7 @@ const App = ({ app }: { app: Application }) => {
       </div>
       <Tooltip
         noArrow
+        place="top"
         delayShow={300}
         className={StyledTooltip}
         anchorSelect={`#${tooltipId}`}

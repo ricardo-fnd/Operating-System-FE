@@ -11,8 +11,10 @@ const config: Config = {
     "./src/shared/components/**/*.{jsx,tsx}",
   ],
   plugins: [
-    plugin(function ({ addUtilities }) {
+    plugin(function ({ addUtilities, addVariant }) {
       addUtilities(customCss);
+      addVariant("first", "& > :first-child");
+      addVariant("last", "& > :last-child");
     }),
   ],
 };

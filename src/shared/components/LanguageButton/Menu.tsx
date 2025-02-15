@@ -1,23 +1,19 @@
-import { useRef } from "react";
+import Image from "next/image";
+
+import Menu, { MenuOption } from "src/shared/components/Menu";
 
 import { useUpdateTranslations } from "src/context";
-import { useOnClickOutside } from "src/hooks";
 import { LANGUAGES } from "src/enums";
 import { TranslationsService } from "src/services";
 import { setCookies } from "src/services/client";
 
-import type { Language, LanguageMenuProps } from "./types";
+import type { LanguageMenuProps } from "./types";
 
-const StyledMenu =
-  "absolute bottom-14 right-0 p-2 bg-white/25 border-[1px] rounded-sm";
-const StyledLanguage =
-  "py-1 px-2 cursor-pointer data-[active=true]:bg-white/50 hover:bg-white/25 hover:rounded-sm";
+const StyledMenuOption =
+  "gap-2 data-[active=true]:bg-zinc-600 [&_img]:max-w-none";
 
 const LanguageMenu = ({ close, language, setLanguage }: LanguageMenuProps) => {
-  const ref = useRef(null);
   const updateTranslations = useUpdateTranslations();
-
-  useOnClickOutside({ ref, handler: close });
 
   const changeLanguage = async (
     value: LanguageMenuProps["language"]["value"]
@@ -33,24 +29,23 @@ const LanguageMenu = ({ close, language, setLanguage }: LanguageMenuProps) => {
     close();
   };
 
+  const options = { ignore: ["language-button"] };
+
   return (
-    <menu ref={ref} className={StyledMenu}>
-      {LANGUAGES.map(({ label, value }) => (
-        <Language
+    <Menu close={close} options={options}>
+      {LANGUAGES.map(({ label, value, flag }) => (
+        <MenuOption
           key={value}
-          label={label}
-          active={value === language.value}
+          className={StyledMenuOption}
+          data-active={value === language.value}
           onClick={() => changeLanguage(value)}
-        />
+        >
+          <Image src={flag} width={18} height={18} alt={label} />
+          <p>{label}</p>
+        </MenuOption>
       ))}
-    </menu>
+    </Menu>
   );
 };
-
-const Language = ({ label, active, onClick }: Language) => (
-  <p onClick={onClick} className={StyledLanguage} data-active={active}>
-    {label}
-  </p>
-);
 
 export default LanguageMenu;

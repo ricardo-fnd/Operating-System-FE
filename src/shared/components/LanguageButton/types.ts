@@ -1,6 +1,8 @@
 import type { LANGUAGES, SUPPORTED_LANGUAGES } from "src/enums";
+import type { ButtonProps } from "../Buttons/Button";
 
 type LanguageButtonProps = {
+  color?: ButtonProps["color"];
   className?: string;
   language: SUPPORTED_LANGUAGES;
 };
@@ -11,10 +13,4 @@ type LanguageMenuProps = {
   setLanguage: (lang: (typeof LANGUAGES)[0]) => void;
 };
 
-type Language = {
-  onClick: () => void;
-  active: boolean;
-  label: (typeof LANGUAGES)[0]["label"];
-};
-
-export type { LanguageMenuProps, Language, LanguageButtonProps };
+export type { LanguageMenuProps, LanguageButtonProps };

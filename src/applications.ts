@@ -1,7 +1,8 @@
 import { TbWorldWww } from "react-icons/tb";
 import { FcButtingIn } from "react-icons/fc";
+import { RxAvatar } from "react-icons/rx";
 
-import { About, Browser } from "src/components/Applications";
+import { About, Browser, Profile } from "src/components/Applications";
 
 import type { Application } from "src/types";
 
@@ -15,6 +16,7 @@ const APPLICATIONS: Application[] = [
     minimized: true,
     maximized: false,
     priority: 0,
+    showIcon: true,
   },
   {
     id: 2,
@@ -25,6 +27,18 @@ const APPLICATIONS: Application[] = [
     minimized: true,
     maximized: false,
     priority: 0,
+    showIcon: true,
+  },
+  {
+    id: 3,
+    Icon: RxAvatar,
+    name: "commons.profile",
+    component: Profile,
+    opened: false,
+    minimized: true,
+    maximized: false,
+    priority: 0,
+    showIcon: false,
   },
 ];
 

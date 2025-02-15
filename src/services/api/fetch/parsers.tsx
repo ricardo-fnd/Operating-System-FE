@@ -1,5 +1,10 @@
+import type { Options } from ".";
+
 const toCamelCase = (key: string) =>
   key.replace(/([-_][a-z])/g, (match) => match.toUpperCase().replace("_", ""));
+
+const toSnakeCase = (key: string) =>
+  key.replace(/([A-Z])/g, "_$1").toLowerCase();
 
 const parseResponse = <T,>(data: object | object[]): T => {
   if (Array.isArray(data)) return data.map((i) => parseResponse<T>(i)) as T;
@@ -13,4 +18,16 @@ const parseResponse = <T,>(data: object | object[]): T => {
   }, {}) as T;
 };
 
-export { parseResponse };
+const parseBody = (obj?: Options["body"]) => {
+  if (!obj) return null;
+
+  const entries = Object.entries(obj);
+  const parsed = entries.map(([key, value]) => [
+    toSnakeCase(key),
+    value === "" ? null : value,
+  ]);
+
+  return Object.fromEntries(parsed);
+};
+
+export { parseResponse, parseBody };
