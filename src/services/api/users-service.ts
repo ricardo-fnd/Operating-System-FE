@@ -9,6 +9,7 @@ const create = async (body: CreateUserBody) => {
   const URL = `${API_URL}/users`;
   const data = await fetch<User>(URL, {
     method: "POST",
+    credentials: "include",
     body,
   });
 
