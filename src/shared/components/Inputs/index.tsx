@@ -1,11 +1,10 @@
 import Checkbox from "./Checkbox";
 import BaseInput from "./Input";
-import PasswordTooltip from "./PasswordTooltip";
 
 import type { InputProps } from "./types";
 import type { ChangeEvent } from "react";
 
-const Input = ({ onChange, type, ...props }: InputProps) => {
+const Input = ({ onChange, type, value, ...props }: InputProps) => {
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.currentTarget.value);
   };
@@ -14,8 +13,15 @@ const Input = ({ onChange, type, ...props }: InputProps) => {
     return <Checkbox onChange={onInputChange} {...props} />;
   }
 
-  return <BaseInput type={type} onChange={onInputChange} {...props} />;
+  return (
+    <BaseInput
+      type={type}
+      value={value as string}
+      onChange={onInputChange}
+      {...props}
+    />
+  );
 };
 
-export { PasswordTooltip };
+export type { InputProps };
 export default Input;

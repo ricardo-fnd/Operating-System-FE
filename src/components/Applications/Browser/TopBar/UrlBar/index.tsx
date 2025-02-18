@@ -8,7 +8,6 @@ import { useLabels } from "src/services/client";
 
 const StyledUrlBar =
   "flex items-center w-1/2 h-10 bg-gray-50 border border-gray-300 rounded-xl overflow-hidden";
-const StyledInput = "border-0";
 
 const UrlBar = ({ loading }: { loading: boolean }) => {
   const history = useHistory();
@@ -38,7 +37,6 @@ const UrlBar = ({ loading }: { loading: boolean }) => {
         disabled={loading}
         name="browser-url"
         onChange={setValue}
-        inputClassName={StyledInput}
         onEnterKey={search}
         placeholder={getLabel("apps.browser.top-bar.type-url")}
       />

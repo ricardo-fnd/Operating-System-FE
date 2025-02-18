@@ -1,19 +1,21 @@
-import { Button } from "src/shared/components/Buttons";
+import { AiOutlineLogin } from "react-icons/ai";
 
-import { useLabels } from "src/services/client";
+import { Loading } from "src/shared/components";
 
-import type { Submit } from "../types";
+import type { ButtonProps } from "src/shared/components/Buttons/Button";
 
-const StyledButton = "w-full py-2";
+const StyledButton =
+  "absolute bottom-3 right-0 cursor-pointer disabled:cursor-not-allowed";
+const StyledLoading = "w-6 h-6 mb-1 mr-0.5";
 
-const Submit = ({ label, ...props }: Submit) => {
-  const getLabel = useLabels();
-
-  return (
-    <Button {...props} className={StyledButton}>
-      <p>{getLabel(label)}</p>
-    </Button>
-  );
-};
+const Submit = ({ loading, disabled, ...props }: ButtonProps) => (
+  <button {...props} disabled={disabled} className={StyledButton}>
+    {loading ? (
+      <Loading className={StyledLoading} />
+    ) : (
+      <AiOutlineLogin color={disabled ? "gray" : "white"} size={28} />
+    )}
+  </button>
+);
 
 export default Submit;

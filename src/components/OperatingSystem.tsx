@@ -8,18 +8,24 @@ import Desktop from "./Desktop";
 import Dock from "./Dock";
 import WelcomeBanner from "./WelcomeBanner";
 
-import { UsersService } from "src/services/client";
-
 import type { SUPPORTED_LANGUAGES } from "src/enums";
 import type { User } from "src/types";
 
 type Props = { user: User | null; language: SUPPORTED_LANGUAGES };
 
-const OperatingSystem = ({ user: initialData, language }: Props) => {
+const OperatingSystem = ({ user, language }: Props) => {
+  const [welcome, setWelcome] = useState(true);
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const { data: user } = UsersService.useMe({ initialData });
-  if (!user) return <WelcomeScreen language={language} />;
+  if (welcome) {
+    return (
+      <WelcomeScreen
+        user={user}
+        language={language}
+        enter={() => setWelcome(false)}
+      />
+    );
+  }
 
   const closeMenu = () => setMenuOpen(false);
   const toggleMenu = () => setMenuOpen(!isMenuOpen);

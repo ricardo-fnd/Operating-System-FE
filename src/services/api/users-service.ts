@@ -1,7 +1,11 @@
 import { API_URL } from "src/env-variables";
 import fetch from "./fetch";
 
-import type { CreateUserBody, UpdateUser } from "./request-types";
+import type {
+  CreateUserBody,
+  GetUserByAccount,
+  UpdateUser,
+} from "./request-types";
 import type { User } from "src/types";
 import type { Options } from "./fetch";
 
@@ -14,6 +18,13 @@ const create = async (body: CreateUserBody) => {
   });
 
   return data as User;
+};
+
+const getByAccount = async ({ params }: GetUserByAccount) => {
+  const URL = `${API_URL}/users?account=${params.account}`;
+  const data = await fetch<User>(URL);
+
+  return data;
 };
 
 const me = async (options: Options = {}) => {
@@ -41,4 +52,4 @@ const update = async ({ id, body }: UpdateUser) => {
   return data as User;
 };
 
-export { create, me, update };
+export { create, getByAccount, me, update };

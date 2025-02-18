@@ -10,8 +10,7 @@ import { LANGUAGES } from "src/enums";
 import type { LanguageButtonProps } from "./types";
 
 const StyledContainer = "relative";
-const StyledButton =
-  "py-1 px-1.5 text-xs rounded-lg data-[menu-open=true]:bg-zinc-600";
+const StyledButton = "py-1 px-1.5 text-xs rounded-lg";
 
 const LanguageButton = ({
   color,
