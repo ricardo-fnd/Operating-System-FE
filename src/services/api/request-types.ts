@@ -7,6 +7,8 @@ export type CreateUserBody = {
   password: string;
 };
 
+export type GetUserByAccount = { params: { account: string } };
+
 export type UpdateUser = {
   id: User["id"];
   body: {

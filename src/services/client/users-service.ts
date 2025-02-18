@@ -4,13 +4,17 @@ import {
   useQuery,
 } from "@tanstack/react-query";
 
-import { create, me, update } from "../api/users-service";
+import { create, getByAccount, me, update } from "../api/users-service";
 import NotificationsService from "../notifications-service";
 import { QUERIES_KEYS } from "src/enums";
 
 import type { User } from "src/types";
 import type { ApiError } from "../api/response-types";
-import type { CreateUserBody, UpdateUser } from "../api/request-types";
+import type {
+  CreateUserBody,
+  GetUserByAccount,
+  UpdateUser,
+} from "../api/request-types";
 import type { UseQueryProps } from "./types";
 
 const useCreate = (
@@ -18,6 +22,16 @@ const useCreate = (
 ) => {
   return useMutation({
     mutationFn: create,
+    onError: (error) => NotificationsService.error(error.detail),
+    ...props,
+  });
+};
+
+const useAccount = (
+  props: UseMutationOptions<User | null, ApiError, GetUserByAccount>
+) => {
+  return useMutation({
+    mutationFn: getByAccount,
     onError: (error) => NotificationsService.error(error.detail),
     ...props,
   });
@@ -40,6 +54,6 @@ const useUpdate = (props: UseMutationOptions<User, ApiError, UpdateUser>) => {
   });
 };
 
-const UsersService = { useCreate, useMe, useUpdate };
+const UsersService = { useCreate, useAccount, useMe, useUpdate };
 
 export default UsersService;
