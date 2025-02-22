@@ -2,7 +2,11 @@ import { TbWorldWww } from "react-icons/tb";
 import { FcButtingIn } from "react-icons/fc";
 import { RxAvatar } from "react-icons/rx";
 
-import { About, Browser, Profile } from "src/components/Applications";
+import {
+  About,
+  Browser,
+  Profile,
+} from "src/components/OperatingSystem/Applications";
 
 import type { Application } from "src/types";
 

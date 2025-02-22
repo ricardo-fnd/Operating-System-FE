@@ -1,13 +1,16 @@
 import "server-only";
-import { ToastContainer } from "react-toastify";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
+import BaseProviders from "src/context";
+import { AppsProvider } from "src/context/AppsContext";
 import OperatingSystem from "src/components/OperatingSystem";
 
+import { getQueryClient, TranslationsService } from "src/services";
 import { getCookies, getLanguage, UsersService } from "src/services/server";
-import { TranslationsService } from "src/services";
-import BaseProviders from "src/context";
 
 export default async function Home() {
+  const queryClient = getQueryClient();
+
   const language = getLanguage();
   const translations = await TranslationsService.getTranslations({
     language,
@@ -17,15 +20,15 @@ export default async function Home() {
     name: "shortcuts-positions",
   });
 
-  const user = await UsersService.prefetchUser();
+  await UsersService.prefetchUser();
 
   return (
-    <BaseProviders
-      translations={translations}
-      shortcutsPositions={shortcutsPositions}
-    >
-      <OperatingSystem user={user} language={language} />
-      <ToastContainer />
+    <BaseProviders language={language} translations={translations}>
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <AppsProvider data={shortcutsPositions}>
+          <OperatingSystem />
+        </AppsProvider>
+      </HydrationBoundary>
     </BaseProviders>
   );
 }

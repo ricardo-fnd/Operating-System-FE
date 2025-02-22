@@ -6,17 +6,15 @@ import { Button } from "../Buttons";
 import LanguageMenu from "./Menu";
 
 import { LANGUAGES } from "src/enums";
+import { useTranslations } from "src/context";
 
 import type { LanguageButtonProps } from "./types";
 
 const StyledContainer = "relative";
 const StyledButton = "py-1 px-1.5 text-xs rounded-lg";
 
-const LanguageButton = ({
-  color,
-  className,
-  language,
-}: LanguageButtonProps) => {
+const LanguageButton = ({ color, className }: LanguageButtonProps) => {
+  const { language } = useTranslations();
   const [showMenu, setShowMenu] = useState(false);
   const [currentLang, setCurrentLang] = useState(
     LANGUAGES.find(({ value }) => value === language) ?? LANGUAGES[0]
@@ -42,7 +40,7 @@ const LanguageButton = ({
         <LanguageMenu
           close={closeMenu}
           language={currentLang}
-          setLanguage={setCurrentLang}
+          setMenuLanguage={setCurrentLang}
         />
       )}
     </div>

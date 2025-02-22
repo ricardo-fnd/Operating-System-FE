@@ -1,6 +1,9 @@
-import type { ChangeEvent, InputHTMLAttributes } from "react";
+import type { ChangeEvent, CSSProperties, InputHTMLAttributes } from "react";
 
-type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> & {
+type InputProps = Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "onChange" | "style"
+> & {
   onChange: (e: string) => void;
   name: string;
   onEnterKey?: (value: InputHTMLAttributes<HTMLInputElement>["value"]) => void;
@@ -8,6 +11,7 @@ type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> & {
   tooltipLabel?: string;
   icon?: string;
   validations?: ((value: string) => boolean)[];
+  style?: CSSProperties & { "--autofill-text-color": string };
 };
 
 type BaseInput = Omit<InputProps, "onChange"> & {

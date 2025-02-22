@@ -8,7 +8,7 @@ const auth = async (body: AuthBody) => {
   const URL = `${API_URL}/auth`;
 
   const formData = new FormData();
-  formData.append("username", body.username);
+  formData.append("username", body.account);
   formData.append("password", body.password);
 
   const data = await fetch<User>(URL, {

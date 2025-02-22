@@ -4,20 +4,15 @@ import getQueryClient from "../get-query-client";
 import { QUERIES_KEYS } from "src/enums";
 import { me } from "../api/users-service";
 
-import type { User } from "src/types";
-
-const prefetchUser = async (): Promise<User | null> => {
+const prefetchUser = async () => {
   const queryClient = getQueryClient();
   const cookieStore = await cookies();
 
   const headers = { Cookie: cookieStore.toString() };
-  const user = await queryClient.fetchQuery({
+  await queryClient.prefetchQuery({
     queryKey: [QUERIES_KEYS.user],
     queryFn: () => me({ headers }),
-    staleTime: 0,
   });
-
-  return user;
 };
 
 const UsersService = { prefetchUser };
