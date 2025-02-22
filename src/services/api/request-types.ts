@@ -2,8 +2,7 @@ import type { SUPPORTED_LANGUAGES } from "src/enums";
 import type { User } from "src/types";
 
 export type CreateUserBody = {
-  name?: string;
-  username: string;
+  account: string;
   password: string;
 };
 
@@ -22,8 +21,20 @@ export type UpdateUser = {
   };
 };
 
+export type UpdatePassword = {
+  token: string;
+  body: {
+    password: string;
+    passwordConfirmation: string;
+  };
+};
+
+export type ForgotAccount = {
+  email: string;
+};
+
 export type AuthBody = {
-  username: string;
+  account: string;
   password: string;
 };
 

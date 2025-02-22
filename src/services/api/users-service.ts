@@ -4,6 +4,7 @@ import fetch from "./fetch";
 import type {
   CreateUserBody,
   GetUserByAccount,
+  UpdatePassword,
   UpdateUser,
 } from "./request-types";
 import type { User } from "src/types";
@@ -52,4 +53,9 @@ const update = async ({ id, body }: UpdateUser) => {
   return data as User;
 };
 
-export { create, getByAccount, me, update };
+const updatePassword = async ({ token, body }: UpdatePassword) => {
+  const URL = `${API_URL}/users/update-password?token=${token}`;
+  await fetch(URL, { method: "PUT", body });
+};
+
+export { create, getByAccount, me, update, updatePassword };

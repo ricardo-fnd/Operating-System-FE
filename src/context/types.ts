@@ -1,5 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
-import type { ShortcutsPositions, Translations } from "src/types";
+import type { SUPPORTED_LANGUAGES } from "src/enums";
+import type { Translations } from "src/types";
 
 type SetState<T> = Dispatch<SetStateAction<T>>;
 type Provider<T = undefined> = Readonly<{
@@ -7,8 +8,8 @@ type Provider<T = undefined> = Readonly<{
   data?: T;
 }>;
 type BaseProviders = {
+  language: SUPPORTED_LANGUAGES;
   translations: Translations;
-  shortcutsPositions: ShortcutsPositions;
   children: React.ReactNode;
 };
 

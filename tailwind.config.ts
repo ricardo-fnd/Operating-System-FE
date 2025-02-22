@@ -10,6 +10,9 @@ const config: Config = {
     "./src/app/**/*.{jsx,tsx}",
     "./src/shared/components/**/*.{jsx,tsx}",
   ],
+  theme: {
+    extend: { screens: { xs: "480px" } },
+  },
   plugins: [
     plugin(function ({ addUtilities, addVariant }) {
       addUtilities(customCss);

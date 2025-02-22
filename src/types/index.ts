@@ -1,15 +1,17 @@
 import type { ReactNode } from "react";
 import type { IconType } from "react-icons";
+import type { SUPPORTED_LANGUAGES } from "src/enums";
 
 export type Translations = {
   [key: string]: string;
+  language: SUPPORTED_LANGUAGES;
 };
 
 export type User = {
   id: number;
   name?: string;
   email?: string;
-  username: string;
+  username?: string;
   avatar?: string;
   guest: boolean;
   createdAt: string;

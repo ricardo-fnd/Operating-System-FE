@@ -5,27 +5,29 @@ import Menu, { MenuOption } from "src/shared/components/Menu";
 import { useUpdateTranslations } from "src/context";
 import { LANGUAGES } from "src/enums";
 import { TranslationsService } from "src/services";
-import { setCookies } from "src/services/client";
 
 import type { LanguageMenuProps } from "./types";
 
 const StyledMenuOption =
   "gap-2 data-[active=true]:bg-zinc-600 [&_img]:max-w-none";
 
-const LanguageMenu = ({ close, language, setLanguage }: LanguageMenuProps) => {
+const LanguageMenu = ({
+  close,
+  language,
+  setMenuLanguage,
+}: LanguageMenuProps) => {
   const updateTranslations = useUpdateTranslations();
 
   const changeLanguage = async (
-    value: LanguageMenuProps["language"]["value"]
+    language: LanguageMenuProps["language"]["value"]
   ) => {
-    const newLang = LANGUAGES.find((lang) => lang.value === value);
+    const newLang = LANGUAGES.find((lang) => lang.value === language);
     const translations = await TranslationsService.getTranslations({
-      language: value,
+      language,
     });
 
-    updateTranslations(translations);
-    setLanguage(newLang as (typeof LANGUAGES)[0]);
-    setCookies({ name: "NEXT_LOCALE", value });
+    updateTranslations({ ...translations, language });
+    setMenuLanguage(newLang as (typeof LANGUAGES)[0]);
     close();
   };
 

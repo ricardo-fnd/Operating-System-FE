@@ -1,4 +1,5 @@
-import { AppsProvider } from "./AppsContext";
+import { ToastContainer } from "react-toastify";
+
 import { TranslationsProvider } from "./TranslationsContext";
 import { HistoryProvider } from "./HistoryProvider";
 import ReactQueryProvider from "./ReactQueryContext";
@@ -9,15 +10,12 @@ import { useHistory, useUpdateHistory } from "./HistoryProvider";
 
 import type { BaseProviders } from "./types";
 
-const BaseProviders = ({
-  translations,
-  shortcutsPositions,
-  children,
-}: BaseProviders) => (
-  <TranslationsProvider data={translations}>
-    <AppsProvider data={shortcutsPositions}>
-      <ReactQueryProvider>{children}</ReactQueryProvider>
-    </AppsProvider>
+const BaseProviders = ({ language, translations, children }: BaseProviders) => (
+  <TranslationsProvider data={{ ...translations, language }}>
+    <ReactQueryProvider>
+      {children}
+      <ToastContainer />
+    </ReactQueryProvider>
   </TranslationsProvider>
 );
 

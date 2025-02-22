@@ -1,10 +1,10 @@
 import { Continue } from "../Buttons";
 
-export type FooterProps = { advance?: () => void };
+import type { Footer } from "./types";
 
-const StyledFooter = "flex justify-end pb-6";
+const StyledFooter = "flex justify-end pb-6 px-6";
 
-const Footer = ({ advance }: FooterProps) => {
+const Footer = ({ advance }: Footer) => {
   if (!advance) return null;
 
   return (
