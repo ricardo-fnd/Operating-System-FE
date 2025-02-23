@@ -29,9 +29,15 @@ export type UpdatePassword = {
   };
 };
 
-export type ForgotAccount = {
+export type SendForgotAccount = {
   email: string;
 };
+
+export type SendVerifyAccount = {
+  email: string;
+};
+
+export type VerifyAccount = { token: string };
 
 export type AuthBody = {
   account: string;

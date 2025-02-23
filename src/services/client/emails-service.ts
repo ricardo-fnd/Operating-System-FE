@@ -1,13 +1,16 @@
 import { useMutation, UseMutationOptions } from "@tanstack/react-query";
 
-import { sendForgotAccount } from "../api/emails-service";
+import { sendForgotAccount, sendVerifyAccount } from "../api/emails-service";
 import NotificationsService from "../notifications-service";
 
 import type { ApiError } from "../api/response-types";
-import type { ForgotAccount } from "../api/request-types";
+import type {
+  SendForgotAccount,
+  SendVerifyAccount,
+} from "../api/request-types";
 
 const useSendForgotAccount = (
-  props: UseMutationOptions<void, ApiError, ForgotAccount>
+  props: UseMutationOptions<void, ApiError, SendForgotAccount>
 ) => {
   return useMutation({
     mutationFn: sendForgotAccount,
@@ -16,8 +19,19 @@ const useSendForgotAccount = (
   });
 };
 
+const useSendVerifyAccount = (
+  props: UseMutationOptions<void, ApiError, SendVerifyAccount>
+) => {
+  return useMutation({
+    mutationFn: sendVerifyAccount,
+    onError: (error) => NotificationsService.error(error.detail),
+    ...props,
+  });
+};
+
 const EmailsService = {
   useSendForgotAccount,
+  useSendVerifyAccount,
 };
 
 export default EmailsService;

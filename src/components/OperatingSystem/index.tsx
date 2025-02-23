@@ -8,11 +8,19 @@ import Desktop from "./Desktop";
 import Dock from "./Dock";
 import WelcomeBanner from "./WelcomeBanner";
 
+import { UsersService } from "src/services/client";
+
+import type { User } from "src/types";
+
 const OperatingSystem = () => {
   const [welcome, setWelcome] = useState(true);
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  if (welcome) return <WelcomeScreen enter={() => setWelcome(false)} />;
+  const { data: user } = UsersService.useMe();
+
+  if (welcome) {
+    return <WelcomeScreen user={user} enter={() => setWelcome(false)} />;
+  }
 
   const closeMenu = () => setMenuOpen(false);
   const toggleMenu = () => setMenuOpen(!isMenuOpen);
@@ -23,7 +31,7 @@ const OperatingSystem = () => {
       {isMenuOpen && <AppsMenu closeMenu={closeMenu} />}
       <Desktop />
       <Dock toggleMenu={toggleMenu} isMenuOpen={isMenuOpen} />
-      <WelcomeBanner />
+      <WelcomeBanner user={user as User} />
     </>
   );
 };

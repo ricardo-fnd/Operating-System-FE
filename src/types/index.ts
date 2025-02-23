@@ -11,6 +11,7 @@ export type User = {
   id: number;
   name?: string;
   email?: string;
+  emailConfirmed: boolean;
   username?: string;
   avatar?: string;
   guest: boolean;
