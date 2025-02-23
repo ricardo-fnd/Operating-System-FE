@@ -12,7 +12,7 @@ const Enter = (props: ButtonProps) => {
 
   return (
     <Button {...props} className={StyledButton}>
-      {getLabel("user-login.enter")}
+      {getLabel("commons.enter")}
     </Button>
   );
 };

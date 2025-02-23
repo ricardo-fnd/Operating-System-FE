@@ -6,6 +6,7 @@ import type {
   GetUserByAccount,
   UpdatePassword,
   UpdateUser,
+  VerifyAccount,
 } from "./request-types";
 import type { User } from "src/types";
 import type { Options } from "./fetch";
@@ -58,4 +59,11 @@ const updatePassword = async ({ token, body }: UpdatePassword) => {
   await fetch(URL, { method: "PUT", body });
 };
 
-export { create, getByAccount, me, update, updatePassword };
+const verifyAccount = async ({ token }: VerifyAccount) => {
+  const URL = `${API_URL}/users/verify-account?token=${token}`;
+  const data = await fetch<User>(URL, { method: "PUT" });
+
+  return data as User;
+};
+
+export { create, getByAccount, me, update, updatePassword, verifyAccount };

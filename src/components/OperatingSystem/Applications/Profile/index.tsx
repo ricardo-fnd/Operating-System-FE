@@ -21,7 +21,7 @@ const Profile = () => {
 
   return (
     <div className={StyledContainer}>
-      <EditButton disabled={user.guest} onClick={toggleEdit} />
+      <EditButton user={user} onClick={toggleEdit} />
       <LeftDiv user={user} />
       <RightDiv stopEdit={toggleEdit} user={user} editing={editing} />
     </div>

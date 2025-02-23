@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import defaultAvatar from "public/user-profile/default-avatar.svg";
+import ConfirmEmail from "./ConfirmEmail";
 
 import { useLabels } from "src/services/client";
 
@@ -31,6 +32,9 @@ const LeftDiv = ({ user }: { user: User }) => {
         <p>{user.companyName ?? getLabel("user-profile.no-company")}</p>
         <p>{user.job ?? getLabel("user-profile.no-job")}</p>
       </div>
+      {!user.guest && !user.emailConfirmed && (
+        <ConfirmEmail email={user.email as string} />
+      )}
     </div>
   );
 };

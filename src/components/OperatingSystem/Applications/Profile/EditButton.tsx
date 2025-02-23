@@ -6,15 +6,23 @@ import { Tooltip } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 
-import type { ButtonProps } from "src/shared/components/Buttons";
+import type { EditButton } from "./types";
 
 const StyledButton = "absolute top-6 right-10 p-1.5 rounded-xl";
 const StyledText = "text-sm";
 
-const EditButton = ({ disabled, ...props }: ButtonProps) => {
+const EditButton = ({ user, ...props }: EditButton) => {
   const getLabel = useLabels();
 
   const id = "edit-btn";
+  const disabled = user.guest || !user.emailConfirmed;
+
+  let tooltipLabel = "";
+  if (user.guest) {
+    tooltipLabel = "user-profile.guest-edit";
+  } else if (!user.emailConfirmed) {
+    tooltipLabel = "user-profile.no-confirmation-edit";
+  }
 
   return (
     <>
@@ -34,7 +42,7 @@ const EditButton = ({ disabled, ...props }: ButtonProps) => {
           id={`${id}-tooltip`}
           anchorSelect={`#${id}`}
         >
-          <p className={StyledText}>{getLabel("user-profile.guest-edit")}</p>
+          <p className={StyledText}>{getLabel(tooltipLabel)}</p>
         </Tooltip>
       )}
     </>

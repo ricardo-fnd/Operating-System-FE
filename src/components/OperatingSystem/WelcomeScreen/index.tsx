@@ -8,23 +8,18 @@ import LoginForm from "./Forms/LoginForm";
 import RegisterForm from "./Forms/RegisterForm";
 import ChooseUser from "./ChooseUser";
 
-import { UsersService } from "src/services/client";
 import { QUERIES_KEYS } from "src/enums";
 
 import type { SetUser, WelcomePage } from "./types";
-import type { User } from "src/types";
 
 const StyledContainer =
   "flex items-center justify-center w-screen h-screen bg-gradient-to-t from-slate-900 to-slate-700";
 const StyledLanguageContainer = "fixed bottom-8 right-8";
 
-const WelcomePage = ({ enter }: Omit<WelcomePage, "language">) => {
+const WelcomePage = ({ user, enter }: Omit<WelcomePage, "language">) => {
   const queryClient = useQueryClient();
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
-
-  const { data } = UsersService.useMe();
-  const user = data as User;
 
   const login = () => setShowLogin(true);
   const register = () => setShowRegister(true);

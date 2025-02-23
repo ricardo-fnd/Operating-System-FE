@@ -1,11 +1,14 @@
 import type { User } from "src/types";
 import type { UpdateUser } from "src/services/api/request-types";
+import type { ButtonProps } from "src/shared/components/Buttons";
 
 type RightDiv = {
   stopEdit: () => void;
   editing: boolean;
   user: User;
 };
+
+type EditButton = ButtonProps & { user: User };
 
 type CompanyInfo = {
   editing: boolean;
@@ -32,4 +35,11 @@ type OnInfoChange = {
   value: string;
 };
 
-export type { RightDiv, CompanyInfo, PersonalInfo, Passwords, OnInfoChange };
+export type {
+  RightDiv,
+  EditButton,
+  CompanyInfo,
+  PersonalInfo,
+  Passwords,
+  OnInfoChange,
+};

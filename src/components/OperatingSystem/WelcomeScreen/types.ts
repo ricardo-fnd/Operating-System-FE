@@ -1,7 +1,7 @@
-import type { SUPPORTED_LANGUAGES } from "src/enums";
 import type { Guest, User } from "src/types";
 
 type WelcomePage = {
+  user?: User | null;
   enter: () => void;
 };
 
