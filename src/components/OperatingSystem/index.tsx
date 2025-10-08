@@ -12,11 +12,13 @@ import { UsersService } from "src/services/client";
 
 import type { User } from "src/types";
 
-const OperatingSystem = () => {
+type Props = { initialUser: User | null}
+
+const OperatingSystem = ({ initialUser }: Props) => {
   const [welcome, setWelcome] = useState(true);
   const [isMenuOpen, setMenuOpen] = useState(false);
 
-  const { data: user } = UsersService.useMe();
+  const { data: user } = UsersService.useMe({ initialData: initialUser  });
 
   if (welcome) {
     return <WelcomeScreen user={user} enter={() => setWelcome(false)} />;

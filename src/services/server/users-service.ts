@@ -11,7 +11,7 @@ const prefetchUser = async () => {
   const cookieStore = await cookies();
 
   const headers = { Cookie: cookieStore.toString() };
-  await queryClient.prefetchQuery({
+  return await queryClient.fetchQuery({
     queryKey: [QUERIES_KEYS.user],
     queryFn: () => me({ headers }),
   });

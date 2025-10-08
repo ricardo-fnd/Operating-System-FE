@@ -20,13 +20,13 @@ export default async function Home() {
     name: "shortcuts-positions",
   });
 
-  await UsersService.prefetchUser();
-
+  const user = await UsersService.prefetchUser();
+  
   return (
     <BaseProviders language={language} translations={translations}>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <AppsProvider data={shortcutsPositions}>
-          <OperatingSystem />
+          <OperatingSystem initialUser={user} />
         </AppsProvider>
       </HydrationBoundary>
     </BaseProviders>
