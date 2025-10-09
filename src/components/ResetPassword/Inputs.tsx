@@ -7,7 +7,6 @@ import { ValidationService } from "src/services";
 import type { Inputs } from "./types";
 
 const StyledInputs = "flex flex-col gap-6 w-full";
-const StyledInput = "[&_input]:!pr-10";
 
 const Inputs = ({
   submit,
@@ -17,11 +16,6 @@ const Inputs = ({
   setPasswordConfirmation,
 }: Inputs) => {
   const getLabel = useLabels();
-
-  const onInputChange = (password: string) => {
-    setPassword(password);
-    setPasswordConfirmation("");
-  };
 
   return (
     <div className={StyledInputs}>
@@ -33,9 +27,8 @@ const Inputs = ({
         type="password"
         value={password}
         icon={lockIcon}
-        className={StyledInput}
         onEnterKey={submit}
-        onChange={onInputChange}
+        onChange={setPassword}
         tooltipLabel="commons.password-tooltip"
         label={getLabel("commons.password")}
         placeholder={getLabel("commons.password-placeholder")}
@@ -48,7 +41,6 @@ const Inputs = ({
         name="confirm-password"
         value={passwordConfirmation}
         icon={lockIcon}
-        className={StyledInput}
         onEnterKey={submit}
         onChange={setPasswordConfirmation}
         label={getLabel("commons.confirm-password")}

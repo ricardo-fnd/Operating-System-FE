@@ -1,24 +1,35 @@
 import "server-only";
+import { redirect } from "next/navigation";
 
 import BaseProviders from "src/context";
+import Header from "src/components/WelcomeScreen/Header";
 import ResetPassword from "src/components/ResetPassword";
+import Footer from "src/components/WelcomeScreen/Footer";
 
 import { TranslationsService } from "src/services";
 import { getLanguage } from "src/services/server";
 
-const StyledContainer =
-  "flex items-center justify-center w-screen h-screen p-4 bg-gradient-to-t from-slate-900 to-slate-700";
+type Props = { searchParams: { token: string } };
 
-export default async function Page() {
+const StyledContainer = "flex flex-col w-screen h-screen bg-black relative";
+const StyledContent = "flex-1 flex items-center justify-center";
+
+export default async function Page({ searchParams }: Props) {
   const language = getLanguage();
   const translations = await TranslationsService.getTranslations({
     language,
   });
 
+  if (!searchParams.token) redirect("/");
+
   return (
     <BaseProviders language={language} translations={translations}>
       <div className={StyledContainer}>
-        <ResetPassword />
+        <Header />
+          <div className={StyledContent}>
+            <ResetPassword />
+          </div>
+        <Footer />
       </div>
     </BaseProviders>
   );

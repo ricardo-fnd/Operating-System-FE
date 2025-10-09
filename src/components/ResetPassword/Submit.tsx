@@ -4,8 +4,7 @@ import { useLabels } from "src/services/client";
 
 import type { ButtonProps } from "src/shared/components/Buttons";
 
-const StyledButton =
-  "px-10 border !bg-transparent !text-white transition-scale duration-300 hover:scale-105";
+const StyledButton = "px-12 py-2 w-full";
 
 const Submit = ({ disabled, ...props }: ButtonProps) => {
   const getLabel = useLabels();
