@@ -10,9 +10,10 @@ import type { User } from "src/types";
 import { useEffect } from "react";
 
 const StyledContainer =
-  "flex flex-col items-center gap-14 w-full max-w-md text-slate-200";
-const StyledDiv =
-  "flex flex-col gap-4 text-center [&_h1]:text-4xl [&_h1]:font-medium [&_h1]:text-white";
+  "flex flex-col items-center gap-10 w-full max-w-lg bg-zinc-900 border border-zinc-600 rounded-2xl p-10 shadow-2xl";
+const StyledHeader = "flex flex-col gap-3 w-full text-center";
+const StyledTitle = "text-white text-3xl font-semibold";
+const StyledDescription = "text-slate-200 leading-relaxed";
 const StyledButton =
   "px-10 transition-scale duration-300 hover:scale-105";
 
@@ -30,15 +31,15 @@ const VerifyEmail = ({ user }: { user: User }) => {
     user.name ?? user.username ?? (user.email?.split("@")[0] as string);
 
   return (
-    <div className={StyledContainer}>
-      <div className={StyledDiv}>
-        <h1>{getLabel("verify-email.title", { name })}</h1>
-        <p>{getLabel("verify-email.description")}</p>
+    <section className={StyledContainer}>
+      <div className={StyledHeader}>
+        <h1 className={StyledTitle}>{getLabel("verify-email.title", { name })}</h1>
+        <p className={StyledDescription}>{getLabel("verify-email.description")}</p>
       </div>
       <Button className={StyledButton} onClick={onClick}>
         <p>{getLabel("commons.enter")}</p>
       </Button>
-    </div>
+    </section>
   );
 };
 
