@@ -10,7 +10,6 @@ import { AuthService, useLabels } from "src/services/client";
 import type { PasswordInput } from "../types";
 
 const StyledContainer = "flex flex-col gap-4 items-center w-full";
-const StyledInput = "[&_input]:!pr-10";
 
 const PasswordInput = ({ account, setUser }: PasswordInput) => {
   const getLabel = useLabels();
@@ -34,7 +33,6 @@ const PasswordInput = ({ account, setUser }: PasswordInput) => {
         type="password"
         value={password}
         icon={lockIcon}
-        className={StyledInput}
         onEnterKey={login}
         onChange={setPassword}
         label={getLabel("commons.password")}

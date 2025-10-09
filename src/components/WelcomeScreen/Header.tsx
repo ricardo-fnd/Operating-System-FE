@@ -1,17 +1,21 @@
+'use client';
+import { useRouter } from "next/navigation";
+
 import { useLabels } from "src/services/client";
 
 const StyledHeader = "flex items-center justify-between h-[60px] min-h-[60px] px-6 border-b border-gray-800";
-const StyledLogo = "flex items-center gap-2 text-white font-semibold text-lg";
+const StyledLogo = "flex items-center gap-2 text-white font-semibold text-lg cursor-pointer";
 const StyledSystemInfo = "flex items-center gap-4 text-sm text-gray-400";
 const StyledStatus = "hidden items-center gap-2 xs:flex";
 const StyledStatusOnline = "text-green-500";
 
 const Header = () => {
   const getLabel = useLabels();
+  const router = useRouter();
 
   return (
     <header className={StyledHeader}>
-      <div className={StyledLogo}>
+      <div className={StyledLogo} onClick={() => router.push("/")}>
         <LogoIcon />
         <span>BrowserOS</span>
       </div>

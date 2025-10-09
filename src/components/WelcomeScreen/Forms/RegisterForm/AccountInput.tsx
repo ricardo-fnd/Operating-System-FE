@@ -8,7 +8,6 @@ import { ValidationService } from "src/services";
 import type { AccountInput } from "../types";
 
 const StyledContainer = "relative flex items-end gap-4 w-full";
-const StyledInput = "[&_input]:!pr-10";
 
 const AccountInput = ({ account, setAccount, next }: AccountInput) => {
   const getLabel = useLabels();
@@ -24,7 +23,6 @@ const AccountInput = ({ account, setAccount, next }: AccountInput) => {
         icon={accountIcon}
         onEnterKey={next}
         onChange={setAccount}
-        className={StyledInput}
         tooltipLabel="user-login.email-tooltip"
         label={getLabel("user-login.account")}
         style={{ "--autofill-text-color": "#e2e8f0" }}

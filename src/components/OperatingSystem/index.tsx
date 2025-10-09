@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import WelcomeScreen from "./WelcomeScreen";
+import WelcomeScreen from "../WelcomeScreen";
 import SearchBar from "./SearchBar";
 import AppsMenu from "./AppsMenu";
 import Desktop from "./Desktop";

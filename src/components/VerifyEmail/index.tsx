@@ -14,7 +14,7 @@ const StyledContainer =
 const StyledDiv =
   "flex flex-col gap-4 text-center [&_h1]:text-4xl [&_h1]:font-medium [&_h1]:text-white";
 const StyledButton =
-  "px-10 border !bg-transparent !text-white transition-scale duration-300 hover:scale-105";
+  "px-10 transition-scale duration-300 hover:scale-105";
 
 const VerifyEmail = ({ user }: { user: User }) => {
   const router = useRouter();

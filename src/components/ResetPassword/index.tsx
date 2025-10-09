@@ -10,9 +10,10 @@ import { useLabels, UsersService } from "src/services/client";
 import { NotificationsService } from "src/services";
 
 const StyledContainer =
-  "flex flex-col items-center gap-14 w-full max-w-md text-slate-200";
-const StyledDiv =
-  "flex flex-col gap-4 [&_h1]:text-center [&_h1]:text-4xl [&_h1]:font-medium [&_h1]:text-white";
+  "flex flex-col items-center gap-10 w-full max-w-lg bg-zinc-900 border border-zinc-600 rounded-2xl p-10 shadow-2xl";
+const StyledHeader = "flex flex-col gap-3 w-full text-center";
+const StyledTitle = "text-white text-3xl font-semibold";
+const StyledDescription = "text-slate-200 text-sm leading-relaxed";
 
 const ResetPassword = () => {
   const router = useRouter();
@@ -37,10 +38,10 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className={StyledContainer}>
-      <div className={StyledDiv}>
-        <h1>{getLabel("reset-password.title")}</h1>
-        <p>{getLabel("reset-password.description")}</p>
+    <section className={StyledContainer}>
+      <div className={StyledHeader}>
+        <h1 className={StyledTitle}>{getLabel("reset-password.title")}</h1>
+        <p className={StyledDescription}>{getLabel("reset-password.description")}</p>
       </div>
       <Inputs
         submit={submit}
@@ -54,7 +55,7 @@ const ResetPassword = () => {
         loading={isPending}
         disabled={password.length < 5 || password !== passwordConfirmation}
       />
-    </div>
+    </section>
   );
 };
 

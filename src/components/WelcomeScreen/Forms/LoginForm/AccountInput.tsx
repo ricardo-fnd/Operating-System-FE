@@ -9,7 +9,6 @@ import type { AccountInput } from "../types";
 
 const StyledContainer = "flex flex-col gap-4 w-full";
 const StyledDiv = "relative flex w-full";
-const StyledInput = "[&_input]:!pr-10";
 
 const AccountInput = ({ next, account, setAccount }: AccountInput) => {
   const getLabel = useLabels();
@@ -34,7 +33,6 @@ const AccountInput = ({ next, account, setAccount }: AccountInput) => {
           icon={accountIcon}
           onEnterKey={onClick}
           onChange={setAccount}
-          className={StyledInput}
           style={{ "--autofill-text-color": "#e2e8f0" }}
           label={getLabel("user-login.account")}
           placeholder={getLabel("user-login.account")}
