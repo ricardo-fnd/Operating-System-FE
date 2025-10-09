@@ -9,8 +9,8 @@ import Passwords from "./PasswordsInput";
 import type { RegisterForm } from "../types";
 
 const StyledForm =
-  "relative flex flex-col gap-6 items-center w-full max-w-md p-10 py-24 rounded-lg data-[account-step=true]:-mt-[136px]";
-const StyledDiv = "flex flex-col gap-1 items-center w-full";
+  "relative flex flex-col gap-6 items-center w-full max-w-md p-10 py-24 rounded-lg data-[account-step=true]:-mt-[124px] data-[account-step=false]:mt-[44px]";
+const StyledDiv = "flex flex-col gap-6 items-center w-full";
 
 const RegisterForm = ({ setUser, back }: RegisterForm) => {
   const [step, setStep] = useState(1);

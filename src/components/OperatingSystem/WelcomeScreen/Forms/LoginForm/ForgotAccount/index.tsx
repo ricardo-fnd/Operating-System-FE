@@ -4,12 +4,12 @@ import ForgotAccountModal from "./Modal";
 
 import { useLabels } from "src/services/client";
 
-import type { ForgotPassword } from "../../types";
+import type { ForgotAccount } from "../../types";
 
 const StyledParagraph =
-  "self-end text-sm text-slate-200 cursor-pointer hover:underline";
+  "self-end text-sm text-slate-200 cursor-pointer hover:underline hover:underline-offset-4";
 
-const ForgotPassword = ({ label }: ForgotPassword) => {
+const ForgotAccount = ({ label }: ForgotAccount) => {
   const getLabel = useLabels();
   const [showModal, setShowModal] = useState(false);
 
@@ -25,4 +25,4 @@ const ForgotPassword = ({ label }: ForgotPassword) => {
   );
 };
 
-export default ForgotPassword;
+export default ForgotAccount;

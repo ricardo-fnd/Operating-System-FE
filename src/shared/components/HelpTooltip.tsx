@@ -15,7 +15,7 @@ type Props = {
 
 const StyledHelp =
   "flex items-center justify-center min-w-5 min-h-1 rounded-full border text-xs cursor-default";
-const StyledTooltip = "max-w-md";
+const StyledTooltip = "max-w-md bg-zinc-950 border border-zinc-600 rounded-lg";
 
 const HelpTooltip = ({ id, className, labelKey }: Props) => {
   const getLabel = useLabels();
@@ -27,7 +27,7 @@ const HelpTooltip = ({ id, className, labelKey }: Props) => {
       <div id={id} className={style}>
         ?
       </div>
-      <Tooltip id={`#${id}`} anchorSelect={`#${id}`} className={StyledTooltip}>
+      <Tooltip noArrow id={`#${id}`} anchorSelect={`#${id}`} className={StyledTooltip}>
         <p>{getLabel(labelKey)}</p>
       </Tooltip>
     </>

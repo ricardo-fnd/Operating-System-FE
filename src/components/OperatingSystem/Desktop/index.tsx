@@ -4,7 +4,7 @@ import BaseApplication from "../Applications/Base";
 
 import { useApps } from "src/context";
 
-const StyledMain = "relative w-full h-full bg-[#131313]";
+const StyledMain = "relative w-full h-full bg-black";
 
 const Desktop = () => (
   <main className={StyledMain}>

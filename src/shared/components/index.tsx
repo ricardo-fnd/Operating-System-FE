@@ -6,3 +6,4 @@ import Modal from "./Modal";
 import HelpTooltip from "./HelpTooltip";
 
 export { Modal, Input, Loading, Tooltip, LanguageButton, HelpTooltip };
+export * from "./Icons";

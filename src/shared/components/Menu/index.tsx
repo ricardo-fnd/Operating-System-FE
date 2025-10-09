@@ -13,7 +13,7 @@ type Props = MenuHTMLAttributes<HTMLMenuElement> & {
 };
 
 const StyledMenu =
-  "absolute bottom-8 right-0 h-fit overflow-hidden text-sm bg-zinc-800 text-gray-200 rounded-md";
+  "absolute bottom-8 right-0 h-fit overflow-hidden text-sm bg-black/75 backdrop-blur-sm border border-zinc-600 shadow-xl text-gray-200 rounded-lg";
 
 const Menu = ({ children, close, className, options, ...props }: Props) => {
   const ref = useRef<HTMLMenuElement>(null);

@@ -8,8 +8,7 @@ import { ValidationService } from "src/services";
 import type { AccountInput } from "../types";
 
 const StyledContainer = "relative flex items-end gap-4 w-full";
-const StyledInput =
-  "[&_label]:text-slate-200 [&_input]:text-slate-200 text-slate-200 [&_input]:!pr-10";
+const StyledInput = "[&_input]:!pr-10";
 
 const AccountInput = ({ account, setAccount, next }: AccountInput) => {
   const getLabel = useLabels();
@@ -19,6 +18,7 @@ const AccountInput = ({ account, setAccount, next }: AccountInput) => {
       <Input
         required
         autoFocus
+        theme="dark"
         value={account}
         name="account"
         icon={accountIcon}

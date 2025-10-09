@@ -11,8 +11,7 @@ import { NotificationsService, ValidationService } from "src/services";
 import type { PasswordInput } from "../types";
 
 const StyledContainer = "flex flex-col items-center gap-6 w-full";
-const StyledInput =
-  "[&_label]:text-slate-200 [&_input]:text-slate-200 text-slate-200 [&_input]:!pr-10";
+const StyledInput = "[&_input]:!pr-10";
 
 const PasswordInput = ({ account, setUser }: PasswordInput) => {
   const getLabel = useLabels();
@@ -34,23 +33,19 @@ const PasswordInput = ({ account, setUser }: PasswordInput) => {
     return NotificationsService.error(getLabel("commons.password-mismatch"));
   };
 
-  const onPasswordChange = (password: string) => {
-    setPassword(password);
-    setPasswordConfirmation("");
-  };
-
   return (
     <div className={StyledContainer}>
       <Input
         required
         autoFocus
+        theme="dark"
         name="password"
         type="password"
         value={password}
         icon={lockIcon}
         className={StyledInput}
         onEnterKey={login}
-        onChange={onPasswordChange}
+        onChange={setPassword}
         tooltipLabel="commons.password-tooltip"
         label={getLabel("commons.password")}
         placeholder={getLabel("commons.password-placeholder")}
@@ -58,8 +53,9 @@ const PasswordInput = ({ account, setUser }: PasswordInput) => {
       />
       <Input
         required
-        name="confirm-password"
+        theme="dark"
         type="password"
+        name="confirm-password"
         value={passwordConfirmation}
         icon={lockIcon}
         className={StyledInput}

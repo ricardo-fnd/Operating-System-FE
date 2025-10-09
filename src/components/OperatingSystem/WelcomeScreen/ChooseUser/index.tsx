@@ -1,14 +1,16 @@
-import GuestAccount from "./GuestAccount";
-import UserAccount from "./UserAccount";
-import Register from "./Register";
+import WelcomeTitle from "./WelcomeTitle";
+import Guest from "./Guest";
+import LoginCard from "./Cards/LoginCard";
+import RegisterCard from "./Cards/RegisterCard";
 
 import { useLabels } from "src/services/client";
 import { useSearchParams } from "src/hooks";
 
 import type { ChooseUser } from "../types";
 
-const StyledContainer = "flex flex-col items-center";
-const StyledUsers = "flex items-center justify-center gap-6";
+const StyledContainer = "flex flex-col items-center justify-center px-4 -mt-24";
+const StyledUsersContainer = "flex flex-col gap-12 items-center w-full";
+const StyledCardsContainer = "flex flex-col gap-4 w-full max-w-lg";
 
 const ChooseUser = ({ setUser, showRegister, showLogin }: ChooseUser) => {
   const getLabel = useLabels();
@@ -21,11 +23,14 @@ const ChooseUser = ({ setUser, showRegister, showLogin }: ChooseUser) => {
 
   return (
     <div className={StyledContainer}>
-      <div className={StyledUsers}>
-        <GuestAccount onClick={enterAsGuest} />
-        <UserAccount onClick={showLogin} />
+      <WelcomeTitle />
+      <div className={StyledUsersContainer}>
+        <div className={StyledCardsContainer}>
+          <LoginCard onClick={showLogin} />
+          <RegisterCard onClick={showRegister} />
+        </div>
+        <Guest onClick={enterAsGuest} />
       </div>
-      <Register onClick={showRegister} />
     </div>
   );
 };

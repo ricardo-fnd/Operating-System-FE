@@ -2,19 +2,19 @@
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 
-import { LanguageButton } from "src/shared/components";
+import Header from "./Header";
 import WelcomeBack from "./WelcomeBack";
 import LoginForm from "./Forms/LoginForm";
 import RegisterForm from "./Forms/RegisterForm";
 import ChooseUser from "./ChooseUser";
+import Footer from "./Footer";
 
 import { QUERIES_KEYS } from "src/enums";
 
 import type { SetUser, WelcomePage } from "./types";
 
-const StyledContainer =
-  "flex items-center justify-center w-screen h-screen bg-gradient-to-t from-slate-900 to-slate-700";
-const StyledLanguageContainer = "fixed bottom-8 right-8";
+const StyledContainer = "flex flex-col w-screen h-screen bg-black relative";
+const StyledContent = "flex-1 flex items-center justify-center";
 
 const WelcomePage = ({ user, enter }: Omit<WelcomePage, "language">) => {
   const queryClient = useQueryClient();
@@ -45,10 +45,11 @@ const WelcomePage = ({ user, enter }: Omit<WelcomePage, "language">) => {
 
 const Container = (props: WelcomePage) => (
   <div className={StyledContainer}>
-    <WelcomePage {...props} />
-    <div className={StyledLanguageContainer}>
-      <LanguageButton />
+    <Header />
+    <div className={StyledContent}>
+      <WelcomePage {...props} />
     </div>
+    <Footer />
   </div>
 );
 
