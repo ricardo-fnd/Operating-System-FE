@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Button } from "../Buttons";
 import LanguageMenu from "./Menu";
 
 import { LANGUAGES } from "src/enums";
@@ -11,9 +10,9 @@ import { useTranslations } from "src/context";
 import type { LanguageButtonProps } from "./types";
 
 const StyledContainer = "relative";
-const StyledButton = "py-1 px-1.5 text-xs rounded-lg";
+const StyledButton = "text-sm text-white";
 
-const LanguageButton = ({ color, className }: LanguageButtonProps) => {
+const LanguageButton = ({ className }: LanguageButtonProps) => {
   const { language } = useTranslations();
   const [showMenu, setShowMenu] = useState(false);
   const [currentLang, setCurrentLang] = useState(
@@ -27,15 +26,14 @@ const LanguageButton = ({ color, className }: LanguageButtonProps) => {
 
   return (
     <div className={StyledContainer}>
-      <Button
-        color={color}
+      <button
         id="language-button"
         className={style}
         onClick={toggleMenu}
         data-menu-open={showMenu}
       >
-        {currentLang.abbv}
-      </Button>
+        <span>{currentLang.abbv}</span>
+      </button>
       {showMenu && (
         <LanguageMenu
           close={closeMenu}

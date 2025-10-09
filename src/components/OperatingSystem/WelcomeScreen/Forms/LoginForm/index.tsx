@@ -9,8 +9,8 @@ import Password from "./PasswordInput";
 import type { LoginForm } from "../types";
 
 const StyledForm =
-  "relative flex flex-col gap-6 items-center w-full max-w-md p-10 py-24 rounded-lg data-[account-step=true]:-mt-[122px]";
-const StyledDiv = "flex flex-col items-center w-full";
+  "relative flex flex-col gap-6 items-center w-full max-w-md p-10 py-24 rounded-lg data-[account-step=true]:-mt-[88px] data-[account-step=false]:mt-[2px]";
+const StyledDiv = "flex flex-col items-center gap-6 w-full";
 
 const LoginForm = ({ setUser, back }: LoginForm) => {
   const [step, setStep] = useState(1);

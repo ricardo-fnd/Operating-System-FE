@@ -8,8 +8,8 @@ import { TranslationsService } from "src/services";
 
 import type { LanguageMenuProps } from "./types";
 
-const StyledMenuOption =
-  "gap-2 data-[active=true]:bg-zinc-600 [&_img]:max-w-none";
+const StyledMenu = "bottom-10";
+const StyledMenuOption = "gap-2 px-3 py-1.5 data-[active=true]:bg-zinc-800 hover:bg-zinc-800 transition-colors [&_img]:max-w-none";
 
 const LanguageMenu = ({
   close,
@@ -34,7 +34,7 @@ const LanguageMenu = ({
   const options = { ignore: ["language-button"] };
 
   return (
-    <Menu close={close} options={options}>
+    <Menu close={close} options={options} className={StyledMenu}>
       {LANGUAGES.map(({ label, value, flag }) => (
         <MenuOption
           key={value}

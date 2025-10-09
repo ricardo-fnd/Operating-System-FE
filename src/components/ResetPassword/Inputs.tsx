@@ -7,8 +7,7 @@ import { ValidationService } from "src/services";
 import type { Inputs } from "./types";
 
 const StyledInputs = "flex flex-col gap-6 w-full";
-const StyledInput =
-  "[&_label]:text-slate-200 [&_input]:text-slate-200 text-slate-200 [&_input]:!pr-10";
+const StyledInput = "[&_input]:!pr-10";
 
 const Inputs = ({
   submit,
@@ -29,6 +28,7 @@ const Inputs = ({
       <Input
         required
         autoFocus
+        theme="dark"
         name="password"
         type="password"
         value={password}
@@ -43,8 +43,9 @@ const Inputs = ({
       />
       <Input
         required
-        name="confirm-password"
+        theme="dark"
         type="password"
+        name="confirm-password"
         value={passwordConfirmation}
         icon={lockIcon}
         className={StyledInput}

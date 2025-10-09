@@ -13,9 +13,11 @@ const StyledContainer =
 const StyledInput = `w-full p-3 text-sm border-b-2 border-gray-300 text-gray-800 bg-transparent disabled:cursor-not-allowed
   [&[type="password"]]:pr-8
   data-[has-icon=true]:p-4 data-[has-icon=true]:pl-9
-  data-[is-valid=true]:border-green-400 data-[is-valid=false]:border-red-400`;
+  data-[is-valid=true]:border-green-400 data-[is-valid=false]:border-red-400
+  data-[theme="dark"]:border-gray-400 data-[theme="dark"]:text-slate-200 data-[theme="dark"]:placeholder:text-gray-400`;
 
 const BaseInput = ({
+  theme,
   name,
   icon,
   type,
@@ -49,6 +51,7 @@ const BaseInput = ({
         <Label
           name={name}
           label={label}
+          theme={theme}
           hasIcon={!!icon}
           tooltipLabel={tooltipLabel}
         />
@@ -59,6 +62,7 @@ const BaseInput = ({
         value={value}
         disabled={disabled}
         onKeyDown={onKeyDown}
+        data-theme={theme}
         className={StyledInput}
         data-has-icon={!!icon}
         data-is-valid={isValid}

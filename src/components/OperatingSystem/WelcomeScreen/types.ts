@@ -26,4 +26,16 @@ type Submit = {
   disabled: boolean;
 };
 
-export type { WelcomePage, WelcomeBack, SetUser, ChooseUser, Submit };
+type GuestCard = {
+  onClick: () => void;
+};
+
+type LoginCard = {
+  onClick: () => void;
+};
+
+type RegisterCard = {
+  onClick: () => void;
+};
+
+export type { WelcomePage, WelcomeBack, SetUser, ChooseUser, Submit, GuestCard, LoginCard, RegisterCard };

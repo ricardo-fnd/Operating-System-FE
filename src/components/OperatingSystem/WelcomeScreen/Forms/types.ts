@@ -21,7 +21,7 @@ type PasswordInput = {
   setUser: (user: User) => void;
 };
 
-type ForgotPassword = {
+type ForgotAccount = {
   label: string;
 };
 
@@ -35,6 +35,6 @@ export type {
   RegisterForm,
   AccountInput,
   PasswordInput,
-  ForgotPassword,
+  ForgotAccount,
   ForgotPasswordModal,
 };

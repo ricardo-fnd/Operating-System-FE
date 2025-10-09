@@ -1,16 +1,15 @@
 import { Input } from "src/shared/components";
 import accountIcon from "public/user-login/username.svg";
 import Submit from "../Submit";
-import ForgotUsername from "./ForgotAccount";
+import ForgotAccount from "./ForgotAccount";
 
 import { useLabels, UsersService } from "src/services/client";
 
 import type { AccountInput } from "../types";
 
-const StyledContainer = "flex flex-col gap-2 w-full";
+const StyledContainer = "flex flex-col gap-4 w-full";
 const StyledDiv = "relative flex w-full";
-const StyledInput =
-  "[&_label]:text-slate-200 [&_input]:text-slate-200 [&_input]:!pr-10";
+const StyledInput = "[&_input]:!pr-10";
 
 const AccountInput = ({ next, account, setAccount }: AccountInput) => {
   const getLabel = useLabels();
@@ -29,6 +28,7 @@ const AccountInput = ({ next, account, setAccount }: AccountInput) => {
         <Input
           required
           autoFocus
+          theme="dark"
           value={account}
           name="account"
           icon={accountIcon}
@@ -41,7 +41,7 @@ const AccountInput = ({ next, account, setAccount }: AccountInput) => {
         />
         <Submit onClick={onClick} disabled={!account} loading={isPending} />
       </div>
-      <ForgotUsername label="user-login.forgot-username" />
+      <ForgotAccount label="user-login.forgot-username" />
     </div>
   );
 };

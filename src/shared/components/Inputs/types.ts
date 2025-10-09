@@ -4,6 +4,7 @@ type InputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   "onChange" | "style"
 > & {
+  theme?: "light" | "dark";
   onChange: (e: string) => void;
   name: string;
   onEnterKey?: (value: InputHTMLAttributes<HTMLInputElement>["value"]) => void;
@@ -24,6 +25,7 @@ type BaseCheckbox = Omit<InputProps, "onChange"> & {
 };
 
 type LabelProps = {
+  theme?: "light" | "dark";
   label?: string;
   name: string;
   hasIcon: boolean;
