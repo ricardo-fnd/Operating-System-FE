@@ -24,7 +24,7 @@ const Header = () => {
           <span>{getLabel("welcome-screen.header.system-status")}:</span>
           <span className={StyledStatusOnline}>Online</span>
         </div>
-        <span>{getLabel("welcome-screen.header.version", { version: "1.0.0" })}</span>
+        <span>{getLabel("project.version", { version: "1.0.0" })}</span>
       </div>
     </header>
   );
