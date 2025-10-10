@@ -8,9 +8,9 @@ import type { SearchBarResults } from "./types";
 
 // SEARCH_BAR_INPUT_HEIGHT = 64px
 const StyledResultsContainer =
-  "absolute top-[64px] left-0 flex flex-col w-full h-[30vh] p-2 overflow-auto rounded-b-lg bg-neutral-900/[0.9] border-[1px] border-neutral-700 z-10 md:show-y-scrollbar";
+  "absolute top-[64px] left-0 flex flex-col w-full h-[30vh] overflow-auto rounded-b-lg bg-zinc-900 border border-zinc-600 text-slate-200 z-10 md:show-y-scrollbar";
 const StyledResult =
-  "w-full py-2 px-3 cursor-pointer text-white text-sm rounded-lg data-[selected=true]:bg-neutral-700";
+  "w-full p-3 px-5 cursor-pointer text-white data-[selected=true]:bg-neutral-700";
 
 const Results = ({ closeSearch, results }: SearchBarResults) => {
   const getLabel = useLabels();
@@ -20,7 +20,7 @@ const Results = ({ closeSearch, results }: SearchBarResults) => {
   });
 
   return (
-    <div className={StyledResultsContainer}>
+    <div id="search-bar-results" className={StyledResultsContainer}>
       {results.map((app, index) => (
         <p
           key={app.id}

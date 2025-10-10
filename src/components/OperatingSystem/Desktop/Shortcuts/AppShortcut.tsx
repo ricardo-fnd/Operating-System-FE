@@ -8,7 +8,7 @@ import { handleResize, saveAppShortcutPosition } from "./utils";
 import type { AppShortcut, DraggableData, DraggableEvent } from "../types";
 
 const StyledShortcut =
-  "flex flex-col items-center w-fit p-2 pt-1 text-white text-xs rounded-md cursor-pointer hover:bg-white/25 transition-colors";
+  "flex flex-col items-center w-fit p-2 pt-1 text-white text-xs rounded-md cursor-pointer hover:bg-zinc-800 transition-colors";
 
 const AppShortcut = ({ app }: AppShortcut) => {
   const getLabel = useLabels();

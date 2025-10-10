@@ -5,7 +5,7 @@ import { AppsService } from "src/services";
 import type { Application } from "src/types";
 
 const StyledShortcut =
-  "flex flex-col items-center justify-center w-32 h-32 bg-[#ffffff5b] cursor-pointer hover:bg-[#ffffff80]";
+  "flex flex-col items-center justify-center w-32 h-32 cursor-pointer hover:bg-zinc-700";
 
 const AppShortcut = ({ app }: { app: Application }) => {
   const getLabel = useLabels();

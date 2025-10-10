@@ -7,7 +7,7 @@ import type { GuestCard } from "../types";
 
 const StyledContainer = "flex items-center gap-2 cursor-pointer group";
 const StyledText = "text-gray-300 group-hover:text-white transition-colors duration-200 text-sm underline underline-offset-4 decoration-gray-500 group-hover:decoration-gray-300";
-const StyledTooltip = "flex flex-col gap-3 items-center max-w-80 px-6 text-center bg-zinc-950 border border-zinc-600 rounded-lg";
+const StyledTooltip = "flex flex-col gap-3 items-center max-w-80 px-6 text-center";
 
 const Guest = ({ onClick }: GuestCard) => {
   const getLabel = useLabels();

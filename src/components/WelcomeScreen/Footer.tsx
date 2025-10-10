@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <footer className={StyledFooter}>
       <span>{getLabel("welcome-screen.copyright")}</span>
-      <LanguageButton color="zinc" />
+      <LanguageButton />
     </footer>
   );
 };
