@@ -1,6 +1,8 @@
 'use client';
 import { useRouter } from "next/navigation";
 
+import { GitHub } from "src/shared/components";
+
 import { useLabels } from "src/services/client";
 
 const StyledHeader = "flex items-center justify-between h-[60px] min-h-[60px] px-6 border-b border-gray-800";
@@ -24,7 +26,7 @@ const Header = () => {
           <span>{getLabel("welcome-screen.header.system-status")}:</span>
           <span className={StyledStatusOnline}>Online</span>
         </div>
-        <span>{getLabel("project.version", { version: "1.0.0" })}</span>
+        <GitHub />
       </div>
     </header>
   );

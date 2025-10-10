@@ -1,5 +1,7 @@
 import Modal from "..";
 
+import { GitHub } from "src/shared/components";
+
 import { useLabels } from "src/services/client";
 
 type Props = { close: () => void; };
@@ -18,7 +20,7 @@ const AboutProjectModal = ({ close }: Props) => {
       <p>Email: <span className={StyledContact}>ricardofnd.dev@gmail.com</span></p>
       <footer className={StyledFooter}>
         <span>{getLabel("welcome-screen.copyright")}</span>
-        <span>{getLabel("project.version", { version: "1.0.0" })}</span>
+        <GitHub />
       </footer>
     </Modal>
   );
