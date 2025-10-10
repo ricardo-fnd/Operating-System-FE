@@ -15,7 +15,7 @@ const StyledButton = `relative flex justify-center items-center gap-1.5 w-fit px
   data-[color="blue"]:bg-blue-600 data-[color="blue"]:border-white/25 data-[color="blue"]:hover:bg-blue-700 data-[color="blue"]:disabled:hover:bg-blue-600 
   data-[color="orange"]:bg-orange-400 data-[color="orange"]:hover:bg-orange-500 data-[color="orange"]:disabled:hover:bg-orange-400
   data-[color="red"]:bg-red-400 data-[color="red"]:hover:bg-red-500 data-[color="red"]:disabled:hover:bg-red-400
-  data-[color="zinc"]:bg-zinc-900/75 data-[color="zinc"]:border-zinc-600 data-[color="zinc"]:disabled:hover:bg-zinc-900/75`;
+  data-[color="zinc"]:bg-zinc-900/75 data-[color="zinc"]:hover:bg-zinc-800 data-[color="zinc"]:border-zinc-600 data-[color="zinc"]:disabled:hover:bg-zinc-900/75`;
 const StyledLoading =
   "absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 fill-white";
 

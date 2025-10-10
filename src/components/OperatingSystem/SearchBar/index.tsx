@@ -9,7 +9,7 @@ import { useLabels } from "src/services/client";
 import type { Application } from "src/types";
 
 const StyledOverlay =
-  "absolute top-0 left-0 flex items-center justify-center w-screen h-screen bg-black/75 z-50";
+  "absolute top-0 left-0 flex items-center justify-center w-screen h-screen bg-black/75 backdrop-blur-[2px] z-50";
 const StyledSearchBar =
   "absolute top-[20%] -translate-y-[20%] left-1/2 -translate-x-1/2 flex flex-col w-10/12 max-w-[660px] md:w-1/2";
 
@@ -23,7 +23,7 @@ const SearchBar = () => {
   return (
     <div className={StyledOverlay}>
       <div className={StyledSearchBar}>
-        <SearchBarInput onChange={setQuery} hasResults={hasResults} />
+        <SearchBarInput close={close} onChange={setQuery} hasResults={hasResults} />
         {hasResults && <Results results={results} closeSearch={close} />}
       </div>
     </div>

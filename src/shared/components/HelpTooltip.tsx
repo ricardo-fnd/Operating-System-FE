@@ -15,7 +15,7 @@ type Props = {
 
 const StyledHelp =
   "flex items-center justify-center min-w-5 min-h-1 rounded-full border text-xs cursor-default";
-const StyledTooltip = "max-w-md bg-zinc-950 border border-zinc-600 rounded-lg";
+const StyledTooltip = "max-w-md";
 
 const HelpTooltip = ({ id, className, labelKey }: Props) => {
   const getLabel = useLabels();

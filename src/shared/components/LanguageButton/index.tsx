@@ -10,7 +10,7 @@ import { useTranslations } from "src/context";
 import type { LanguageButtonProps } from "./types";
 
 const StyledContainer = "relative";
-const StyledButton = "text-sm text-white";
+const StyledButton = "text-sm text-white min-w-[20px]";
 
 const LanguageButton = ({ className }: LanguageButtonProps) => {
   const { language } = useTranslations();

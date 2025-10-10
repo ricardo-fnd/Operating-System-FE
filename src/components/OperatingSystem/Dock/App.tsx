@@ -1,4 +1,4 @@
-import { Tooltip } from "react-tooltip";
+import { Tooltip } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 import { AppsService } from "src/services";
@@ -6,8 +6,7 @@ import { AppsService } from "src/services";
 import type { Application } from "src/types";
 
 const StyledApp =
-  "flex items-center h-full px-3 cursor-pointer bg-white/50 data-[minimized=true]:bg-white/25 hover:data-[minimized=true]:bg-white/50";
-const StyledTooltip = "!bg-[#212121]";
+  "flex items-center h-full px-3 cursor-pointer bg-zinc-600 data-[minimized=true]:bg-zinc-700 hover:data-[minimized=true]:bg-zinc-600";
 
 const App = ({ app }: { app: Application }) => {
   const getLabel = useLabels();
@@ -30,7 +29,6 @@ const App = ({ app }: { app: Application }) => {
         noArrow
         place="top"
         delayShow={300}
-        className={StyledTooltip}
         anchorSelect={`#${tooltipId}`}
       >
         <p>{getLabel(app.name)}</p>

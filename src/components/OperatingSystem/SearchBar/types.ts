@@ -1,6 +1,7 @@
 import type { Application } from "src/types";
 
 type SearchBarInput = {
+  close: () => void;
   onChange: (query: string) => void;
   hasResults: boolean;
 };
