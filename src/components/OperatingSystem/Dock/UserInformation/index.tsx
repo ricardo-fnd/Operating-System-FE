@@ -11,7 +11,7 @@ const StyledContainer = "relative";
 const StyledButton = "py-0 px-2.5 group data-[menu-open=true]:bg-zinc-800";
 const StyledOnline =
   "min-w-1.5 min-h-1.5 bg-green-500 rounded-full group-hover:bg-green-400 data-[menu-open=true]:bg-green-400";
-const StyledUsername = "text-sm text-nowrap truncate";
+const StyledUsername = "text-sm text-nowrap truncate max-w-[8ch]";
 
 const UserInformation = () => {
   const [showMenu, setShowMenu] = useState(false);

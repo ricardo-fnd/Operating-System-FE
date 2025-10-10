@@ -1,4 +1,5 @@
 import { Button } from "../Buttons";
+
 import type { Close } from "./types";
 
 const StyledCloseButton = `absolute top-6 right-8 w-5 h-5 p-0 border-0`;
