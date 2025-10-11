@@ -1,13 +1,13 @@
 "use client";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
 
-import { Button } from "src/shared/components/Buttons";
+import { Button } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 
 import type { User } from "src/types";
-import { useEffect } from "react";
 
 const StyledContainer =
   "flex flex-col items-center gap-10 w-full max-w-lg bg-zinc-900 border border-zinc-600 rounded-2xl p-10 shadow-2xl";

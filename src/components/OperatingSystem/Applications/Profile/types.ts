@@ -1,6 +1,6 @@
 import type { User } from "src/types";
 import type { UpdateUser } from "src/services/api/request-types";
-import type { ButtonProps } from "src/shared/components/Buttons";
+import type { ButtonProps } from "src/shared/components";
 
 type RightDiv = {
   stopEdit: () => void;

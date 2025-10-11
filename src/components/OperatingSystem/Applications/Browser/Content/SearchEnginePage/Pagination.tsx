@@ -1,4 +1,4 @@
-import { FcNext, FcPrevious } from "react-icons/fc";
+import { ForwardIcon,BackwardIcon } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 
@@ -23,7 +23,7 @@ const Pagination = ({
         disabled={page === 1 || isFetching}
         onClick={() => setPage(page - 1)}
       >
-        <FcPrevious />
+        <BackwardIcon />
         <p>{getLabel("apps.browser.engine-results.previous-page")}</p>
       </button>
       <p>{getLabel("apps.browser.engine-results.page", { page })}</p>
@@ -33,7 +33,7 @@ const Pagination = ({
         onClick={() => setPage(page + 1)}
       >
         <p>{getLabel("apps.browser.engine-results.next-page")}</p>
-        <FcNext />
+        <ForwardIcon />
       </button>
     </div>
   );

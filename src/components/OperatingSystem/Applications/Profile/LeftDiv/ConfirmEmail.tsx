@@ -1,4 +1,4 @@
-import { Button } from "src/shared/components/Buttons";
+import { Button } from "src/shared/components";
 
 import { EmailsService, useLabels } from "src/services/client";
 import { NotificationsService } from "src/services";

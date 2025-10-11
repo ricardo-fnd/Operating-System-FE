@@ -1,4 +1,4 @@
-import { IoMdArrowRoundBack } from "react-icons/io";
+import { BackwardIcon } from "src/shared/components";
 
 import { useHistory, useUpdateHistory } from "src/context";
 
@@ -22,7 +22,7 @@ const BackButton = () => {
 
   return (
     <button onClick={back} className={StyledButton} disabled={prevIndex < 0}>
-      <IoMdArrowRoundBack />
+      <BackwardIcon />
     </button>
   );
 };

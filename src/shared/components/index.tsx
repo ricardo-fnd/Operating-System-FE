@@ -9,3 +9,4 @@ import GitHub from "./GitHub";
 
 export { Modal, AboutProjectModal, Input, Loading, Tooltip, LanguageButton, HelpTooltip, GitHub };
 export * from "./Icons";
+export * from "./Buttons";

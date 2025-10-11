@@ -1,20 +1,22 @@
-import { FaRegWindowMinimize } from "react-icons/fa";
+import { Button } from "src/shared/components";
 
 import { AppsService } from "src/services";
 
 import type { Application } from "src/types";
 
-const StyledMinimize = "cursor-pointer mt-0.5";
+type Props = { app: Application };
 
-const Minimize = ({ app }: { app: Application }) => {
+const StyledMinimizeButton = `p-0 border-0`;
+
+const Minimize = ({ app }: Props) => {
   const minimize = AppsService.useMinimize();
 
   return (
-    <FaRegWindowMinimize
-      size="16"
-      className={StyledMinimize}
-      onClick={() => minimize(app)}
-    />
+    <Button color="yellow" className={StyledMinimizeButton} onClick={() => minimize(app)}>
+      <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 24 24">
+        <path d="M19 13H5v-2h14v2z"/>
+      </svg>
+    </Button>
   );
 };
 

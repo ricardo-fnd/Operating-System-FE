@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-import { Input, Modal } from "src/shared/components";
+import { Input, Modal, Button } from "src/shared/components";
 import emailIcon from "public/email.svg";
-import { Button } from "src/shared/components/Buttons";
 
 import { NotificationsService, ValidationService } from "src/services";
 import { EmailsService, useLabels } from "src/services/client";

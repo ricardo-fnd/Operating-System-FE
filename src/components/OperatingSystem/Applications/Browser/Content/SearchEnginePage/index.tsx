@@ -9,9 +9,9 @@ import { GoogleService } from "src/services/client";
 
 import type { SearchEngine } from "../../types";
 
-// TOPBAR_HEIGHT = 64px
+// TOPBAR_HEIGHT = 60px
 const StyledPage =
-  "flex flex-col gap-10 w-full h-[calc(100%-64px)] p-4 pt-6 show-y-scrollbar";
+  "flex flex-col gap-10 w-full h-[calc(100%-60px)] p-4 pt-6 show-y-scrollbar";
 const StyledResults = "flex flex-col gap-5";
 
 const SearchEnginePage = ({ setLoading, query }: SearchEngine) => {

@@ -2,7 +2,7 @@ import NavigationButtons from "./NavigationButtons";
 import Settings from "./Settings";
 import UrlBar from "./UrlBar";
 
-const StyledTopBar = "flex gap-3 items-center justify-between py-3 px-6 shadow";
+const StyledTopBar = "flex gap-3 items-center justify-between py-2.5 px-6 shadow";
 
 const TopBar = ({ loading }: { loading: boolean }) => (
   <div className={StyledTopBar}>

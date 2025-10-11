@@ -1,8 +1,8 @@
-import { Button } from "src/shared/components/Buttons";
+import { Button } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 
-import type { ButtonProps } from "src/shared/components/Buttons";
+import type { ButtonProps } from "src/shared/components";
 
 const StyledButton = "px-12 py-2 w-full";
 
