@@ -1,7 +1,6 @@
 import { useRef } from "react";
 
-import { Input } from "src/shared/components";
-import { FaMagnifyingGlass } from "react-icons/fa6";
+import { Input, MagnifyingGlassIcon } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 import { useOnClickOutside } from "src/hooks";
@@ -11,7 +10,7 @@ import type { SearchBarInput } from "./types";
 const StyledInputContainer = "relative w-full";
 const StyledInput =
   "[&>input]:h-16 [&>input]:pr-4 [&>input]:pl-14 [&>input]:rounded-lg [&>input]:text-2xl [&>input]:text-slate-200 [&>input]:bg-zinc-900 [&>input]:border [&>input]:border-zinc-600 data-[results=true]:[&>input]:rounded-b-none";
-const StyledIcon = "absolute top-1/2 -translate-y-1/2 left-4 text-white";
+const StyledIcon = "absolute top-1/2 -translate-y-1/2 left-4";
 
 const SearchBarInput = ({ close, onChange, hasResults }: SearchBarInput) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -31,7 +30,7 @@ const SearchBarInput = ({ close, onChange, hasResults }: SearchBarInput) => {
         data-results={hasResults}
         placeholder={getLabel("search-bar.label")}
       />
-      <FaMagnifyingGlass size={24} className={StyledIcon} />
+      <MagnifyingGlassIcon className={StyledIcon} width={28} height={28} color="white" />
     </div>
   );
 };

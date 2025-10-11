@@ -1,5 +1,4 @@
-import { Loading } from "src/shared/components";
-import { IoMdArrowRoundForward } from "react-icons/io";
+import { Loading, ForwardIcon } from "src/shared/components";
 
 import type { EnterUrl } from "../../types";
 
@@ -11,7 +10,7 @@ const Enter = ({ search, loading }: EnterUrl) => (
     {loading ? (
       <Loading className={StyledLoading} />
     ) : (
-      <IoMdArrowRoundForward onClick={search} />
+      <ForwardIcon onClick={search} />
     )}
   </div>
 );

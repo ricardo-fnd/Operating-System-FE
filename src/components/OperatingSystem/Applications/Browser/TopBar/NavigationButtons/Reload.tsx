@@ -1,4 +1,4 @@
-import { TbReload } from "react-icons/tb";
+import { ReloadIcon } from "src/shared/components";
 
 import { useHistory, useUpdateHistory } from "src/context";
 
@@ -20,7 +20,7 @@ const ReloadButton = () => {
 
   return (
     <button onClick={reload} disabled={disabled} className={StyledButton}>
-      <TbReload />
+      <ReloadIcon width={14} height={14} />
     </button>
   );
 };

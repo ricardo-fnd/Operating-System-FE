@@ -1,5 +1,4 @@
-import { Tooltip } from "src/shared/components";
-import { Button } from "src/shared/components/Buttons";
+import { Tooltip, Button } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 

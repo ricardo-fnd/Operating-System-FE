@@ -1,6 +1,7 @@
 import Back from "./Back";
 import Forward from "./Forward";
 import Reload from "./Reload";
+import Home from "./Home";
 
 const StyledLeftDiv = "flex gap-2";
 
@@ -9,6 +10,7 @@ const NavigationButtons = () => (
     <Back />
     <Reload />
     <Forward />
+    <Home />
   </div>
 );
 

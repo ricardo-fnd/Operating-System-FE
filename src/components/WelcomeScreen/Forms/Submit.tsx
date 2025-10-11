@@ -2,7 +2,7 @@ import { AiOutlineLogin } from "react-icons/ai";
 
 import { Loading } from "src/shared/components";
 
-import type { ButtonProps } from "src/shared/components/Buttons";
+import type { ButtonProps } from "src/shared/components";
 
 const StyledButton =
   "absolute bottom-3 right-0 cursor-pointer disabled:cursor-not-allowed";

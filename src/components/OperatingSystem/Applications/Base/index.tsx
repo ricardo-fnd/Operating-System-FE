@@ -9,11 +9,11 @@ import type { BaseApplication, DraggableEvent, DraggableData } from "./types";
 import type { Application } from "src/types";
 
 //DOCK_HEIGHT = 60px;
-const StyledApplication = `absolute top-0 left-0 min-w-56 w-full max-w-[66%] h-full max-h-[66%] rounded-md overflow-hidden transition-all duration-300 
+const StyledApplication = `absolute top-0 left-0 min-w-56 w-full max-w-[66%] h-full max-h-[66%] rounded-xl overflow-hidden transition-all duration-300 shadow-2xl border border-zinc-700
   data-[minimized=true]:hidden
-  data-[maximized=true]:max-w-full data-[maximized=true]:max-h-[calc(100%-60px)]`;
-//TOPBAR_HEIGHT = 33px;
-const StyledContent = "h-[calc(100%-33px)] bg-white md:show-y-scrollbar";
+  data-[maximized=true]:max-w-full data-[maximized=true]:max-h-[calc(100%-60px)] data-[maximized=true]:rounded-none data-[maximized=true]:border-0`;
+//TOPBAR_HEIGHT = 40px;
+const StyledContent = "h-[calc(100%-40px)] bg-white md:show-y-scrollbar";
 
 const BaseApplication = ({ children, app }: BaseApplication) => {
   const { position, onAppDrag, pushToFront } = useController({ app });

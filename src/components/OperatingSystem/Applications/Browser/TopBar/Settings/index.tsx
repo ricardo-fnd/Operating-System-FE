@@ -1,21 +1,16 @@
 import { useState } from "react";
-import { IoMdSettings } from "react-icons/io";
 
+import { SettingsIcon } from "src/shared/components";
 import SettingsMenu from "./Menu";
 
-const StyledSettings = "relative";
-const StyledIcon = "cursor-pointer";
+const StyledSettings = "relative cursor-pointer";
 
 const Settings = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className={StyledSettings}>
-      <IoMdSettings
-        id="settings-icon"
-        className={StyledIcon}
-        onClick={() => setShowMenu(!showMenu)}
-      />
+      <SettingsIcon id="settings-icon" onClick={() => setShowMenu(!showMenu)}/>
       {showMenu && <SettingsMenu close={() => setShowMenu(false)} />}
     </div>
   );

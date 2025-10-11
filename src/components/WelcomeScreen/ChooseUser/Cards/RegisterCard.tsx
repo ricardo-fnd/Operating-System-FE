@@ -1,4 +1,4 @@
-import { ArrowIcon } from "src/shared/components";
+import { ForwardIcon } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 
@@ -24,7 +24,7 @@ const RegisterCard = ({ onClick }: RegisterCard) => {
         <p className={StyledDescription}>{getLabel("welcome-screen.register.description")}</p>
       </div>
       <div className={StyledArrowContainer}>
-        <ArrowIcon />
+        <ForwardIcon color="white" />
       </div>
     </div>
   );

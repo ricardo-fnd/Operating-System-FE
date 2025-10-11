@@ -1,4 +1,4 @@
-import { IoMdArrowRoundForward } from "react-icons/io";
+import { ForwardIcon } from "src/shared/components";
 
 import { useHistory, useUpdateHistory } from "src/context";
 
@@ -26,7 +26,7 @@ const ForwardButton = () => {
       className={StyledButton}
       disabled={nextIndex >= history.length}
     >
-      <IoMdArrowRoundForward />
+     <ForwardIcon width={16} height={16} />
     </button>
   );
 };

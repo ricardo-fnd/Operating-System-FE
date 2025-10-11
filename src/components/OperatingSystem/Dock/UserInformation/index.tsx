@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Button } from "src/shared/components/Buttons";
+import { Button } from "src/shared/components";
 import UserMenu from "./Menu";
 
 import { UsersService } from "src/services/client";
