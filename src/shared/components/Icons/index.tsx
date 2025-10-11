@@ -4,3 +4,6 @@ export { default as SettingsIcon } from "./SettingsIcon";
 export { default as ReloadIcon } from "./ReloadIcon";
 export { default as MagnifyingGlassIcon } from "./MagnifyingGlassIcon";
 export { default as HomeIcon } from "./HomeIcon";
+export { default as ProfileIcon } from "./ProfileIcon";
+export { default as EditIcon } from "./EditIcon";
+export { default as SaveIcon } from "./SaveIcon";

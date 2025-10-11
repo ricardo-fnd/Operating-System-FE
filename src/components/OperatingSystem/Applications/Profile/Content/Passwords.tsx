@@ -4,7 +4,7 @@ import { useLabels } from "src/services/client";
 
 import type { Passwords } from "../types";
 
-const StyledPasswords = "relative flex gap-2 items-end";
+const StyledPasswords = "relative flex gap-2 justify-between items-end *:max-w-[45%]";
 
 const Passwords = ({ editing, body, onChange }: Passwords) => {
   const getLabel = useLabels();

@@ -1,17 +1,13 @@
-import Image from "next/image";
-
-import { Button } from "src/shared/components";
-import edit from "public/user-profile/edit.svg";
-import { Tooltip } from "src/shared/components";
+import { Button, Tooltip, EditIcon } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 
-import type { EditButton } from "./types";
+import type { EditButton } from "../../types";
 
-const StyledButton = "absolute top-6 right-10 p-1.5 rounded-xl";
+const StyledButton = "absolute bottom-4 right-4 p-1.5 rounded-xl data-[editing=true]:bg-orange-500";
 const StyledText = "text-sm";
 
-const EditButton = ({ user, ...props }: EditButton) => {
+const EditButton = ({ editing, user, ...props }: EditButton) => {
   const getLabel = useLabels();
 
   const id = "edit-btn";
@@ -30,10 +26,11 @@ const EditButton = ({ user, ...props }: EditButton) => {
         id={id}
         color="orange"
         disabled={disabled}
+        data-editing={editing}
         className={StyledButton}
         {...props}
       >
-        <Image src={edit} width={20} height={20} alt="edit" />
+        <EditIcon color="white" />
       </Button>
       {disabled && (
         <Tooltip

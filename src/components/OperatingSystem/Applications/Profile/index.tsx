@@ -1,18 +1,18 @@
 import { useState } from "react";
 
-import EditButton from "./EditButton";
-import LeftDiv from "./LeftDiv";
-import RightDiv from "./RightDiv";
+import ProfileHeader from "./Header";
+import ProfileInfo from "./Content";
 
 import { UsersService } from "src/services/client";
 
 import type { User } from "src/types";
+import type { UpdateUser } from "src/services/api/request-types";
 
-const StyledContainer =
-  "relative flex gap-4 justify-between mx-auto px-10 pb-10 pt-20 max-w-4xl";
+const StyledContainer = "flex flex-col items-center w-full h-full show-y-scrollbar";
 
 const Profile = () => {
   const [editing, setEditing] = useState(false);
+  const [body, setBody] = useState<UpdateUser["body"]>({});
 
   const { data } = UsersService.useMe();
   const user = data as User;
@@ -21,9 +21,8 @@ const Profile = () => {
 
   return (
     <div className={StyledContainer}>
-      <EditButton user={user} onClick={toggleEdit} />
-      <LeftDiv user={user} />
-      <RightDiv stopEdit={toggleEdit} user={user} editing={editing} />
+      <ProfileHeader body={body} setBody={setBody} user={user} editing={editing} toggleEdit={toggleEdit} />
+      <ProfileInfo body={body} setBody={setBody} user={user} editing={editing} />
     </div>
   );
 };
