@@ -16,16 +16,16 @@ export default async function Home() {
     language,
   });
 
-  const shortcutsPositions = getCookies({
-    name: "shortcuts-positions",
-  });
-
+  
+  const appsShortcutsPositions = getCookies({ name: "shortcuts-positions" });
+  
   const user = await UsersService.prefetchUser();
+  const userShortcutsPositions = user ? appsShortcutsPositions?.[user.id] : undefined;
   
   return (
     <BaseProviders language={language} translations={translations}>
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <AppsProvider data={shortcutsPositions}>
+        <AppsProvider initialUser={user} data={userShortcutsPositions}>
           <OperatingSystem initialUser={user} />
         </AppsProvider>
       </HydrationBoundary>

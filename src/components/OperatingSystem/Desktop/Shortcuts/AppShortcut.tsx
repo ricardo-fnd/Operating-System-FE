@@ -10,7 +10,7 @@ import type { AppShortcut, DraggableData, DraggableEvent } from "../types";
 const StyledShortcut =
   "flex flex-col items-center w-fit p-2 pt-1 text-white text-xs rounded-md cursor-pointer hover:bg-zinc-800 transition-colors";
 
-const AppShortcut = ({ app }: AppShortcut) => {
+const AppShortcut = ({ user, app }: AppShortcut) => {
   const getLabel = useLabels();
   const ref = useRef<HTMLDivElement>(null);
   const open = AppsService.useOpen();
@@ -37,7 +37,7 @@ const AppShortcut = ({ app }: AppShortcut) => {
     if (wasDragged) {
       setWasDragged(false);
       setShortcutPosition({ app, x, y });
-      saveAppShortcutPosition({ app, x, y });
+      saveAppShortcutPosition({ user, app, x, y });
     }
   };
 

@@ -30,4 +30,4 @@ const setCookies = ({ value, name, expires = 365 }: SetCookiesProps) => {
   });
 };
 
-export { setCookies };
+export { setCookies, getCookies };

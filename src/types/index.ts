@@ -27,11 +27,15 @@ export type Guest = {
 
 export type BrowserHistory = { active: boolean; search: string }[];
 
-export type ShortcutsPositions = {
+export type ShortcutPosition = {
   appId: Application["id"];
   x: number;
   y: number;
-}[];
+};
+
+export type ShortcutsPositions = {
+  [userId: string]: ShortcutPosition[];
+};
 
 export type Application = {
   id: number;
