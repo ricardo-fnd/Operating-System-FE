@@ -37,12 +37,16 @@ const checkYBoundaries = ({ app, ref }: Omit<ResizeShortcut, "callback">) => {
   return appLastY > window.innerHeight - DOCK_HEIGHT - PADDING;
 };
 
-const saveAppShortcutPosition = ({ app, x, y }: SaveShortcut) => {
+const saveAppShortcutPosition = ({ app, x, y, user }: SaveShortcut) => {
+  if (!user || user.guest) return;
+  
   setCookies({
     name: "shortcuts-positions",
     value: (prev: ShortcutsPositions) => {
-      const filtered = prev?.filter(({ appId }) => appId !== app.id) ?? [];
-      return [...filtered, { appId: app.id, x, y }];
+      const userPositions = (prev ? prev[user.id] : []) ?? [];
+      const filtered = userPositions.filter(({ appId }) => appId !== app.id);
+      
+      return { ...prev, [user.id]: [...filtered, { appId: app.id, x, y }] };
     },
   });
 };

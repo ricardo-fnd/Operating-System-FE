@@ -1,5 +1,6 @@
 import AppShortcut from "./AppShortcut";
 
+import { UsersService } from "src/services/client";
 import { useApps } from "src/context";
 
 const StyledShortcuts =
@@ -7,11 +8,13 @@ const StyledShortcuts =
 
 const Shortcuts = () => {
   const apps = useApps();
+  
+  const { data: user } = UsersService.useMe();
 
   return (
     <div className={StyledShortcuts}>
       {apps.map(
-        (app) => app.showIcon && <AppShortcut key={app.id} app={app} />
+        (app) => app.showIcon && <AppShortcut key={app.id} app={app} user={user} />
       )}
     </div>
   );
