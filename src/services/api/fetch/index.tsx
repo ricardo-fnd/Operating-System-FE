@@ -1,3 +1,4 @@
+import { API_URL } from "src/env-variables";
 import { onRequest } from "./request-config";
 import { onSuccess, onError } from "./response-config";
 
@@ -12,7 +13,9 @@ const customFetch = async <T,>(
   options: Options = {}
 ): Promise<T | null> => {
   const config = await onRequest(options);
-  let response = await fetch(URL, config);
+
+  const BASE_URL = URL.includes('http') ? URL : `${API_URL}${URL}`;
+  let response = await fetch(BASE_URL, config);
 
   if (!response?.ok) return onError(response);
   return onSuccess<T>(response, options);

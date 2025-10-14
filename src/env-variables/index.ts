@@ -5,6 +5,7 @@ const COOKIES_DOMAIN = process.env.NEXT_PUBLIC_COOKIES_DOMAIN;
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const GOOGLE_ENGINE_CX = process.env.NEXT_PUBLIC_GOOGLE_ENGINE_CX;
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY_CLOUDFLARE;
 
 export {
   LABELS_URL,
@@ -14,4 +15,5 @@ export {
   GOOGLE_API_KEY,
   GOOGLE_ENGINE_CX,
   API_URL,
+  API_KEY,
 };

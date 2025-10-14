@@ -1,4 +1,5 @@
 import { parseBody } from "./parsers";
+import { API_KEY } from "src/env-variables";
 
 import type { Options } from ".";
 
@@ -6,6 +7,7 @@ const onRequest = async (options: Options = {}) => {
   const { body, formData, headers = {} } = options;
 
   const fetchHeaders = new Headers(headers);
+  fetchHeaders.set("X-Access-Key", API_KEY!);
   if (body) fetchHeaders.set("Content-Type", "application/json");
 
   const fetchOptions: RequestInit = {
