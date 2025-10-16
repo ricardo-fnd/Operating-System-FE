@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 
 import Header from "./Header";
-import WelcomeBack from "./WelcomeBack";
 import LoginForm from "./Forms/LoginForm";
 import RegisterForm from "./Forms/RegisterForm";
 import ChooseUser from "./ChooseUser";
@@ -16,7 +15,7 @@ import type { SetUser, WelcomePage } from "./types";
 const StyledContainer = "flex flex-col w-screen h-screen bg-black relative";
 const StyledContent = "flex-1 flex items-center justify-center";
 
-const WelcomePage = ({ user, enter }: Omit<WelcomePage, "language">) => {
+const WelcomePage = ({ enter }: WelcomePage) => {
   const queryClient = useQueryClient();
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
@@ -37,7 +36,6 @@ const WelcomePage = ({ user, enter }: Omit<WelcomePage, "language">) => {
   if (showLogin) return <LoginForm back={back} setUser={setUser} />;
   if (showRegister) return <RegisterForm back={back} setUser={setUser} />;
 
-  if (user) return <WelcomeBack user={user} enter={enter} showLogin={login} />;
   return (
     <ChooseUser setUser={setUser} showRegister={register} showLogin={login} />
   );
