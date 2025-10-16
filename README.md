@@ -8,13 +8,13 @@ I created this project to explore web technologies, backend logic, and ci/cd, wh
 ```
 > frontend          : typescript, next.js, react query (caching), tailwind
 > backend           : python, fast-api, postgres, redis
+> deployment        : vercel (frontend), raspberry-pi (backend)
+> infrastructure    : cloudflare (dns, waf, proxy)
 > extras            : aws ses
-> deployment        : vercel
 ```
 ## Features
 ```
-> apps           : browser, profile, calculator...
-> windows        : open multiple windows at the same time
+> apps           : browser, profile
 > file-system    : save, load, and organize files (in progress)
 > system user    : auto system saves if logged in (apps shortcuts, colors, backgrounds...)
 ```
