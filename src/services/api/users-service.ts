@@ -1,4 +1,3 @@
-import { API_URL } from "src/env-variables";
 import fetch from "./fetch";
 
 import type {
@@ -12,7 +11,7 @@ import type { User } from "src/types";
 import type { Options } from "./fetch";
 
 const create = async (body: CreateUserBody) => {
-  const URL = `${API_URL}/users`;
+  const URL = "/users";
   const data = await fetch<User>(URL, {
     method: "POST",
     credentials: "include",
@@ -23,7 +22,7 @@ const create = async (body: CreateUserBody) => {
 };
 
 const getByAccount = async ({ params }: GetUserByAccount) => {
-  const URL = `${API_URL}/users?account=${params.account}`;
+  const URL = `/users?account=${params.account}`;
   const data = await fetch<User>(URL);
 
   return data;
@@ -31,7 +30,7 @@ const getByAccount = async ({ params }: GetUserByAccount) => {
 
 const me = async (options: Options = {}) => {
   try {
-    const URL = `${API_URL}/users/me`;
+    const URL = "/users/me";
     const data = await fetch<User>(URL, {
       credentials: "include",
       ...options,
@@ -44,7 +43,7 @@ const me = async (options: Options = {}) => {
 };
 
 const update = async ({ id, body }: UpdateUser) => {
-  const URL = `${API_URL}/users/${id}`;
+  const URL = `/users/${id}`;
   const data = await fetch<User>(URL, {
     method: "PUT",
     credentials: "include",
@@ -55,12 +54,12 @@ const update = async ({ id, body }: UpdateUser) => {
 };
 
 const updatePassword = async ({ token, body }: UpdatePassword) => {
-  const URL = `${API_URL}/users/update-password?token=${token}`;
+  const URL = `/users/update-password?token=${token}`;
   await fetch(URL, { method: "PUT", body });
 };
 
 const verifyAccount = async ({ token }: VerifyAccount) => {
-  const URL = `${API_URL}/users/verify-account?token=${token}`;
+  const URL = `/users/verify-account?token=${token}`;
   const data = await fetch<User>(URL, { method: "PUT" });
 
   return data as User;
