@@ -1,13 +1,6 @@
 import type { Guest, User } from "src/types";
 
 type WelcomePage = {
-  user?: User | null;
-  enter: () => void;
-};
-
-type WelcomeBack = {
-  user: User;
-  showLogin: () => void;
   enter: () => void;
 };
 
@@ -38,4 +31,4 @@ type RegisterCard = {
   onClick: () => void;
 };
 
-export type { WelcomePage, WelcomeBack, SetUser, ChooseUser, Submit, GuestCard, LoginCard, RegisterCard };
+export type { WelcomePage, SetUser, ChooseUser, Submit, GuestCard, LoginCard, RegisterCard };
