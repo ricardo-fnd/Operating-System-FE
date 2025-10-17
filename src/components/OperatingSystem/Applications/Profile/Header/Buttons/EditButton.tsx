@@ -11,14 +11,7 @@ const EditButton = ({ editing, user, ...props }: EditButton) => {
   const getLabel = useLabels();
 
   const id = "edit-btn";
-  const disabled = user.guest || !user.emailConfirmed;
-
-  let tooltipLabel = "";
-  if (user.guest) {
-    tooltipLabel = "user-profile.guest-edit";
-  } else if (!user.emailConfirmed) {
-    tooltipLabel = "user-profile.no-confirmation-edit";
-  }
+  const disabled = user.guest;
 
   return (
     <>
@@ -39,7 +32,7 @@ const EditButton = ({ editing, user, ...props }: EditButton) => {
           id={`${id}-tooltip`}
           anchorSelect={`#${id}`}
         >
-          <p className={StyledText}>{getLabel(tooltipLabel)}</p>
+          <p className={StyledText}>{getLabel("user-profile.guest-edit")}</p>
         </Tooltip>
       )}
     </>
