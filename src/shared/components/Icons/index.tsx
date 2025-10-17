@@ -14,3 +14,4 @@ export { default as LogoutIcon } from "./LogoutIcon";
 export { default as LockIcon } from "./LockIcon";
 export { default as UserIcon } from "./UserIcon";
 export { default as EmailIcon } from "./EmailIcon";
+export { default as WarningIcon } from "./WarningIcon";

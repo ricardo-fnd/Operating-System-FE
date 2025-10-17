@@ -1,12 +1,11 @@
-import Image from "next/image";
 
-import tip from "public/tip.svg";
+import { WarningIcon } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 
 import type { User } from "src/types";
 
-const StyledTip = "text-sm [&_img]:mr-1.5 [&_img]:mt-1.5 [&_img]:float-left";
+const StyledTip = "flex gap-2 text-sm";
 
 const Tip = ({ user }: { user: User }) => {
   const getLabel = useLabels();
@@ -17,7 +16,7 @@ const Tip = ({ user }: { user: User }) => {
 
   return (
     <div className={StyledTip}>
-      <Image src={tip} width={30} height={30} alt="email-tip" />
+      <WarningIcon color="#fd9a00" width={30} height={30} />
       <div dangerouslySetInnerHTML={{ __html: getLabel(label) }} />
     </div>
   );

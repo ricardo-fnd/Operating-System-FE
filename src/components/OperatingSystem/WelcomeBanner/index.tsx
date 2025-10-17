@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { Modal } from "src/shared/components";
+import KnowMore from "./KnowMore";
 import Tip from "./Tip";
 import hello from "public/welcome/hello.svg";
 
@@ -12,7 +13,7 @@ import { useLabels } from "src/services/client";
 import type { User } from "src/types";
 
 const StyledModal =
-  "overflow-visible [&_section]:pb-4 [&_section]:flex-row [&_section]:gap-20 lg:[&_section]:pb-6";
+  "overflow-visible [&_section]:pb-4 [&_section]:flex-row [&_section]:gap-20 lg:[&_section]:pb-0";
 const StyledContainer = "flex flex-col gap-14";
 const StyledContent = "flex flex-col gap-4";
 const StyledHello = "hidden sm:block absolute -top-12 -right-8";
@@ -35,13 +36,6 @@ const WelcomeBanner = ({ user }: { user: User }) => {
 
   return (
     <Modal className={StyledModal} theme="dark" advance={advance}>
-      <div className={StyledContainer}>
-        <div className={StyledContent}>
-          <h2>{getLabel("welcome-banner.title")}</h2>
-          <p>{getLabel("welcome-banner.description")}</p>
-        </div>
-        <Tip user={user} />
-      </div>
       <Image
         src={hello}
         width={160}
@@ -49,6 +43,14 @@ const WelcomeBanner = ({ user }: { user: User }) => {
         alt="hello"
         className={StyledHello}
       />
+      <div className={StyledContainer}>
+        <div className={StyledContent}>
+          <h2>{getLabel("welcome-banner.title")}</h2>
+          <p>{getLabel("welcome-banner.description")}</p>
+          <KnowMore />
+        </div>
+        <Tip user={user} />
+      </div>
     </Modal>
   );
 };
