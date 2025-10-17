@@ -9,7 +9,7 @@ import type { ModalProps } from "./types";
 
 const StyledOverlay =
   "fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-[2px] z-[100]";
-const StyledModal = `relative flex flex-col gap-6 w-screen h-screen max-h-[90vh] overflow-hidden shadow-2xl sm:rounded-2xl sm:max-w-lg sm:h-fit md:max-w-2xl lg:max-w-4xl
+const StyledModal = `relative flex flex-col gap-6 w-screen h-screen overflow-hidden shadow-2xl sm:rounded-2xl sm:max-w-lg sm:h-fit md:max-w-2xl lg:max-w-4xl
   data-[theme="light"]:bg-slate-200 data-[theme="light"]:text-black
   data-[theme="dark"]:bg-zinc-900 data-[theme="dark"]:border data-[theme="dark"]:border-zinc-600 data-[theme="dark"]:text-slate-200`;
 const StyledContent =
