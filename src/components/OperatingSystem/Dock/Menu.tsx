@@ -1,4 +1,4 @@
-import { CgMenuGridO } from "react-icons/cg";
+import { MenuGridIcon } from "src/shared/components";
 
 import type { Menu } from "./types";
 
@@ -7,7 +7,7 @@ const StyledMenu =
 
 const Menu = ({ isMenuOpen, toggleMenu }: Menu) => (
   <div data-menu={isMenuOpen} className={StyledMenu} onClick={toggleMenu}>
-    <CgMenuGridO color="white" size="34" />
+    <MenuGridIcon color="white" width={34} height={34} />
   </div>
 );
 

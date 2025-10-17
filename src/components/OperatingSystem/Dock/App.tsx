@@ -23,7 +23,7 @@ const App = ({ app }: { app: Application }) => {
         data-minimized={app.minimized}
         onClick={() => bringToFront(app)}
       >
-        <Icon size="36" />
+        <Icon color="white" width={36} height={36} />
       </div>
       <Tooltip
         noArrow

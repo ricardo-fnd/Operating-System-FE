@@ -10,7 +10,6 @@ type InputProps = Omit<
   onEnterKey?: (value: InputHTMLAttributes<HTMLInputElement>["value"]) => void;
   label?: string;
   tooltipLabel?: string;
-  icon?: string;
   validations?: ((value: string) => boolean)[];
   style?: CSSProperties & { "--autofill-text-color": string };
 };
@@ -28,7 +27,6 @@ type LabelProps = {
   theme?: "light" | "dark";
   label?: string;
   name: string;
-  hasIcon: boolean;
   tooltipLabel?: string;
 };
 

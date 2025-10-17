@@ -1,11 +1,9 @@
-import { AiOutlineLogin } from "react-icons/ai";
-
-import { Loading } from "src/shared/components";
+import { Loading, ForwardIcon } from "src/shared/components";
 
 import type { ButtonProps } from "src/shared/components";
 
 const StyledButton =
-  "absolute bottom-3 right-0 cursor-pointer disabled:cursor-not-allowed";
+  "absolute bottom-3 right-0.5 cursor-pointer disabled:cursor-not-allowed";
 const StyledLoading = "w-6 h-6 mb-1 mr-0.5";
 
 const Submit = ({ loading, disabled, ...props }: ButtonProps) => (
@@ -13,7 +11,7 @@ const Submit = ({ loading, disabled, ...props }: ButtonProps) => (
     {loading ? (
       <Loading className={StyledLoading} />
     ) : (
-      <AiOutlineLogin color={disabled ? "gray" : "white"} size={28} />
+      <ForwardIcon color={disabled ? "gray" : "white"} width={20} height={20} />
     )}
   </button>
 );
