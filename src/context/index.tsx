@@ -1,8 +1,7 @@
-import { ToastContainer } from "react-toastify";
-
 import { TranslationsProvider } from "./TranslationsContext";
 import { HistoryProvider } from "./HistoryProvider";
 import ReactQueryProvider from "./ReactQueryContext";
+import { NotificationsProvider } from "src/services/notifications-service";
 
 import { useApps } from "./AppsContext";
 import { useTranslations, useUpdateTranslations } from "./TranslationsContext";
@@ -14,7 +13,7 @@ const BaseProviders = ({ language, translations, children }: BaseProviders) => (
   <TranslationsProvider data={{ ...translations, language }}>
     <ReactQueryProvider>
       {children}
-      <ToastContainer />
+      <NotificationsProvider />
     </ReactQueryProvider>
   </TranslationsProvider>
 );
