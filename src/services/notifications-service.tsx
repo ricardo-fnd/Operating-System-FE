@@ -1,33 +1,64 @@
-import { toast } from "react-toastify";
+"use client";
+import { useEffect, useState, useCallback } from "react";
 
-import type { ToastContentProps, ToastPosition } from "react-toastify";
+import { Notifications } from "src/shared/components";
 
-type Data = { label: string };
+import type { Notification } from "src/shared/components/Notifications/types";
 
-const CustomNotification = ({ data }: ToastContentProps<Data>) => (
-  <p>{data.label}</p>
-);
-
-const info = (label: string, position: ToastPosition = "top-center") => {
-  toast(CustomNotification, {
-    data: { label },
-    type: "info",
-    autoClose: 3000,
-    position,
-    hideProgressBar: true,
-  });
+let showNotification: ((args: Omit<Notification, "id">) => void) | null = null;
+const setNotificationHandler = (fn: (args: Omit<Notification, "id">) => void) => {
+  showNotification = fn;
 };
 
-const error = (label: string, position: ToastPosition = "top-center") => {
-  toast(CustomNotification, {
-    data: { label },
-    type: "error",
-    autoClose: 3000,
-    position,
-    hideProgressBar: true,
-  });
+const NotificationsProvider = () => {
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+
+  const showNotification = useCallback((args: Omit<Notification, "id">) => {
+    const id = Date.now().toString();
+    const notification: Notification = { id, ...args };
+    
+    setNotifications(prev => {
+      const byPosition = prev.filter(n => n.position === notification.position);
+     
+      if (byPosition.length >= 3) {
+        const oldestNotification = byPosition.reduce((oldest, current) => 
+          parseInt(current.id) < parseInt(oldest.id) ? current : oldest
+        );
+        return [...prev.filter(n => n.id !== oldestNotification.id), notification];
+      }
+      
+      return [...prev, notification];
+    });
+    
+    setTimeout(() => setNotifications(prev => prev.filter(n => n.id !== id)), 3000);
+  }, []);
+
+  const removeNotification = useCallback((id: string) => {
+    setNotifications(prev => prev.filter(n => n.id !== id));
+  }, []);
+
+  useEffect(() => setNotificationHandler(showNotification), [showNotification]);
+
+  return <Notifications notifications={notifications} remove={removeNotification} />
 };
 
-const NotificationsService = { info, error };
+const info = (message: string, position: Notification['position'] = "top-center") => {
+  showNotification?.({ message, type: "info", position });
+};
 
+const error = (message: string, position: Notification['position'] = "top-center") => {
+  showNotification?.({ message, type: "error", position });
+};
+
+const success = (message: string, position: Notification['position'] = "top-center") => {
+  showNotification?.({ message, type: "success", position });
+};
+
+const warning = (message: string, position: Notification['position'] = "top-center") => {
+  showNotification?.({ message, type: "warning", position });
+};
+
+const NotificationsService = { info, error, success, warning };
+
+export { NotificationsProvider };
 export default NotificationsService;
