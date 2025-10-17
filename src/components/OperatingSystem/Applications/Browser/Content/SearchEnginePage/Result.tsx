@@ -1,11 +1,10 @@
-import { TbWorldCheck } from "react-icons/tb";
-
+import { WorldCheckIcon } from "src/shared/components";
 import { useUpdateHistory } from "src/context";
 
 import type { SearchEngineResults } from "../../types";
 
 const StyledResult = "flex flex-col gap-1 first:cursor-pointer";
-const StyledHeader = "flex gap-2 items-center";
+const StyledHeader = "flex gap-1 items-center";
 const StyledTitle = "font-medium text-xl";
 const StyledDomain = "text-xs";
 const StyledDescription = "text-sm";
@@ -25,7 +24,7 @@ const Result = ({ result }: SearchEngineResults) => {
     <div className={StyledResult}>
       <div onClick={enterWebsite}>
         <div className={StyledHeader}>
-          <TbWorldCheck className="w-5 h-5" />
+          <WorldCheckIcon width={20} height={20} />
           <p className={StyledTitle}>{title}</p>
         </div>
         <p className={StyledDomain}>{domain}</p>

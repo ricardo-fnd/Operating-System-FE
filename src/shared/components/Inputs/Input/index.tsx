@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import Label from "./Label";
-import Icon from "./Icon";
-import ShowPasswordIcon from "./ShowPasswordIcon";
+import ShowPasswordIcon from "./Icons/ShowPasswordIcon";
 
 import type { KeyboardEvent } from "react";
 import type { BaseInput } from "../types";
@@ -12,14 +11,12 @@ const StyledContainer =
   "relative flex flex-col w-full data-[disabled=true]:opacity-60";
 const StyledInput = `w-full p-3 text-sm border-b-2 border-gray-300 text-gray-800 bg-transparent disabled:cursor-not-allowed
   [&[type="password"]]:pr-8
-  data-[has-icon=true]:p-4 data-[has-icon=true]:pl-9
   data-[is-valid=true]:border-green-400 data-[is-valid=false]:border-red-400
   data-[theme="dark"]:border-gray-400 data-[theme="dark"]:text-slate-200 data-[theme="dark"]:placeholder:text-gray-400`;
 
 const BaseInput = ({
   theme,
   name,
-  icon,
   type,
   label,
   value,
@@ -52,7 +49,6 @@ const BaseInput = ({
           name={name}
           label={label}
           theme={theme}
-          hasIcon={!!icon}
           tooltipLabel={tooltipLabel}
         />
       )}
@@ -64,12 +60,10 @@ const BaseInput = ({
         onKeyDown={onKeyDown}
         data-theme={theme}
         className={StyledInput}
-        data-has-icon={!!icon}
         data-is-valid={isValid}
         type={type && !showPassword ? type : "text"}
         {...props}
       />
-      {icon && <Icon src={icon} alt={`${name}-input-icon`} />}
       {type === "password" && (
         <ShowPasswordIcon showing={showPassword} setShow={setShowPassword} />
       )}

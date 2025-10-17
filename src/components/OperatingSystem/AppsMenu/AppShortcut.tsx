@@ -14,7 +14,7 @@ const AppShortcut = ({ app }: { app: Application }) => {
 
   return (
     <li className={StyledShortcut} onClick={() => open(app)}>
-      <Icon size="75" />
+      <Icon color="white" width={75} height={75} />
       <p>{getLabel(name)}</p>
     </li>
   );

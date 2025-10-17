@@ -1,6 +1,4 @@
-import { TbWorldWww } from "react-icons/tb";
-import { RxAvatar } from "react-icons/rx";
-
+import { BrowserIcon, ProfileIcon } from "src/shared/components";
 import {
   Browser,
   Profile,
@@ -11,7 +9,7 @@ import type { Application } from "src/types";
 const APPLICATIONS: Application[] = [
   {
     id: 1,
-    Icon: TbWorldWww,
+    Icon: BrowserIcon,
     name: "apps.browser.app-name",
     component: Browser,
     opened: false,
@@ -22,7 +20,7 @@ const APPLICATIONS: Application[] = [
   },
   {
     id: 2,
-    Icon: RxAvatar,
+    Icon: ProfileIcon,
     name: "commons.profile",
     component: Profile,
     opened: false,

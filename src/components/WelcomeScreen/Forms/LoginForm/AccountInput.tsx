@@ -1,5 +1,4 @@
-import { Input } from "src/shared/components";
-import accountIcon from "public/user-login/username.svg";
+import { Input, UserIcon } from "src/shared/components";
 import Submit from "../Submit";
 import ForgotAccount from "./ForgotAccount";
 
@@ -8,7 +7,8 @@ import { useLabels, UsersService } from "src/services/client";
 import type { AccountInput } from "../types";
 
 const StyledContainer = "flex flex-col gap-4 w-full";
-const StyledDiv = "relative flex w-full";
+const StyledDiv = "relative flex w-full [&_input]:pl-9";
+const StyledUserIcon = "absolute bottom-[14px] left-1.5";
 
 const AccountInput = ({ next, account, setAccount }: AccountInput) => {
   const getLabel = useLabels();
@@ -24,13 +24,13 @@ const AccountInput = ({ next, account, setAccount }: AccountInput) => {
   return (
     <div className={StyledContainer}>
       <div className={StyledDiv}>
+        <UserIcon color="white" className={StyledUserIcon} />
         <Input
           required
           autoFocus
           theme="dark"
           value={account}
           name="account"
-          icon={accountIcon}
           onEnterKey={onClick}
           onChange={setAccount}
           style={{ "--autofill-text-color": "#e2e8f0" }}

@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-import { Input, Modal, Button } from "src/shared/components";
-import emailIcon from "public/email.svg";
+import { Input, Modal, Button, EmailIcon } from "src/shared/components";
 
 import { NotificationsService, ValidationService } from "src/services";
 import { EmailsService, useLabels } from "src/services/client";
@@ -10,7 +9,8 @@ const StyledModal = "[&_section]:gap-8 [&_section]:p-10";
 const StyledHeader = "flex flex-col gap-3";
 const StyledTitle = "text-2xl font-semibold";
 const StyledDescription = " text-sm leading-relaxed";
-const StyledInputWrapper = "flex flex-col gap-2";
+const StyledInputWrapper = "relative flex flex-col gap-2 w-full [&_input]:pl-8";
+const StyledEmailIcon = "absolute bottom-[39px] left-1";
 const StyledTip = " text-xs";
 const StyledButton = "self-end px-8";
 
@@ -44,12 +44,12 @@ const ForgotAccountModal = ({ close }: { close: () => void }) => {
         />
       </div>
       <div className={StyledInputWrapper}>
+        <EmailIcon color="white" className={StyledEmailIcon} />
         <Input
           autoFocus
           required
           value={email}
           theme="dark"
-          icon={emailIcon}
           onEnterKey={send}
           onChange={setEmail}
           name="forgot-account"

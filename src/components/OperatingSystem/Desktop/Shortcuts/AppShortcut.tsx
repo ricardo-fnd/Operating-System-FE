@@ -49,7 +49,7 @@ const AppShortcut = ({ user, app }: AppShortcut) => {
       position={app.shortcutPosition}
     >
       <div ref={ref} className={StyledShortcut}>
-        <Icon size="50" />
+        <Icon color="white" width={50} height={50} />
         <p>{getLabel(name)}</p>
       </div>
     </Draggable>

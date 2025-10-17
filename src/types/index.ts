@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
-import type { IconType } from "react-icons";
+import type { ComponentType, ReactNode } from "react";
 import type { SUPPORTED_LANGUAGES } from "src/enums";
+import type { IconProps } from "src/shared/components/Icons/types";
 
 export type Translations = {
   [key: string]: string;
@@ -39,7 +39,7 @@ export type ShortcutsPositions = {
 
 export type Application = {
   id: number;
-  Icon: IconType;
+  Icon: ComponentType<IconProps>;
   name: string;
   component: () => ReactNode;
   opened: boolean;
