@@ -22,5 +22,5 @@ const EditIcon = ({ width = 18, height = 18, color = "black", className = "", ..
   </svg>
 );
 
-export default EditIcon;
+export { EditIcon };
 

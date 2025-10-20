@@ -15,5 +15,5 @@ const SettingsIcon = ({ width = 18, height = 18, className = "", ...props }: Ico
 </svg>
 );
 
-export default SettingsIcon;
+export { SettingsIcon };
 

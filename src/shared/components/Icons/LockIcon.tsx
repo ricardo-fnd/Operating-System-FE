@@ -39,5 +39,5 @@ const LockIcon = ({ width = 18, height = 18, color = "black", className = "", ..
   </svg>
 );
 
-export default LockIcon;
+export { LockIcon };
 

@@ -17,5 +17,5 @@ const BackwardIcon = ({ width = 18, height = 18, color = "black", className = ""
   </svg>
 );
 
-export default BackwardIcon;
+export { BackwardIcon };
 

@@ -36,5 +36,5 @@ const EmailIcon = ({
   </svg>
 );
 
-export default EmailIcon;
+export { EmailIcon };
 

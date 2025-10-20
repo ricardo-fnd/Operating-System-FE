@@ -17,5 +17,5 @@ const ForwardIcon = ({ width = 18, height = 18, color = "black", className = "",
   </svg>
 );
 
-export default ForwardIcon;
+export { ForwardIcon };
 

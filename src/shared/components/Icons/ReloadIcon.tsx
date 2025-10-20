@@ -20,5 +20,5 @@ const ReloadIcon = ({ width = 18, height = 18, className = "", ...props }: IconP
   </svg>
 );
 
-export default ReloadIcon;
+export { ReloadIcon };
 

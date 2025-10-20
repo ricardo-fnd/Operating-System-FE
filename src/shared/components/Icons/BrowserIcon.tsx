@@ -37,5 +37,5 @@ const BrowserIcon = ({ width = 18, height = 18, color = "black", className = "",
   </svg>
 );
 
-export default BrowserIcon;
+export { BrowserIcon };
 

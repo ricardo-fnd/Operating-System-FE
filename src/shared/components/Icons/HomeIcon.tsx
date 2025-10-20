@@ -17,5 +17,5 @@ const HomeIcon = ({ width = 18, height = 18, color = "black", className = "", ..
   </svg>
 );
 
-export default HomeIcon;
+export { HomeIcon };
 

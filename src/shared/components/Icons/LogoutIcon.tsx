@@ -28,5 +28,5 @@ const LogoutIcon = ({ width = 18, height = 18, color = "black", className = "", 
   </svg>
 );
 
-export default LogoutIcon;
+export { LogoutIcon };
 

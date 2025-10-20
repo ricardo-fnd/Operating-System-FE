@@ -17,5 +17,5 @@ const MagnifyingGlassIcon = ({ width = 18, height = 18, color = "black", classNa
   </svg>
 );
 
-export default MagnifyingGlassIcon;
+export { MagnifyingGlassIcon };
 

@@ -36,5 +36,5 @@ const UserIcon = ({
   </svg>
 );
 
-export default UserIcon;
+export { UserIcon };
 

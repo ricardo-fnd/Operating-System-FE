@@ -43,5 +43,5 @@ const WarningIcon = ({
   </svg>
 );
 
-export default WarningIcon;
+export { WarningIcon };
 
