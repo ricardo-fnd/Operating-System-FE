@@ -714,11 +714,6 @@ clsx@^1.1.1:
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
   integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
 
-clsx@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.1.1.tgz#eed397c9fd8bd882bfb18deab7102049a2f32999"
-  integrity sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==
-
 color-convert@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
@@ -2259,22 +2254,10 @@ react-draggable@^4.4.6:
     clsx "^1.1.1"
     prop-types "^15.8.1"
 
-react-icons@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-5.2.0.tgz#790c92d5f1888ef2dbbd3468c553fd4bb5c8bf7e"
-  integrity sha512-n52Y7Eb4MgQZHsSZOhSXv1zs2668/hBYKfSRIvKh42yExjyhZu0d1IK2CLLZ3BZB1oo13lDfwx2vOh2z9FTV6Q==
-
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
-
-react-toastify@^11.0.3:
-  version "11.0.3"
-  resolved "https://registry.yarnpkg.com/react-toastify/-/react-toastify-11.0.3.tgz#1684de60baf745e761d3c608bb29581657e2fe01"
-  integrity sha512-cbPtHJPfc0sGqVwozBwaTrTu1ogB9+BLLjd4dDXd863qYLj7DGrQ2sg5RAChjFUB4yc3w8iXOtWcJqPK/6xqRQ==
-  dependencies:
-    clsx "^2.1.1"
 
 react-tooltip@^5.28.0:
   version "5.28.0"
