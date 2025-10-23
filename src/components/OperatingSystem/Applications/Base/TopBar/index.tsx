@@ -6,7 +6,7 @@ import { AppsService } from "src/services";
 import type { Application } from "src/types";
 
 const StyledHeader =
-  "handle flex justify-between items-center h-10 px-4 bg-zinc-950 border-b border-zinc-700 cursor-grab";
+  "top-bar-handle flex justify-between items-center h-10 px-4 bg-zinc-950 border-b border-zinc-700 cursor-grab active:cursor-grabbing";
 const StyledTitle = "text-white text-sm font-medium";
 
 const TopBar = ({ app }: { app: Application }) => {
