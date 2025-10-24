@@ -1,8 +1,7 @@
 import "server-only";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
-import BaseProviders from "src/context";
-import { AppsProvider } from "src/context/AppsContext";
+import BaseProviders, { WebSocketProvider, AppsProvider } from "src/context";
 import OperatingSystem from "src/components/OperatingSystem";
 
 import { getQueryClient, TranslationsService } from "src/services";
@@ -26,7 +25,9 @@ export default async function Home() {
     <BaseProviders language={language} translations={translations}>
       <HydrationBoundary state={dehydrate(queryClient)}>
         <AppsProvider initialUser={user} data={userShortcutsPositions}>
-          <OperatingSystem initialUser={user} />
+          <WebSocketProvider>
+            <OperatingSystem initialUser={user} />
+          </WebSocketProvider>
         </AppsProvider>
       </HydrationBoundary>
     </BaseProviders>

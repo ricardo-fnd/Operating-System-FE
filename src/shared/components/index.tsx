@@ -1,4 +1,5 @@
 import Input from "./Inputs";
+import Checkbox from "./Inputs/Checkbox";
 import Loading from "./Loading";
 import Tooltip from "./Tooltip";
 import LanguageButton from "./LanguageButton";
@@ -7,7 +8,8 @@ import AboutProjectModal from "./Modal/AboutProject";
 import HelpTooltip from "./HelpTooltip";
 import GitHub from "./GitHub";
 import Notifications from "./Notifications";
+import OnlineUsersWidget from "./OnlineUsersWidget";
 
-export { Modal, AboutProjectModal, Input, Loading, Tooltip, LanguageButton, HelpTooltip, GitHub, Notifications };
+export { Modal, AboutProjectModal, Input, Checkbox, Loading, Tooltip, LanguageButton, HelpTooltip, GitHub, Notifications, OnlineUsersWidget };
 export * from "./Icons";
 export * from "./Buttons";

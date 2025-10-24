@@ -18,6 +18,7 @@ export type User = {
   createdAt: string;
   companyName?: string;
   job?: string;
+  public?: boolean;
 };
 
 export type Guest = {
@@ -64,4 +65,10 @@ export type GoogleSearchResults = {
     maxPages: number;
     page: number;
   };
+};
+
+export type WebSocketMessage = {
+  type: "user_online" | "user_offline" | "online_users";
+  user_ids?: number[];
+  user?: { id: number; name: string; };
 };
