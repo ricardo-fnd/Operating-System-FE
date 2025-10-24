@@ -58,7 +58,15 @@ const warning = (message: string, position: Notification['position'] = "top-cent
   showNotification?.({ message, type: "warning", position });
 };
 
-const NotificationsService = { info, error, success, warning };
+const online = (message: string) => {
+  showNotification?.({ message, type: "success", position: "top-right", size: "small" });
+};
+
+const offline = (message: string) => {
+  showNotification?.({ message, type: "info", position: "top-right", size: "small" });
+};
+
+const NotificationsService = { info, error, success, warning, online, offline };
 
 export { NotificationsProvider };
 export default NotificationsService;

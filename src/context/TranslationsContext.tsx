@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 import { setCookies } from "src/services/client";
 
 import type { Translations } from "src/types";
-import type { Provider, SetState } from "./types";
+import type { Provider } from "./types";
 
 const TranslationsContext = createContext({} as Translations);
 const UpdateTranslationsContext = createContext<
