@@ -1,5 +1,6 @@
 type NotificationType = "info" | "error" | "success" | "warning";
 type NotificationPosition = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
+type NotificationSize = "default" | "small";
 
 type NotificationsProps = {
   notifications: Notification[];
@@ -15,6 +16,7 @@ type Notification = {
   message: string;
   type: NotificationType;
   position: NotificationPosition;
+  size?: NotificationSize;
 };
 
 type NotificationItemProps = {
@@ -26,4 +28,4 @@ type IconProps = {
   type: NotificationType;
 };
 
-export type { NotificationType, NotificationPosition, Notification, NotificationItemProps, NotificationsProps, NotificationsGroupedByPosition, IconProps };
+export type { NotificationType, NotificationPosition, NotificationSize, Notification, NotificationItemProps, NotificationsProps, NotificationsGroupedByPosition, IconProps };

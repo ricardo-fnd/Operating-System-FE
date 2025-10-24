@@ -1,16 +1,18 @@
 "use client";
 import Shortcuts from "./Shortcuts";
 import BaseApplication from "../Applications/Base";
+import { OnlineUsersWidget } from "src/shared/components";
 
 import { useApps } from "src/context";
 
 const StyledMain = "relative w-full h-full bg-black";
 
 const Desktop = () => (
-  <main className={StyledMain}>
-    <Shortcuts />
-    <RunningApps />
-  </main>
+    <main className={StyledMain}>
+      <Shortcuts />
+      <RunningApps />
+      <OnlineUsersWidget />
+    </main>
 );
 
 const RunningApps = () => {

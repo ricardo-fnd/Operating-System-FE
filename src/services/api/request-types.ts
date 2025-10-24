@@ -18,6 +18,7 @@ export type UpdateUser = {
     job?: string;
     companyName?: string;
     email?: string;
+    public?: boolean;
   };
 };
 

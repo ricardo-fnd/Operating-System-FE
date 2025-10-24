@@ -4,6 +4,7 @@ import GoogleService from "./google-service";
 import UsersService from "./users-service";
 import AuthService from "./auth-service";
 import EmailsService from "./emails-service";
+import OnlineUsersService from "./online-users-service";
 
 export {
   setCookies,
@@ -13,4 +14,5 @@ export {
   UsersService,
   AuthService,
   EmailsService,
+  OnlineUsersService,
 };
