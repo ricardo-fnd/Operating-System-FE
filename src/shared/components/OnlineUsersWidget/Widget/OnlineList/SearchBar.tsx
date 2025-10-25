@@ -1,8 +1,8 @@
-import Input from "../../Inputs";
+import Input from "../../../Inputs";
 
 import { useLabels } from "src/services/client";
 
-import type { InputProps } from "../../Inputs";
+import type { InputProps } from "../../../Inputs";
 
 const StyledSearchInput = "w-full text-sm [&_input]:p-2";
 
