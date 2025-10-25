@@ -34,8 +34,13 @@ This project serves multiple purposes:
 > desktop           : draggable windows, minimize/maximize, multi-tasking
 > dock              : app launcher, running apps indicator, user menu
 ```
+## 🚀 Features
 
-## 🚀 Best Future Features
+### 💬 Messaging/Chat System
+- Widget Status indicators (online/offline) ✅
+- Privacy controls ✅
+
+## 🚀 Future Features
 
 ### 🗂️ File Manager Application
 - Create, edit, delete, and organize files and folders
@@ -66,9 +71,7 @@ This project serves multiple purposes:
 
 ### 💬 Messaging/Chat System
 - Real-time chat between users
-- Group conversations
 - File sharing in chats
-- Status indicators (online/offline)
 - Notification system integration
 
 ### 📊 System Monitor
@@ -86,7 +89,6 @@ This project serves multiple purposes:
 ### 🔧 Settings Application
 - Centralized system preferences
 - Account management
-- Privacy controls
 - Notification preferences
 - Keyboard shortcuts configuration
 - Import/export settings
