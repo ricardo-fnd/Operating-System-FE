@@ -7,11 +7,12 @@ import { API_URL } from "src/env-variables";
 import { QUERIES_KEYS } from "src/enums";
 import NotificationsService from "src/services/notifications-service";
 
-import type { Provider } from "./types";
+import type { Provider, WebSocketContextProps } from "./types";
 import type { User, WebSocketMessage } from "src/types";
 
-const WebSocketContext = createContext<{ onlineUsersCount: number }>({
+const WebSocketContext = createContext<WebSocketContextProps>({
   onlineUsersCount: 0,
+  sendMessage: () => {},
 });
 export const useWebSocket = () => useContext(WebSocketContext);
 
@@ -62,6 +63,13 @@ export const WebSocketProvider = ({ children }: Provider) => {
                 NotificationsService.offline(getLabel("online-users.offline-toast", { name: message.user.name }));
               }
             }
+            break;
+          case "chat_message_received":
+            if (message.data?.senderId !== currentUser.id) {
+              window.dispatchEvent(new CustomEvent('chatMessageReceived', { 
+                detail: message.data 
+              }));
+            }
         }
       };
 
@@ -71,6 +79,17 @@ export const WebSocketProvider = ({ children }: Provider) => {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const sendMessage = (data: WebSocketMessage['data']) => {
+    if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
+      return console.error("WebSocket not connected");
+    }
+
+    const currentUser = queryClient.getQueryData<User>([QUERIES_KEYS.user]);
+    if (!currentUser) return console.error("Current user not found");
+
+    wsRef.current.send(JSON.stringify({ type: "chat_message_sent", data }));
   };
 
   useEffect(() => {
@@ -98,7 +117,7 @@ export const WebSocketProvider = ({ children }: Provider) => {
   }, []);
 
   return (
-    <WebSocketContext.Provider value={{ onlineUsersCount: onlineUsersIds.size }}>
+    <WebSocketContext.Provider value={{ onlineUsersCount: onlineUsersIds.size, sendMessage }}>
       {children}
     </WebSocketContext.Provider>
   );
