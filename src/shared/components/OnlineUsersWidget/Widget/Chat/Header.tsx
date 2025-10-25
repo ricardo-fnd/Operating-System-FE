@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Button, BackwardIcon } from "src/shared/components";
+import { BackwardIcon } from "src/shared/components";
 import defaultAvatar from "public/user-profile/default-avatar.svg";
 
 import type { HeaderProps } from "../../types";

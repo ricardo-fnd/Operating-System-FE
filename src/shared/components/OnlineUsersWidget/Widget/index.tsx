@@ -20,34 +20,26 @@ const OnlineUsersWidget = forwardRef<HTMLDivElement, WidgetProps>((props, ref) =
   const { users, isOpen, isLoading } = props;
   const { data: currentUser } = UsersService.useMe();
 
-  const handleUserClick = (user: User) => setChatUser(user)
-  const handleBackToList = () => setChatUser(null)
-
-  const handleSendMessage = (message: string, targetUserId: number) => {
-    // TODO: Implement message sending via WebSocket
-    console.log("Sending message:", message, "to user:", targetUserId);
-  };
 
   return (
     <section 
       ref={ref} 
+      id="online-users-widget" 
       data-open={isOpen}
       data-view={chatUser ? "chat" : "list"}
       className={StyledWidget}
-      id="online-users-widget" 
     >
       {chatUser ? (
         <Chat
-          currentUser={currentUser as User}
           targetUser={chatUser}
-          onBack={handleBackToList}
-          onSendMessage={handleSendMessage}
+          currentUser={currentUser as User}
+          onBack={() => setChatUser(null)}
         />
       ) : (
         <OnlineList 
           users={users} 
           isLoading={isLoading} 
-          onUserClick={handleUserClick}
+          onUserClick={setChatUser}
           currentUser={currentUser as User}
         />
       )}

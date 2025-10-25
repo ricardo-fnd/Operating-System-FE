@@ -1,4 +1,4 @@
-import type { User } from "src/types";
+import type { User, WebSocketMessage } from "src/types";
 
 type WidgetProps = {
   users: User[];
@@ -27,7 +27,6 @@ type ChatProps = {
   currentUser: User;
   targetUser: User;
   onBack: () => void;
-  onSendMessage: (message: string, targetUserId: number) => void;
 };
 
 type HeaderProps = {
@@ -42,15 +41,8 @@ type TextAreaProps = {
 }
 
 type ChatMessagesProps = {
-  messages: Message[];
+  messages: Array<NonNullable<WebSocketMessage['data']>>;
   currentUser: User;
 }
 
-type Message = {
-  id: string;
-  senderId: number;
-  content: string;
-  timestamp: Date;
-}
-
-export type { UsersListProps, OnlineUserProps, WidgetProps, OnlineListProps, ChatProps, TextAreaProps, ChatMessagesProps, HeaderProps, Message };
+export type { UsersListProps, OnlineUserProps, WidgetProps, OnlineListProps, ChatProps, TextAreaProps, ChatMessagesProps, HeaderProps };

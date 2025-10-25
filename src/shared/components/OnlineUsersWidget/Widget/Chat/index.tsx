@@ -1,16 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Header from "./Header";
 import ChatMessages from "./ChatMessages";
 import TextArea from "./TextArea";
 
-import type { ChatProps, Message } from "../../types";
+import { useWebSocket } from "src/context";
+
+import type { ChatMessagesProps, ChatProps } from "../../types";
 
 const StyledChat = "flex flex-col h-full";
 
-const Chat = ({ currentUser, targetUser, onBack, onSendMessage }: ChatProps) => {
+const Chat = ({ currentUser, targetUser, onBack }: ChatProps) => {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<Array<Message>>([]);
+  const [messages, setMessages] = useState<ChatMessagesProps['messages']>([]);
+  const { sendMessage } = useWebSocket();
+
+  useEffect(() => {
+    const handleMessageReceived = (event: CustomEvent) => {
+      const data: ChatMessagesProps['messages'][number] = event.detail;
+      if (data!.senderId !== currentUser.id) setMessages(prev => [...prev, data])
+    };
+
+    window.addEventListener('chatMessageReceived', handleMessageReceived as EventListener);
+    return () => {
+      window.removeEventListener('chatMessageReceived', handleMessageReceived as EventListener);
+    };
+  }, [currentUser.id]);
 
   const handleSendMessage = () => {
     if (!message.trim()) return;
@@ -19,11 +34,12 @@ const Chat = ({ currentUser, targetUser, onBack, onSendMessage }: ChatProps) => 
       id: Date.now().toString(),
       content: message.trim(),
       senderId: currentUser.id,
-      timestamp: new Date(),
+      receiverId: targetUser.id,
+      timestamp: new Date().toString(),
     };
 
     setMessages(prev => [...prev, newMessage]);
-    onSendMessage(message.trim(), targetUser.id);
+    sendMessage(newMessage);
     setMessage("");
   };
 
