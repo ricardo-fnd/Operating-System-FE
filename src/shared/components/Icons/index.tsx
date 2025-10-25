@@ -16,3 +16,4 @@ export { UserIcon } from "./UserIcon";
 export { EmailIcon } from "./EmailIcon";
 export { WarningIcon } from "./WarningIcon";
 export { OnlineUsersIcon } from "./OnlineUsersIcon";
+export { LoadingIcon } from "./LoadingIcon";

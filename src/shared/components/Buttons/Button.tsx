@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import Loading from "../Loading";
+import { LoadingIcon } from "../Icons";
 
 import type { ButtonHTMLAttributes } from "react";
 
@@ -19,7 +19,7 @@ const StyledButton = `relative flex justify-center items-center gap-1.5 w-fit px
   data-[color="yellow"]:bg-yellow-400 data-[color="yellow"]:hover:bg-yellow-500 data-[color="yellow"]:disabled:hover:bg-yellow-400
   data-[color="zinc"]:bg-zinc-900/75 data-[color="zinc"]:hover:bg-zinc-800 data-[color="zinc"]:border-zinc-600 data-[color="zinc"]:disabled:hover:bg-zinc-900/75`;
 const StyledLoading =
-  "absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-5 fill-white";
+  "absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2";
 
 const Button = ({
   color,
@@ -39,7 +39,7 @@ const Button = ({
       {...props}
     >
       {children}
-      {loading && <Loading className={StyledLoading} />}
+      {loading && <LoadingIcon width={28} height={28} color="#ffffff" className={StyledLoading} />}
     </button>
   );
 };
