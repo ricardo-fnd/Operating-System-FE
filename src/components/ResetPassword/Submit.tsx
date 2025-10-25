@@ -11,7 +11,7 @@ const Submit = ({ disabled, ...props }: ButtonProps) => {
 
   return (
     <Button {...props} disabled={disabled} className={StyledButton}>
-      {getLabel("reset-password.submit")}
+      <p>{getLabel("reset-password.submit")}</p>
     </Button>
   );
 };
