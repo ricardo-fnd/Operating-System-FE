@@ -59,7 +59,7 @@ const ForgotAccountModal = ({ close }: { close: () => void }) => {
         <p className={StyledTip}>{getLabel("forgot-account-modal.tip")}</p>
       </div>
       <Button className={StyledButton} onClick={send} disabled={!email} color="blue">
-        {getLabel("forgot-account-modal.send")}
+        <p>{getLabel("forgot-account-modal.send")}</p>
       </Button>
     </Modal>
   );

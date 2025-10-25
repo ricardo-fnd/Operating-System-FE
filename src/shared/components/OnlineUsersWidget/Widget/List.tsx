@@ -1,4 +1,4 @@
-import Loading from "../../Loading";
+import { LoadingIcon } from "src/shared/components";
 import OnlineUser from "./OnlineUser";
 
 import { useLabels } from "src/services/client";
@@ -7,12 +7,12 @@ import type { UsersListProps } from "../types";
 
 const StyledEmpty = "flex flex-col items-center justify-center py-3 px-4 text-sm font-medium text-slate-400";
 const StyledList = "divide-y divide-slate-200";
-const StyledLoading = "w-8 h-8 my-4 mx-auto";
+const StyledLoading = "my-6 mx-auto";
 
 const UsersList = ({ users, searchQuery, currentUser, isLoading }: UsersListProps) => {
   const getLabel = useLabels();
 
-  if (isLoading) return <Loading className={StyledLoading} />
+  if (isLoading) return <LoadingIcon width={40} height={40} className={StyledLoading} />
 
   if (currentUser?.guest) {
     return (

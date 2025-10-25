@@ -12,7 +12,7 @@ const Enter = ({disabled, ...props}: ButtonProps) => {
 
   return (
     <Button {...props} className={StyledButton} disabled={disabled} data-disabled={disabled}>
-      {getLabel("commons.enter")}
+      <p>{getLabel("commons.enter")}</p>
     </Button>
   );
 };
