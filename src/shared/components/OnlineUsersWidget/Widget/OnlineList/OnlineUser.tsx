@@ -1,22 +1,28 @@
 import Image from "next/image";
 
 import defaultAvatar from "public/user-profile/default-avatar.svg";
+import UnreadCount from "./UnreadCount";
 
-import type { OnlineUserProps } from "../types";
+import type { OnlineUserProps } from "../../types";
 
-const StyledUserItem = "flex items-center gap-3 px-2 py-1";
+const StyledUserItem = "flex items-center gap-3 px-2 py-1 hover:bg-slate-50 transition-colors data-[is-me=false]:cursor-pointer";
 const StyledAvatarContainer = "relative flex-shrink-0 [&_image]:rounded-full";
 const StyledOnlineIndicator = "absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white";
 const StyledName = "font-medium text-slate-800 text-sm truncate";
 const StyledMeLabel = "text-slate-500 font-normal ml-1";
 
-const OnlineUser = ({ user, currentUser }: OnlineUserProps) => {
+const OnlineUser = ({ user, currentUser, onUserClick }: OnlineUserProps) => {
   const displayName = (user.name ?? user.username) as string;
   const isMe = currentUser?.id === user.id;
 
+  const handleClick = () => {
+    if (!isMe) onUserClick(user)
+  };
+
   return (
-    <div className={StyledUserItem}>
+    <div className={StyledUserItem} data-is-me={isMe} onClick={handleClick}>
       <div className={StyledAvatarContainer}>
+        <UnreadCount userId={user.id} />
         <Image
           width={36}
           height={36}

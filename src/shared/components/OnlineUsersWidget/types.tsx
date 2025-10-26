@@ -1,4 +1,4 @@
-import type { User } from "src/types";
+import type { User, WebSocketMessage } from "src/types";
 
 type WidgetProps = {
   users: User[];
@@ -6,16 +6,43 @@ type WidgetProps = {
   isLoading?: boolean;
 };
 
-type UsersListProps = {
+type OnlineListProps = {
   users: User[];
-  searchQuery?: string;
   currentUser: User;
   isLoading?: boolean;
+  onUserClick: (user: User) => void;
 };
- 
+
+type UsersListProps = OnlineListProps & {
+  searchQuery?: string;
+};
+
 type OnlineUserProps = {
   user: User;
   currentUser: User;
+  onUserClick: (user: User) => void;
 };
 
-export type { UsersListProps, OnlineUserProps, WidgetProps };
+type ChatProps = {
+  currentUser: User;
+  targetUser: User;
+  onBack: () => void;
+};
+
+type HeaderProps = {
+  onBack: () => void;
+  targetUser: User;
+}
+
+type TextAreaProps = {
+  message: string;
+  setMessage: (message: string) => void;
+  handleSendMessage: () => void;
+}
+
+type ChatMessagesProps = {
+  messages: Array<WebSocketMessage['data'] & { read: boolean }>;
+  currentUser: User;
+}
+
+export type { UsersListProps, OnlineUserProps, WidgetProps, OnlineListProps, ChatProps, TextAreaProps, ChatMessagesProps, HeaderProps };
