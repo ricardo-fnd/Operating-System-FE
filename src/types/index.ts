@@ -68,7 +68,13 @@ export type GoogleSearchResults = {
 };
 
 export type WebSocketMessage = {
-  type: "user_online" | "user_offline" | "online_users";
-  user_ids?: number[];
+  type: "user_online" | "user_offline" | "chat_message_sent" | "chat_message_received";
   user?: { id: number; name: string; };
+  data?: {
+    id: string;
+    content: string;
+    senderId: number;
+    receiverId: number;
+    timestamp: string;
+  };
 };

@@ -37,7 +37,9 @@ This project serves multiple purposes:
 ## 🚀 Features
 
 ### 💬 Messaging/Chat System
+- Real-time chat between users ✅
 - Widget Status indicators (online/offline) ✅
+- Notification system integration ✅
 - Privacy controls ✅
 
 ## 🚀 Future Features
@@ -70,9 +72,7 @@ This project serves multiple purposes:
 - Create, edit, and organize notes
 
 ### 💬 Messaging/Chat System
-- Real-time chat between users
 - File sharing in chats
-- Notification system integration
 
 ### 📊 System Monitor
 - CPU/Memory usage visualization (simulated)
