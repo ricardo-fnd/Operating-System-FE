@@ -5,13 +5,16 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useLabels } from "src/services/client";
 import { API_URL } from "src/env-variables";
 import { QUERIES_KEYS } from "src/enums";
-import NotificationsService from "src/services/notifications-service";
+import { handleWebSocketMessage } from "./messageHandler";
 
-import type { Provider } from "./types";
+import type { Provider, WebSocketContextProps } from "../types";
 import type { User, WebSocketMessage } from "src/types";
 
-const WebSocketContext = createContext<{ onlineUsersCount: number }>({
-  onlineUsersCount: 0,
+const WebSocketContext = createContext<WebSocketContextProps>({
+  messages: new Map(),
+  sendMessage: () => {},
+  markAsRead: () => {},
+  addMessage: () => {},
 });
 export const useWebSocket = () => useContext(WebSocketContext);
 
@@ -20,8 +23,8 @@ export const WebSocketProvider = ({ children }: Provider) => {
   const queryClient = useQueryClient();
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout>();
-  const [onlineUsersIds, setOnlineUsersIds] = useState<Set<number>>(new Set());
-
+  const [messages, setMessages] = useState<WebSocketContextProps['messages']>(new Map());
+  
   const connect = () => {
     const currentUser = queryClient.getQueryData<User>([QUERIES_KEYS.user]);
     if (!currentUser || currentUser.guest) return
@@ -32,37 +35,7 @@ export const WebSocketProvider = ({ children }: Provider) => {
 
       ws.onmessage = async (event) => {
         const message: WebSocketMessage = JSON.parse(event.data);
-        
-        switch (message.type) {
-          case "online_users":
-            if (message.user_ids) setOnlineUsersIds(new Set(message.user_ids))
-            break;
-          case "user_online":
-            if (message.user) {
-              setOnlineUsersIds(prev => {
-                const newSet = new Set(prev);
-                newSet.add(message.user!.id);
-                return newSet;
-              });
-              
-              if (currentUser && message.user.id !== currentUser.id) {
-                NotificationsService.online(getLabel("online-users.online-toast", { name: message.user.name }));
-              }
-            }
-            break;
-          case "user_offline":
-            if (message.user) {
-              setOnlineUsersIds(prev => {
-                const newSet = new Set(prev);
-                newSet.delete(message.user!.id);
-                return newSet;
-              });
-              
-              if (currentUser && message.user.id !== currentUser.id) {
-                NotificationsService.offline(getLabel("online-users.offline-toast", { name: message.user.name }));
-              }
-            }
-        }
+        handleWebSocketMessage({ message, currentUser, getLabel, addMessage });
       };
 
       ws.onclose = () => reconnectTimeoutRef.current = setTimeout(connect, 3000)
@@ -97,8 +70,38 @@ export const WebSocketProvider = ({ children }: Provider) => {
     };
   }, []);
 
+  const sendMessage = (data: WebSocketMessage['data']) => {
+    if (!wsRef.current || wsRef.current.readyState !== WebSocket.OPEN) {
+      return console.error("WebSocket not connected");
+    }
+
+    const currentUser = queryClient.getQueryData<User>([QUERIES_KEYS.user]);
+    if (!currentUser) return console.error("Current user not found");
+
+    wsRef.current.send(JSON.stringify({ type: "chat_message_sent", data }));
+  };
+
+  const addMessage = (data: NonNullable<WebSocketMessage['data']>) => {
+    const currentUser = queryClient.getQueryData<User>([QUERIES_KEYS.user]);
+    const chatKey = data.senderId === currentUser!.id ? data.receiverId : data.senderId;
+    
+    setMessages(prev => {
+      const chatMessages = prev.get(chatKey) || [];
+      if (chatMessages.some(msg => msg.id === data.id)) return prev;
+      return new Map(prev).set(chatKey, [...chatMessages, { ...data, read: data.senderId === currentUser!.id }]);
+    });
+  };
+
+  const markAsRead = (userId: number) => {
+    setMessages(prev => {
+      const chatMessages = prev.get(userId) || [];
+      const updatedMessages = chatMessages.map(data => ({ ...data, read: true }));
+      return new Map(prev).set(userId, updatedMessages);
+    });
+  };
+
   return (
-    <WebSocketContext.Provider value={{ onlineUsersCount: onlineUsersIds.size }}>
+    <WebSocketContext.Provider value={{ messages, sendMessage, markAsRead, addMessage }}>
       {children}
     </WebSocketContext.Provider>
   );

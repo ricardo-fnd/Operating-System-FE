@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 
 import { Button, OnlineUsersIcon } from "src/shared/components";
-import OnlineCount from "./OnlineCount";
+import UnreadMessages from "./UnreadMessages";
 import OnlineUsersWidget from "./Widget";
 
 import { OnlineUsersService, UsersService } from "src/services/client";
@@ -30,7 +30,7 @@ const OnlineUsersButton = () => {
         id="online-users-widget-button"
         onClick={() => setShowWidget(!showWidget)}
       >
-        <OnlineCount />
+        <UnreadMessages />
         <OnlineUsersIcon width={24} height={24} color="white" />
       </Button>
       <OnlineUsersWidget 

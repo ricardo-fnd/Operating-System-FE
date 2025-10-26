@@ -3,13 +3,13 @@ import OnlineUser from "./OnlineUser";
 
 import { useLabels } from "src/services/client";
 
-import type { UsersListProps } from "../types";
+import type { UsersListProps } from "../../types";
 
 const StyledEmpty = "flex flex-col items-center justify-center py-3 px-4 text-sm font-medium text-slate-400";
 const StyledList = "divide-y divide-slate-200";
 const StyledLoading = "my-6 mx-auto";
 
-const UsersList = ({ users, searchQuery, currentUser, isLoading }: UsersListProps) => {
+const UsersList = ({ users, searchQuery, currentUser, isLoading, onUserClick }: UsersListProps) => {
   const getLabel = useLabels();
 
   if (isLoading) return <LoadingIcon width={40} height={40} className={StyledLoading} />
@@ -45,7 +45,7 @@ const UsersList = ({ users, searchQuery, currentUser, isLoading }: UsersListProp
   return (
     <div className={StyledList}>
       {sortedAlphabetically.map((user) => (
-        <OnlineUser key={user.id} user={user} currentUser={currentUser} />
+        <OnlineUser key={user.id} user={user} currentUser={currentUser} onUserClick={onUserClick} />
       ))}
     </div>
   );
