@@ -1,5 +1,4 @@
-import { MenuOption } from "src/shared/components/Menu";
-import { ProfileIcon } from "src/shared/components";
+import { MenuOption, ProfileIcon } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 import { AppsService } from "src/services";

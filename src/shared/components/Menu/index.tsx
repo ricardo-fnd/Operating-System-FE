@@ -5,7 +5,7 @@ import MenuOption from "./MenuOption";
 
 import { useOnClickOutside } from "src/hooks";
 
-import type { MenuHTMLAttributes, ReactNode } from "react";
+import type { MenuHTMLAttributes } from "react";
 
 type Props = MenuHTMLAttributes<HTMLMenuElement> & {
   close: () => void;

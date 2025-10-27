@@ -26,7 +26,7 @@ const parseKey = ({
     let labelWithPlaceholder = label;
     Object.keys(interpolate).map((key) => {
       const value = interpolate[key].toString();
-      labelWithPlaceholder = label.replace(new RegExp(`{${key}}`, "g"), value);
+      labelWithPlaceholder = label?.replace(new RegExp(`{${key}}`, "g"), value);
     });
 
     return labelWithPlaceholder;
