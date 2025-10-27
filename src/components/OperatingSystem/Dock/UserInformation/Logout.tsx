@@ -1,5 +1,4 @@
-import { LogoutIcon } from "src/shared/components";
-import { MenuOption } from "src/shared/components/Menu";
+import { MenuOption, LogoutIcon } from "src/shared/components";
 
 import { AuthService, useLabels } from "src/services/client";
 

@@ -1,4 +1,4 @@
-import Menu, { MenuOption } from "src/shared/components/Menu";
+import { Menu, MenuOption } from "src/shared/components";
 
 import { useLabels } from "src/services/client";
 

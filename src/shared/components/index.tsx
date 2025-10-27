@@ -8,7 +8,9 @@ import HelpTooltip from "./HelpTooltip";
 import GitHub from "./GitHub";
 import Notifications from "./Notifications";
 import OnlineUsersWidget from "./OnlineUsersWidget";
+import Menu from "./Menu";
+import MenuOption from "./Menu/MenuOption";
 
-export { Modal, AboutProjectModal, Input, Checkbox, Tooltip, LanguageButton, HelpTooltip, GitHub, Notifications, OnlineUsersWidget };
+export { Modal, AboutProjectModal, Input, Checkbox, Tooltip, LanguageButton, HelpTooltip, GitHub, Notifications, OnlineUsersWidget, Menu, MenuOption };
 export * from "./Icons";
 export * from "./Buttons";

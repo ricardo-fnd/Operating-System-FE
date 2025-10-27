@@ -1,4 +1,4 @@
-import Menu from "src/shared/components/Menu";
+import { Menu } from "src/shared/components";
 import Profile from "./Profile";
 import Logout from "./Logout";
 

@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 import AppShortcut from "./AppShortcut";
+import ContextMenu from "../ContextMenu";
 
 import { UsersService } from "src/services/client";
 import { useApps } from "src/context";
@@ -8,15 +11,28 @@ const StyledShortcuts =
 
 const Shortcuts = () => {
   const apps = useApps();
-  
+  const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
+
   const { data: user } = UsersService.useMe();
 
+  const closeContextMenu = () => setContextMenuPos({ x: 0, y: 0 });
+  const openContextMenu = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      e.preventDefault();
+      e.stopPropagation();
+      setContextMenuPos({ x: e.clientX, y: e.clientY });
+    }
+  };
+
   return (
-    <div className={StyledShortcuts}>
-      {apps.map(
-        (app) => app.showIcon && <AppShortcut key={app.id} app={app} user={user} />
-      )}
-    </div>
+    <>
+      <div className={StyledShortcuts} onContextMenu={openContextMenu}>
+        {apps.map(
+          (app) => app.showIcon && <AppShortcut key={app.id} app={app} user={user} />
+        )}
+      </div>
+      <ContextMenu position={contextMenuPos} onClose={closeContextMenu} />
+    </>
   );
 };
 

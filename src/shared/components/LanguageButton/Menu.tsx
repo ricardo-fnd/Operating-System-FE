@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import Menu, { MenuOption } from "src/shared/components/Menu";
+import { Menu, MenuOption } from "src/shared/components";
 
 import { useUpdateTranslations } from "src/context";
 import { LANGUAGES } from "src/enums";
