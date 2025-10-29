@@ -24,7 +24,7 @@ const RunningApps = () => {
 
     return (
       <BaseApplication key={app.id} app={app}>
-        <Application />
+        <Application app={app} />
       </BaseApplication>
     );
   });

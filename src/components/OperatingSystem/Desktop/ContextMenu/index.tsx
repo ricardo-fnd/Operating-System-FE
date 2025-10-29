@@ -1,5 +1,5 @@
 import { Menu } from "src/shared/components";
-import ChangeBackgroundOption from "./Options/ChangeBackgroundOption";
+import NewTextFileOption from "./Options/NewTextFileOption";
 
 import type { ContextMenuProps } from "./types";
 
@@ -15,7 +15,7 @@ const ContextMenu = ({ position, onClose }: ContextMenuProps) => {
       className={StyledMenu}
       style={{ left: position.x, top: position.y }}
     >
-      <ChangeBackgroundOption onClose={onClose} />
+      <NewTextFileOption onClose={onClose} />
     </Menu>
   );
 };

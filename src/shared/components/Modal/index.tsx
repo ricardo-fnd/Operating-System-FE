@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { twMerge } from "tailwind-merge";
 
 import CloseButton from "./Close";
@@ -33,7 +34,7 @@ const Modal = ({
     return () => document.removeEventListener("keydown", handleEscape);
   }, [close]);
 
-  return (
+  return createPortal(
     <div className={StyledOverlay} onClick={close && close}>
       <div
         className={style}
@@ -44,8 +45,8 @@ const Modal = ({
         <section className={StyledContent}>{children}</section>
         <Footer advance={advance} />
       </div>
-    </div>
-  );
+    </div>,
+    document.body);
 };
 
 export default Modal;

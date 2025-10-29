@@ -1,4 +1,4 @@
-import type { ComponentType, ReactNode } from "react";
+import type { ComponentType } from "react";
 import type { SUPPORTED_LANGUAGES } from "src/enums";
 import type { IconProps } from "src/shared/components/Icons/types";
 
@@ -32,6 +32,8 @@ export type ShortcutPosition = {
   appId: Application["id"];
   x: number;
   y: number;
+  name?: string;
+  type?: 'app' | 'text-file';
 };
 
 export type ShortcutsPositions = {
@@ -39,17 +41,20 @@ export type ShortcutsPositions = {
 };
 
 export type Application = {
-  id: number;
+  id: string | number;
   Icon: ComponentType<IconProps>;
   name: string;
-  component: () => ReactNode;
-  opened: boolean;
-  minimized: boolean;
-  maximized: boolean;
-  priority: number;
+  component: ComponentType<{ app: Application }>;
+  opened?: boolean;
+  minimized?: boolean;
+  maximized?: boolean;
+  priority?: number;
   showIcon: boolean;
   initialPosition?: { x: number; y: number };
   shortcutPosition?: { x: number; y: number };
+  type: 'app' | 'text-file';
+  isEditing?: boolean;
+  onClose?: () => void;
 };
 
 export type GoogleSearchResults = {
@@ -77,4 +82,14 @@ export type WebSocketMessage = {
     receiverId: number;
     timestamp: string;
   };
+};
+
+export type TextFile = {
+  id: number;
+  name: string;
+  content: string;
+  shortcutPositionX: number;
+  shortcutPositionY: number;
+  createdAt: string;
+  updatedAt: string;
 };

@@ -1,7 +1,7 @@
 import { setCookies } from "src/services/client";
 
 import type { ResizeShortcut, SaveShortcut } from "../types";
-import type { ShortcutsPositions } from "src/types";
+import type { ShortcutPosition, ShortcutsPositions } from "src/types";
 
 export const PADDING = 16;
 export const DOCK_HEIGHT = 60;
@@ -37,7 +37,7 @@ const checkYBoundaries = ({ app, ref }: Omit<ResizeShortcut, "callback">) => {
   return appLastY > window.innerHeight - DOCK_HEIGHT - PADDING;
 };
 
-const saveAppShortcutPosition = ({ app, x, y, user }: SaveShortcut) => {
+const saveShortcutPosition = ({ app, x, y, user }: SaveShortcut) => {
   if (!user || user.guest) return;
   
   setCookies({
@@ -46,9 +46,15 @@ const saveAppShortcutPosition = ({ app, x, y, user }: SaveShortcut) => {
       const userPositions = (prev ? prev[user.id] : []) ?? [];
       const filtered = userPositions.filter(({ appId }) => appId !== app.id);
       
-      return { ...prev, [user.id]: [...filtered, { appId: app.id, x, y }] };
+      const shortcut = { appId: app.id, x, y } as ShortcutPosition;
+      if (app.type === 'text-file') {
+        shortcut.name = app.name;
+        shortcut.type = 'text-file';
+      }
+      
+      return { ...prev, [user.id]: [...filtered, shortcut] };
     },
   });
 };
 
-export { handleResize, saveAppShortcutPosition };
+export { handleResize, saveShortcutPosition };

@@ -10,7 +10,7 @@ import type { Application } from "src/types";
 
 //DOCK_HEIGHT = 60px;
 const StyledApplication = `absolute top-0 left-0 min-w-56 w-full max-w-[66%] h-full max-h-[66%] rounded-xl overflow-hidden shadow-2xl border border-zinc-700
-  transition-all duration-300 ease-in-out
+  transition-[transform,opacity,width,height,border-radius,border] duration-300 ease-in-out
   data-[dragging=true]:transition-none
   data-[minimized=true]:scale-0 data-[minimized=true]:opacity-0 data-[minimized=true]:pointer-events-none
   data-[maximized=true]:max-w-full data-[maximized=true]:max-h-[calc(100%-60px)] data-[maximized=true]:rounded-none data-[maximized=true]:border-0`;
@@ -34,7 +34,7 @@ const BaseApplication = ({ children, app }: BaseApplication) => {
         data-maximized={app.maximized}
         data-minimized={app.minimized}
         style={{ zIndex: app.priority }}
-        onClick={() => pushToFront(app)}
+        onPointerDown={() => pushToFront(app)}
       >
         <TopBar app={app} />
         <div className={StyledContent}>{children}</div>
