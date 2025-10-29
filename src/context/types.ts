@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 import type { SUPPORTED_LANGUAGES } from "src/enums";
-import type { Translations, WebSocketMessage } from "src/types";
+import type { ShortcutPosition, Translations, User, WebSocketMessage } from "src/types";
 
 type SetState<T> = Dispatch<SetStateAction<T>>;
 
@@ -15,6 +15,10 @@ type BaseProviders = {
   children: React.ReactNode;
 };
 
+type AppsProviderProps = Provider<ShortcutPosition[] | null | undefined> & {
+  initialUser: User | null;
+};
+
 type WebSocketContextProps = {
   messages: Map<number, Array<WebSocketMessage['data'] & { read: boolean }>>;
   sendMessage: (message: WebSocketMessage['data']) => void;
@@ -22,4 +26,4 @@ type WebSocketContextProps = {
   addMessage: (message: any) => void;
 };
 
-export type { SetState, Provider, BaseProviders, WebSocketContextProps };
+export type { SetState, Provider, BaseProviders, AppsProviderProps, WebSocketContextProps };

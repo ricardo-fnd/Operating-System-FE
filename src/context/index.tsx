@@ -3,7 +3,7 @@ import { HistoryProvider } from "./HistoryProvider";
 import ReactQueryProvider from "./ReactQueryContext";
 import { NotificationsProvider } from "src/services/notifications-service";
 
-import { AppsProvider, useApps } from "./AppsContext";
+import { AppsProvider, useApps, useAppsUpdate } from "./AppsContext";
 import { WebSocketProvider, useWebSocket } from "./WebSocket";
 import { useTranslations, useUpdateTranslations } from "./TranslationsContext";
 import { useHistory, useUpdateHistory } from "./HistoryProvider";
@@ -26,6 +26,7 @@ export {
   WebSocketProvider,
   AppsProvider,
   useApps,
+  useAppsUpdate,
   useTranslations,
   useUpdateTranslations,
   useHistory,

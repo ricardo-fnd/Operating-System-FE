@@ -15,7 +15,7 @@ const TopBar = ({ app }: { app: Application }) => {
 
   return (
     <header className={StyledHeader} onDoubleClick={() => maximize(app)}>
-      <h3 className={StyledTitle}>{getLabel(app.name)}</h3>
+      <h3 className={StyledTitle}>{app.type === 'app' ? getLabel(app.name) : app.name}</h3>
       <Buttons app={app} />
     </header>
   );

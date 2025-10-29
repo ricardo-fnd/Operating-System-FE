@@ -27,9 +27,9 @@ const Shortcuts = () => {
   return (
     <>
       <div className={StyledShortcuts} onContextMenu={openContextMenu}>
-        {apps.map(
-          (app) => app.showIcon && <AppShortcut key={app.id} app={app} user={user} />
-        )}
+        {apps.map((app) => {
+          if (app.showIcon) return <AppShortcut key={app.id} app={app} user={user} />
+        })}
       </div>
       <ContextMenu position={contextMenuPos} onClose={closeContextMenu} />
     </>

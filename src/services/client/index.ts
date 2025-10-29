@@ -5,6 +5,7 @@ import UsersService from "./users-service";
 import AuthService from "./auth-service";
 import EmailsService from "./emails-service";
 import OnlineUsersService from "./online-users-service";
+import TextFilesService from "./text-file-service";
 
 export {
   setCookies,
@@ -15,4 +16,5 @@ export {
   AuthService,
   EmailsService,
   OnlineUsersService,
+  TextFilesService,
 };

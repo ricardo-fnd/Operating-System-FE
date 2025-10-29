@@ -17,6 +17,7 @@ const APPLICATIONS: Application[] = [
     maximized: false,
     priority: 0,
     showIcon: true,
+    type: 'app',
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ const APPLICATIONS: Application[] = [
     maximized: false,
     priority: 0,
     showIcon: false,
+    type: 'app',
   },
 ];
 

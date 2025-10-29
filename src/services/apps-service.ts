@@ -7,10 +7,7 @@ const useOpen = () => {
 
   return (app: Application) =>
     updateApps((apps) => {
-      const appWithMostPriority = apps.reduce((prev, current) =>
-        prev && prev.priority > current.priority ? prev : current
-      );
-
+      const appWithMostPriority = getAppWithHighestPriority(apps);
       const appsOpened = apps.filter(({ opened }) => opened);
       const random = Math.random() * 150 * appsOpened.length;
 
@@ -18,11 +15,11 @@ const useOpen = () => {
         if (application.id !== app.id) return application;
 
         return {
-          ...app,
+          ...application,
           opened: true,
           minimized: false,
           initialPosition: { x: random, y: random },
-          priority: appWithMostPriority.priority + 1,
+          priority: (appWithMostPriority?.priority || 0) + 1,
         };
       });
     });
@@ -32,39 +29,33 @@ const useClose = () => {
   const updateApps = useAppsUpdate();
 
   return (app: Application) =>
-    updateApps((apps) => {
-      return apps.map((application) => {
+    updateApps((apps) => apps.map((application) => {
         if (application.id !== app.id) return application;
-
-        return { ...app, opened: false, minimized: true, maximized: false };
-      });
-    });
+        return { ...application, opened: false, minimized: true, maximized: false };
+      })
+    );
 };
 
 const useMaximize = () => {
   const updateApps = useAppsUpdate();
 
   return (app: Application) =>
-    updateApps((apps) => {
-      return apps.map((application) => {
+    updateApps((apps) => apps.map((application) => {
         if (application.id !== app.id) return application;
-
-        return { ...app, maximized: !app.maximized };
-      });
-    });
+        return { ...application, maximized: !application.maximized };
+      })
+    );
 };
 
 const useMinimize = () => {
   const updateApps = useAppsUpdate();
 
   return (app: Application) =>
-    updateApps((apps) => {
-      return apps.map((application) => {
+    updateApps((apps) => apps.map((application) => {
         if (application.id !== app.id) return application;
-
-        return { ...app, minimized: !app.minimized };
-      });
-    });
+        return { ...application, minimized: !application.minimized };
+      })
+    );
 };
 
 const usePushToFront = () => {
@@ -72,14 +63,12 @@ const usePushToFront = () => {
 
   return (app: Application) =>
     updateApps((apps) => {
-      const appWithMostPriority = apps.reduce((prev, current) =>
-        prev && prev.priority > current.priority ? prev : current
-      );
-      if (appWithMostPriority.id === app.id) return apps;
+      const appWithMostPriority = getAppWithHighestPriority(apps);
+      if (appWithMostPriority?.id === app.id) return apps;
 
       return apps.map((application) => {
         if (application.id !== app.id) return application;
-        return { ...app, priority: appWithMostPriority.priority + 1 };
+        return { ...application, priority: (appWithMostPriority?.priority || 0) + 1 };
       });
     });
 };
@@ -88,14 +77,32 @@ const useSetShortcutPosition = () => {
   const updateApps = useAppsUpdate();
 
   return ({ app, x, y }: { app: Application; x: number; y: number }) => {
-    updateApps((apps) =>
-      apps.map((application) => {
+    updateApps((apps) => apps.map((application) => {
         if (application.id !== app.id) return application;
-
-        return { ...app, shortcutPosition: { x, y } };
+        return { ...application, shortcutPosition: { x, y } };
       })
     );
   };
+};
+
+const useAdd = () => {
+  const updateApps = useAppsUpdate();
+  
+  return (app: Application) => updateApps((apps) => {
+    const existingApp = apps.find((a) => a.id === app.id);
+    if (existingApp) return apps;
+    return [...apps, app];
+  })
+};
+
+const useUpdate = () => {
+  const updateApps = useAppsUpdate();
+
+  return (appId: Application["id"], updates: Partial<Application>) => 
+    updateApps((apps) => apps.map((app) => 
+      (app.id === appId ? { ...app, ...updates } : app)
+    )
+  );
 };
 
 const AppsService = {
@@ -105,6 +112,16 @@ const AppsService = {
   useMinimize,
   usePushToFront,
   useSetShortcutPosition,
+  useAdd,
+  useUpdate,
 };
 
 export default AppsService;
+
+const getAppWithHighestPriority = (apps: Application[]): Application | undefined => {
+  return apps.reduce((prev, current) => {
+    if (!prev) return current;
+    if (!current) return prev;
+    return (prev.priority || 0) >= (current.priority || 0) ? prev : current;
+  });
+};

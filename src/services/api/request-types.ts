@@ -53,3 +53,13 @@ export type SearchGoogleParams = {
 export type GetLocaleParams = {
   language: SUPPORTED_LANGUAGES;
 };
+
+export type CreateTextFile = {
+  name: string;
+  shortcutPositionX: number;
+  shortcutPositionY: number;
+};
+
+export type UpdateTextFile = Partial<CreateTextFile> & {
+  content?: string;
+};

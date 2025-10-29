@@ -14,7 +14,6 @@ export default async function Home() {
   const translations = await TranslationsService.getTranslations({
     language,
   });
-
   
   const appsShortcutsPositions = getCookies({ name: "shortcuts-positions" });
   
