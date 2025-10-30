@@ -37,7 +37,7 @@ const checkYBoundaries = ({ app, ref }: Omit<ResizeShortcut, "callback">) => {
   return appLastY > window.innerHeight - DOCK_HEIGHT - PADDING;
 };
 
-const saveShortcutPosition = ({ app, x, y, user }: SaveShortcut) => {
+const saveCookiesShortcut = ({ app, x, y, user }: SaveShortcut) => {
   if (!user || user.guest) return;
   
   setCookies({
@@ -57,4 +57,4 @@ const saveShortcutPosition = ({ app, x, y, user }: SaveShortcut) => {
   });
 };
 
-export { handleResize, saveShortcutPosition };
+export { handleResize, saveCookiesShortcut };

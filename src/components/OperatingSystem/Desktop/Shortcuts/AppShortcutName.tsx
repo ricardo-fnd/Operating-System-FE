@@ -4,7 +4,7 @@ import { Input } from "src/shared/components";
 
 import { useLabels, TextFilesService } from "src/services/client";
 import { AppsService, NotificationsService } from "src/services";
-import { saveShortcutPosition } from "./utils";
+import { saveCookiesShortcut } from "./utils";
 
 import type { AppShortcut } from "../types";
 import type { Application, User } from "src/types";
@@ -21,7 +21,7 @@ const AppShortcutName = ({ app, user }: { app: AppShortcut['app']; user?: User |
     onError: () => updateApp(app.id, { name: editingName.trim(), isEditing: false }),
     onSuccess: ({ id, name, shortcutPositionX, shortcutPositionY }) => {
       const appData = { id, name, type: 'text-file' } as Application;
-      saveShortcutPosition({ user, app: appData, x: shortcutPositionX, y: shortcutPositionY });
+      saveCookiesShortcut({ user, app: appData, x: shortcutPositionX, y: shortcutPositionY });
       
       updateApp(app.id, { 
         id, 
@@ -30,6 +30,17 @@ const AppShortcutName = ({ app, user }: { app: AppShortcut['app']; user?: User |
         isEditing: false 
       });
       NotificationsService.success(getLabel('apps.text-file.created-successfully'));
+    },
+  });
+
+  const { mutate: update } = TextFilesService.useUpdate({
+    onError: () => updateApp(app.id, { isEditing: false }),
+    onSuccess: ({ id, name, shortcutPositionX, shortcutPositionY }) => {
+      const appData = { id, name, type: 'text-file' } as Application;
+      saveCookiesShortcut({ user, app: appData, x: shortcutPositionX, y: shortcutPositionY }); 
+      
+      updateApp(app.id, { name, isEditing: false });
+      NotificationsService.success(getLabel('apps.text-file.updated-successfully'));
     },
   });
   
@@ -41,11 +52,17 @@ const AppShortcutName = ({ app, user }: { app: AppShortcut['app']; user?: User |
   }, [app.isEditing]);
 
   const handleNameSubmit = async () => {
-    await create({
-      name: editingName.trim() ?? app.name,
-      shortcutPositionX: app.shortcutPosition!.x,
-      shortcutPositionY: app.shortcutPosition!.y
-    });
+    const trimmedName = editingName.trim() ?? app.name;
+    
+    if (app.id.toString().startsWith('temp-')) {
+      await create({
+        name: trimmedName,
+        shortcutPositionX: app.shortcutPosition!.x,
+        shortcutPositionY: app.shortcutPosition!.y
+      });
+    } else {
+      await update({ id: Number(app.id), body: { name: trimmedName }});
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -68,7 +85,7 @@ const AppShortcutName = ({ app, user }: { app: AppShortcut['app']; user?: User |
       onKeyDown={handleKeyDown}
       name={`edit-name-${app.id}-input`}
     />
-    )
+  )
 };
 
 export default AppShortcutName;

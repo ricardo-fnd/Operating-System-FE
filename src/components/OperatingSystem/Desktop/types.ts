@@ -16,8 +16,8 @@ type ResizeShortcut = {
 type SaveShortcut = {
   user?: User | null;
   app: Application;
-  x: number;
-  y: number;
+  x?: number;
+  y?: number;
 };
 
 export type {
