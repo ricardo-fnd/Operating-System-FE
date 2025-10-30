@@ -34,4 +34,12 @@ const update = async (id: number, body: UpdateTextFile) => {
   return data as TextFile;
 };
 
-export { create, getUserTextFile, update };
+const deleteFile = async (id: number) => {
+  const URL = `/text-files/${id}`;
+  await fetch(URL, {
+    method: "DELETE",
+    credentials: "include",
+  });
+};
+
+export { create, getUserTextFile, update, deleteFile };

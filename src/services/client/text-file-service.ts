@@ -8,6 +8,7 @@ import {
   create,
   getUserTextFile,
   update,
+  deleteFile,
 } from "../api/text-files-service";
 import NotificationsService from "../notifications-service";
 import { QUERIES_KEYS } from "src/enums";
@@ -45,10 +46,19 @@ const useUpdate = (
   });
 };
 
+const useDelete = (props: UseMutationOptions<void, ApiError, number> = {}) => {
+  return useMutation({
+    mutationFn: deleteFile,
+    onError: (error) => NotificationsService.error(error.detail),
+    ...props,
+  });
+};
+
 const TextFilesService = {
   useCreate,
   useGetUserTextFile,
   useUpdate,
+  useDelete,
 };
 
 export default TextFilesService;

@@ -105,6 +105,15 @@ const useUpdate = () => {
   );
 };
 
+const useRemove = () => {
+  const updateApps = useAppsUpdate();
+
+  return (app: Application) =>
+    updateApps((apps) =>
+      apps.filter((application) => application.id !== app.id)
+    );
+};
+
 const AppsService = {
   useOpen,
   useClose,
@@ -114,11 +123,12 @@ const AppsService = {
   useSetShortcutPosition,
   useAdd,
   useUpdate,
+  useRemove,
 };
 
 export default AppsService;
 
-const getAppWithHighestPriority = (apps: Application[]): Application | undefined => {
+const getAppWithHighestPriority = (apps: Application[]) => {
   return apps.reduce((prev, current) => {
     if (!prev) return current;
     if (!current) return prev;

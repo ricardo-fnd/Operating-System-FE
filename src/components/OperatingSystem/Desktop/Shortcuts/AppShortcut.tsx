@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 
 import AppShortcutName from "./AppShortcutName";
+import ShortcutContextMenu from "./ContextMenu";
 
 import { AppsService } from "src/services";
 import { TextFilesService } from "src/services/client";
-import { handleResize, saveShortcutPosition } from "./utils";
+import { handleResize, saveCookiesShortcut } from "./utils";
 
 import type { Application } from "src/types";
 import type { AppShortcut, DraggableData, DraggableEvent } from "../types";
@@ -18,13 +19,14 @@ const AppShortcut = ({ user, app }: AppShortcut) => {
   const open = AppsService.useOpen();
   const setShortcutPosition = AppsService.useSetShortcutPosition();
   const [wasDragged, setWasDragged] = useState(false);
-  
+  const [contextMenuPos, setContextMenuPos] = useState({ x: 0, y: 0 });
+
   useEffect(() => {
     const onResize = () => {
       handleResize({ ref, app, callback: setShortcutPosition });
     };
     onResize();
-    
+
     window.addEventListener("resize", onResize);
     return () => {
       window.removeEventListener("resize", onResize);
@@ -34,7 +36,7 @@ const AppShortcut = ({ user, app }: AppShortcut) => {
   const { mutate } = TextFilesService.useUpdate({
     onSuccess: ({ id, name, shortcutPositionX, shortcutPositionY }) => {
       const app = { id, name, type: 'text-file' } as Application;
-      saveShortcutPosition({ user, app, x: shortcutPositionX, y: shortcutPositionY });
+      saveCookiesShortcut({ user, app, x: shortcutPositionX, y: shortcutPositionY });
     }
   });
 
@@ -48,23 +50,39 @@ const AppShortcut = ({ user, app }: AppShortcut) => {
       if (app.type === 'text-file') {
         mutate({ id: Number(app.id), body: { shortcutPositionX: x, shortcutPositionY: y } });
       } else {
-        saveShortcutPosition({ user, app, x, y });
+        saveCookiesShortcut({ user, app, x, y });
       }
     }
   };
 
+  const closeContextMenu = () => setContextMenuPos({ x: 0, y: 0 });
+  const openContextMenu = (e: React.MouseEvent) => {
+    if (app.type !== "text-file") return;
+    e.preventDefault();
+    e.stopPropagation();
+    setContextMenuPos({ x: e.clientX, y: e.clientY });
+  };
+
   return (
-    <Draggable
-      bounds="parent"
-      onDrag={onDrag}
-      onStop={onStop}
-      position={app.shortcutPosition}
-    >
-      <div ref={ref} className={StyledShortcut}>
-        <app.Icon color="white" width={50} height={50} />
-        <AppShortcutName app={app} user={user} />
-      </div>
-    </Draggable>
+    <>
+      <Draggable
+        bounds="parent"
+        onDrag={onDrag}
+        onStop={onStop}
+        position={app.shortcutPosition}
+      >
+        <div ref={ref} className={StyledShortcut} onContextMenu={openContextMenu} >
+          <app.Icon color="white" width={50} height={50} />
+          <AppShortcutName app={app} user={user} />
+        </div>
+      </Draggable>
+      <ShortcutContextMenu
+        position={contextMenuPos}
+        onClose={closeContextMenu}
+        app={app}
+        user={user}
+      />
+    </>
   );
 };
 
