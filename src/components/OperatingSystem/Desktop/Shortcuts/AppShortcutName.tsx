@@ -10,6 +10,7 @@ import type { AppShortcut } from "../types";
 import type { Application, User } from "src/types";
 
 const StyledInput = "[&_input]:border [&_input]:text-white [&_input]:text-xs [&_input]:text-center [&_input]:p-0";
+const StyledName = "cursor-default";
 
 const AppShortcutName = ({ app, user }: { app: AppShortcut['app']; user?: User | null }) => {
   const getLabel = useLabels();
@@ -69,8 +70,8 @@ const AppShortcutName = ({ app, user }: { app: AppShortcut['app']; user?: User |
     if (e.key === 'Enter' || e.key === 'Escape') handleNameSubmit();
   };
 
-  if (app.type !== 'text-file') return <p>{getLabel(app.name)}</p>;
-  if (!app.isEditing) return <p>{app.name}</p>;
+  if (app.type !== 'text-file') return <p className={StyledName}>{getLabel(app.name)}</p>;
+  if (!app.isEditing) return <p className={StyledName}>{app.name}</p>;
 
   return (
     <Input
