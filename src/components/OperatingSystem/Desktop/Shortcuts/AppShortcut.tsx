@@ -12,7 +12,7 @@ import type { Application } from "src/types";
 import type { AppShortcut, DraggableData, DraggableEvent } from "../types";
 
 const StyledShortcut =
-  "flex flex-col items-center w-fit max-w-[80px] p-2 pt-1 text-center text-white text-xs rounded-md cursor-pointer hover:bg-zinc-800 transition-colors";
+  "flex flex-col items-center w-fit max-w-[80px] p-2 pt-1 text-center text-white text-xs rounded-md hover:bg-zinc-800 transition-colors";
 
 const AppShortcut = ({ user, app }: AppShortcut) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -42,7 +42,6 @@ const AppShortcut = ({ user, app }: AppShortcut) => {
 
   const onDrag = () => setWasDragged(true);
   const onStop = (event: DraggableEvent, { x, y }: DraggableData) => {
-    if (!wasDragged) open(app);
     if (wasDragged) {
       setWasDragged(false);
       setShortcutPosition({ app, x, y });
@@ -71,7 +70,12 @@ const AppShortcut = ({ user, app }: AppShortcut) => {
         onStop={onStop}
         position={app.shortcutPosition}
       >
-        <div ref={ref} className={StyledShortcut} onContextMenu={openContextMenu} >
+        <div 
+          ref={ref} 
+          className={StyledShortcut} 
+          onContextMenu={openContextMenu}
+          onDoubleClick={() => open(app)}
+        >
           <app.Icon color="white" width={50} height={50} />
           <AppShortcutName app={app} user={user} />
         </div>
